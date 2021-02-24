@@ -1,0 +1,2374 @@
+/* 
+    Document   : Style
+    Created on : Fab 08, 2014, 10:49:26 am
+    Author     : Md Omar Faruk
+    Description: Home page css
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+@font-face
+{
+    font-family: glyphicons-halflings-eot;
+    src: url('../font/glyphicons-halflings-regular.eot');
+}
+
+@font-face
+{
+    font-family: glyphicons-halflings-regular;
+    src: url('../font/glyphicons-halflings-regular');
+}
+
+@font-face
+{
+    font-family: glyphicons-halflings-svg;
+    src: url('../font/glyphicons-halflings-regular.svg');
+}
+
+@font-face
+{
+    font-family: glyphicons-halflings-woff;
+    src: url('../font/glyphicons-halflings-regular.woff');
+}
+
+
+#poem_preview{   /*---------poem_preview---------------*/
+    float:left;
+    height:  auto;
+    width: auto;
+    /*background-color: red;*/     
+    margin:  1px 0px 0px 0px;
+}
+
+#poem_edit_delete{   /*------------poem_edit_delete------------*/
+    float:left;
+    height:  auto;
+    width: 960px;
+    background-color: whitesmoke;
+    /*border-radius: 7px;*/
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    box-shadow: 0px 0px 5px 0px grey ;
+    /*margin:  auto;*/
+}
+
+#edit_delete_caption{  /*-----------edit_delete_caption-------------*/
+    float:left;
+    font: bold 33px/35px sans-serif;
+    color:  black;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: 7px;
+    background-color:  white; 
+    margin: 31px;
+    background: linear-gradient(to left,#ddd,#eee,#D0D0D0,whitesmoke,#ddd,#eee);
+    /*background: linear-gradient(to #eee,olive,orange,gray,green);*/
+    transition: all 5s;
+}
+
+#edit_delete_caption:hover{
+    background-color: #999999;
+    color:   #B57340;
+    background: linear-gradient(to left,#eee,#ddd,#D0D0D0,whitesmoke);
+    transition: all 3s;
+}
+
+
+#search_text{          /*-----------search_text---------*/
+    float:left; 
+    /*background-color: white;*/     
+    margin:  37px 0px 0px 360px;
+}
+
+#poet_picture{     /*--------poem_detail_title---------------*/
+    float:left; 
+    height:  auto;
+    width: auto;
+    background-color:  ivory;     
+
+}
+
+#poem_detail_title{     /*----musfiq----poem_detail_title---------------*/
+    float:left; 
+    height:  auto;
+    width: 550px;
+    font-weight:  bold;
+    text-align: left;
+    color:  darkorchid;
+    background-color: whitesmoke;
+    font-size: 21px;
+    font-family: sans-serif;
+    /*background-color:  orchid;*/     
+    margin:  57px 0px 0px 21px;
+}
+
+#poem_detail_poet_rank{     /*--------poem_detail_title---------------*/
+    float:left; 
+    height:  75px;
+    width: 338px;
+    font-weight:  bold;
+    text-align: left;
+    color:  darkorchid;
+    font-size: 21px;
+    background-color:  burlywood;     
+    margin:  57px 0px 0px 26px;
+}
+
+#poem_details{        /*------poem_details-----------------*/
+    float:left; 
+    height:  auto;
+    width: auto;
+    background-color: #f3f3f3;    
+}
+#poem_date{           /*-------poem_date------------------*/
+    float:left; 
+    height:  auto;
+    width: 600px;
+    font: bold 11px/13px sans-serif;
+    color: #555;
+    /*background-color: red;*/
+    margin:  47px 0px 10px 0px;    
+}
+
+
+#poem_pagination{      /*------------poem_pagination--------------*/
+    float:left; 
+    height:  auto;
+    width: auto;
+    text-align: center; 
+    background-color:  white;
+    border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+    margin:  0px 0px 0px 0px;    
+}
+
+#poem_pagination #title{      /*------------poem_pagination--------------*/
+    float:left; 
+    height:  37px;
+    width: 960px;   
+    background-color:  #eee;
+    border-bottom: #ddd solid 1px;
+    border-top-left-radius: 39px;
+    border-top-right-radius: 45px;
+    margin:  0px 0px 0px 0px;    
+}
+
+#poem_pagination #poems_view{      /*------------poem_pagination--------------*/
+    float:left; 
+    height:  auto;
+    width: 960px;   
+    background-color: white;
+    margin:  0px 0px 0px 0px;    
+}
+
+#poem_edit{           /*----------poem_edit-------------------*/
+    float:left; 
+    height:  auto;   
+    width: auto;
+    background-color:  whitesmoke;    
+}
+
+/*--------------vote_manage*/
+
+/*--------------vote_manage*/
+
+#poem_vote{           /*--------------poem_vote-------------*/
+    float:left; 
+    height:  auto;
+    width: auto;
+    background-color: whitesmoke ; 
+    margin:  0px 0px 0px 0px;
+}
+
+#poem_votin_w{           /*--------------poem votin w---*/
+    float:left; 
+    height:  auto;
+    width: auto;
+    /*background-color: gold;*/
+    margin:  0px 0px 0px 0px;
+}
+
+#poem_detail_main{     /*------poem_detail_main----  that is fixed page  ---- */
+    float:left;
+    height: auto;
+    width: 660px;        
+    /*background-color: #66afe9;*/    
+    margin: 13px 0px 0px 20px;
+}
+
+/*#poem_detail_colorerase{    ------poem detail colorerase--------
+    float:left;
+    height: 7px;
+    width: 600px;        
+    background-color: ivory;    
+    margin: 0px 0px 0px 0px;
+}*/
+
+#poem_detail{           /*--------#f3f3f3------poem_detail----------*/
+    float:left;
+    height: auto;
+    width: auto;  
+    text-align:  left;
+    /*background-color:   red;*/    
+    margin: 0px 0px 27px 0px;
+}
+
+
+#poem_detail_comments{           /*--------#f3f3f3------poem_detail----------*/
+    float:left;
+    height: auto;
+    width: 660px;  
+    /*text-align:  left;*/
+    background-color:    whitesmoke;   
+    margin: 21px 0px 11px 0px;
+}
+
+#poem_detail_comments #comments_data{           /*--------#f3f3f3------poem_detail----------*/
+    float:left;
+    height: auto;
+    width: 630px;  
+    /*text-align:  left;*/
+    /*background-color:#CCC;*/    
+    margin: 11px 0px 11px 0px;
+}
+
+#poem_rate{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:left;
+    height: 110px;
+    width: 660px;  
+    text-align:  left;
+    /*background-color:  yellowgreen  ;*/   
+    margin: 10px 0px 17px 0px;
+}
+
+#poem_star{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:left;
+    height:auto; 
+    width: 250px;
+    text-align: left;
+    /*background-color: rosybrown;*/    
+    margin: 0px 0px 0px 0px;
+}
+
+#poem_rate_view{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:left;
+    height:35px; 
+    width:220px;
+    text-align: left;
+    /*background-color: orange;*/    
+    margin: 23px 0px 0px 61px;
+
+}
+
+#read_value_image{
+    float: left;
+    height: 38px;
+    width: 43px;
+    background-image:  url(../button_image/read_value_images.jpg);    
+}
+
+#like_value_image{
+    float: left;
+    height: 37px;
+    width: 43px;
+    background-color: whitesmoke;
+    background-image:  url(../button_image/like.jpg);    
+}
+
+#vote_image{
+    float: left;
+    height: 38px;
+    width: 47px;
+    background-image:  url(../button_image/vote_image.jpg);    
+}
+
+#comments_image{
+    float: left;
+    height: 38px;
+    width: 47px;
+    background-image:  url(../button_image/comments_image3.jpg);    
+}
+
+#collection_image{
+    float: left;
+    height: 38px;
+    width: 43px;
+    background-image:  url(../button_image/collection_image.jpg);    
+}
+
+#poem_social_link{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:left;
+    height:50px; 
+    width: 335px;
+    text-align: left;
+    /*background-color: burlywood;*/    
+    margin: 0px 0px 0px 61px;
+
+}
+
+#poem_social_link_caption{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:left;
+    height:auto; 
+    width: auto;
+    text-align: left;
+    color: #555;
+    /*background-color: burlywood;*/    
+    margin: 15px 0px 0px 0px;
+
+}
+
+#poem_social_link_facebok{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:right;
+    height:45px; 
+    width: 46px;
+    background-image: url(../images/social_link/facebok.jpg);
+    border-radius: 7px;
+    margin: 0px 13px 0px 0px;
+
+}
+
+#poem_social_link_twitter{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:right;
+    height:45px; 
+    width: 46px;
+    background-image: url(../images/social_link/twitter.jpg);
+    border-radius: 7px;
+    margin: 0px 13px 0px 0px;
+
+}
+
+#poem_social_link_google{           /*-----ivory---#f3f3f3------poem_detail----------*/
+    float:right;
+    height:40px; 
+    width: 41px;
+    background-image: url(../images/social_link/google.jpg);
+    border-radius: 7px;
+    margin: 4px 13px 0px 0px;
+
+}
+
+#vote_manage{           /*--------------vote manage-------*/
+    float: left ; 
+    height:  240px;    
+    width: 240px;
+    border-radius:200px;
+    /*    background-color:    ivory; */
+    box-shadow:1px 1px 17px 1px   ;  /* add shadow */
+    margin:  20px 0px 0px 30px;
+}
+
+
+#poet_poem_details_vote{           /*--------------vote manage-------*/
+    float: left ; 
+    height:  25px;    
+    width: 98px;
+    background-color:  ivory; 
+    margin:  0px 0px 0px 0px;
+}
+
+#poet_poem_details_rate{           /*--------------vote manage-------*/
+    float: left ; 
+    height:  25px;    
+    width: 98px;
+    background-color: ivory; 
+    margin:  0px 0px 0px 2px;
+}
+
+#poem_comments{           /*--------------poem comments------------*/
+    float: left ; 
+    height:  auto;    
+    width: 660px;
+    background-color: whitesmoke  ; 
+    margin:  30px 0px 1px 1px;
+}
+#poem_comments_caption{           /*--------------poem comments------------*/
+    float: left ; 
+    height:  29px;    
+    width: 370px;
+    background-color:   whitesmoke; 
+    margin:  5px 0px 0px 0px;
+}
+
+/*#poem_comments_text{           --------------poem comments------------
+    float: left ; 
+    height:  auto;    
+    width: auto;
+    text-align: left;
+    margin : 1px 0px 0px 0px; 
+    border-radius: 3px; 
+    outline: none;
+    background-color:   ivory; 
+    margin:  10px 0px 0px 0px;
+}*/
+
+
+/* ---------------------------------- 
+image_edit_delete
+---------------------------------- */
+
+#image_edit_delete{     /*------#cccccc---image edit delete-----*/
+    float:left;
+    height: auto;
+    width: auto;
+    text-align: left;
+    font-weight: bold;
+    background-color:red;
+    border-style:  none; 
+    margin: 0px 0px 0px 0px;
+}
+
+#image_edit_delete_caption{    /*--------------image edit delete caption---------*/
+    float:left;
+    height: auto;
+    width: 900px;
+    text-align: left;
+    font-size: 33px;
+    color:   background;
+    font-weight: bold;
+    background-color:white;
+    padding-bottom: 20px;
+}
+
+#image_edit_delete_info{     /*------#cccccc---image edit delete info-----registration_info*/
+    float:left;
+    height: 75px;
+    width: 967px;
+    text-align: left;
+    font-weight: bold;
+    background-color:#ddd;
+    border-style:  none; 
+    margin: 0px 0px 0px 0px;
+}
+
+#image_edit_delete_info_font{    /*--------------image edit delete info font----------*/
+    float:left;
+    text-align: left;
+    margin: 7px 0px 25px 3px;      
+}
+
+#image_edit_delete{       /*-------------image edit delete-------------*/
+    float:left;
+    height: auto;
+    width:967px;    
+    background-color:white;
+    margin: 1px 0px 0px 0px;
+}
+
+#image_edit_delete_message{       /*-------------image edit delete message-------------*/
+    float:left;
+    height: auto;
+    width:967px;    
+    background-color:#ddd;
+    margin: 1px 0px 0px 0px;
+}
+
+#image_edit_delete_font{    /*-------------image edit delete font------------------*/
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: left;
+    margin: 40px 0px 55px 0px;
+}
+
+/* ---------------------------------- 
+image_edit_delete css end
+---------------------------------- */
+
+
+/* ---------------------------------- 
+small picture css start
+---------------------------------- */
+
+#small_picture_main{     /*--------------small_picture_main---------*/
+    float:left;
+    height: 75px;
+    width: 967px;
+    text-align: left;
+    font-weight: bold;
+    background-color:#cccccc;
+    border-style:  none; 
+    margin: 0px 0px 0px 0px;
+}
+
+#small_picture_info{     /*--------------small_picture_info-----------*/
+    float:left;
+    height: auto;
+    width: 967px; 
+    background-color:#cccccc;
+    border-style:  none; 
+    margin: 1px 0px 0px 0px;
+}
+
+#small_picture_table{     /*--------------small_picture_table-------------*/
+    float:left;
+    height: 350px;
+    width: 430px;
+    text-align: left;
+    font-weight: bold;
+    background-color:#cccccc;
+    border-style:  none; 
+    margin: 1px 0px 0px 0px;
+}
+
+#small_picture_view{     /*--------------small_picture_view*/
+    float:left;
+    height: 50px;
+    width: 50px;
+    text-align: left;    
+    background-color:#cccccc;
+    border-style:  none; 
+    margin: 150px 0px 0px 150px;
+}
+
+#medium_picture_table{     /*--------------medium_picture_table--------------*/
+    float:left;
+    height: 350px;
+    width: 967px;
+    text-align: left;
+    font-weight: bold;
+    background-color:#cccccc;
+    border-style:  none; 
+    margin: 0px 0px 0px 0px;
+}
+
+
+
+/* ---------------------------------- 
+vote star css end
+---------------------------------- */
+
+#ratingdiv{overflow:hidden}
+#ratingdiv .undone, #ratingdiv .fade{
+    background:url("star.gif") -30px 0 no-repeat;
+    width:28px;
+    display:block;
+    height:30px;
+    float:left;
+    margin-right:4px;
+    text-indent:-99999px
+}
+#ratingdiv .done{
+    background:url("star.gif") no-repeat;
+    width:28px;
+    display:block;
+    height:30px;
+    float:left;
+    margin-right:4px;
+    text-indent:-99999px
+}
+#ratingdiv .undone:hover{background-position:0}
+
+/* ---------------------------------- 
+vote star css end
+---------------------------------- */
+
+/* ---------------------------------- 
+small_image css start
+---------------------------------- */
+
+#small_image_main{    /*-------------small image main------------------*/
+    float:left;
+    width:250px;    
+    height:auto;
+    background-color:#cccccc;
+    margin: 0px 0px 20px 150px;
+}
+
+#small_image{    /*-------------small image------------------*/
+    float:left;
+    width:50px;    
+    height:50px;
+    background-color:#cccccc;
+    margin: 0px 0px 20px 150px;
+}
+
+#normal_image_main{    /*-------------normal image main------------------*/
+    float:left;
+    width:450px;    
+    height:auto;
+    background-color:#cccccc;
+    margin: 3px 0px 20px 7px;
+}
+
+#normal_image_pic{    /*-------------normal image pic------------------*/
+    float:left;
+    width:auto;    
+    height:auto;
+    background-color:#cccccc;
+    margin: 3px 0px 0px 17px;
+}
+
+
+/* ---------------------------------- 
+comments about poem css start
+---------------------------------- */
+
+#comments_view{   /*---------comments view---------------*/
+    float:left;
+    height:  auto;
+    width: 965px;
+    background-color: whitesmoke;   
+    /*box-shadow: 0px 0px 7px 0px;*/
+    /*border-radius:7px;*/
+    box-shadow: 0px 0px 5px 0px grey;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin:  0px 0px 0px 0px;
+}
+
+#comments_caption{  /*-----------comments caption-------------*/
+    float:left;
+    width: 950px;
+    text-align: left;
+    font: bold 21px/23px sans-serif;
+    padding: 7px;
+    color:  royalblue;
+    background-color: white; 
+}
+
+#search_poemcomments{ /*------------search poemcomments------------*/
+    float:left;
+    height:  130px;
+    width: 967px;
+    background-color: blanchedalmond;     
+    margin:  45px 0px 0px 0px;
+}
+
+#search_title_date{ /*------------search title date------------*/
+    float:left;
+    height:  90px;
+    width: 250px;
+    background-color:  white;     
+    margin:  17px 0px 0px 0px;
+}
+
+#comments_about_poems{   /*------------comments about poems------------*/
+    float:left;
+    height:  90px;
+    width: 690px;
+    background-color:  white;     
+    margin:  17px 0px 0px 27px;
+}
+
+#comments_about_poems_rules{   /*------------comments about poems rules------------*/
+    float:left;
+    height:  auto;
+    width: auto;
+    text-align: left;
+    /*padding: 3px;*/
+    font-weight: bold;
+
+    /*background-color:  yellowgreen;*/     
+    margin:  21px 0px 0px 0px;
+}
+
+#comments_view_content{   /*------------comments view content------------*/
+    float:left;
+    height:  auto;
+    width: auto;
+    text-align: left;
+    background-color:  white;     
+    margin:  11px 0px 0px 0px;
+}
+
+#comments_view_data{   /*------------comments view content------------*/
+    float:left;
+    height:  auto;
+    width: 965px;   
+    text-align: left;
+    background-color: white;  
+    box-shadow: 0px 0px 37px 0px  gray;
+    margin:  31px 0px 0px 0px;
+}
+
+#data_remove{    
+    float:left;
+    height: 41px;
+    width: 965px;
+    border-bottom:  white solid 1px;
+    background-color: #eee;
+    box-shadow: 0px 1px 17px 1px  gray;   
+}
+
+#comments_view_data #comments_data{
+    float: left;     
+    width: 965px;
+    min-height: 100px;
+    background-color:  whitesmoke;
+    margin:  1px 0px 0px 0px ; 
+}
+
+#comments_data #image{
+    float: left;
+    height: 91px;
+    width: 51px;
+    /*background-color:  #ea0;*/
+    margin: 28px 0px 0px 3px;
+}
+
+#comments_data #poem_to_comments{
+    float: left;    
+    width: 911px;
+    min-height: 100px;
+    /*background-color:  yellowgreen;*/
+    margin: 0px 0px 0px 0px;
+}
+
+
+#comments_view_content_phperror{   /*------------comments view content phperror------------*/
+    float:left;
+    height:  auto;
+    width: auto;
+    text-align: left;
+    background-color:  whitesmoke; 
+    /*color: white;*/
+    margin:  5px 0px 0px 0px;
+}
+
+/* ---------------------------------- 
+all poem show css start
+
+---------------------------------- */
+
+
+#all_poem_view_head{   /*---------all poem view head---------------*/
+    float: left;  
+    width: 550px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: bold;
+    margin:  13px 33px 7px 3px;
+}
+
+#all_poem_view{   /*---------all poem view---------------*/
+    float:left;
+    height:  auto;
+    width: 663px;
+    background-color: white; 
+    /*background-color: #D0D0D0;*/ 
+    /*border: solid 1px #eee;*/
+    /*border-radius:10px;  round corners */
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    box-shadow:0px 1px 1px 2px silver  ; /* add shadow */
+    margin:  0px 0px 0px 0px;
+}
+
+#all_poem_view_four_caption{   /*---------all poem view four caption---------------*/
+    float: left;
+    height:  35px;
+    width: 100%;
+    text-align: left;
+    background-color:   #eee;
+    border-bottom: #ddd solid 1px;
+    border-top-left-radius: 0%;
+    border-top-right-radius:950%;
+    margin:  55px 0px 1px 0px;
+}
+
+#all_poem_view_title_caption{   /*---------all poem view title caption---------------*/
+    float: left;    
+    text-align: left;
+    font: bold 14px/14px sens-serif;
+    color:  #B57340;
+    margin:  13px 0px 0px 57px;
+}
+
+#all_poem_view_poet_caption{   /*---------all poem view poet caption---------------*/
+    float: left;    
+    text-align: left;
+    font: bold 14px/14px sens-serif;
+    color:  #B57340;
+    margin:  13px 0px 0px 281px;
+}
+
+#all_poem_view_four_content{   /*---------all poem view four content---------------*/
+    float: left;
+    height:  auto;
+    width: 100%;
+    text-align: left;
+    background-color: whitesmoke;
+    border-bottom: #ddd solid 1px;
+    margin:  0px 0px 0px 0px;
+}
+
+#all_poem_view_by_title{   /*---------all poem view by title---------------*/
+    float: left;
+    height:  auto;
+    width: 254px;
+    text-align: left;
+    padding: 3px;
+    background-color:  whitesmoke;
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poem_view_poet_date{   /*---------all poem view poet date---------------*/
+    float: left;
+    height:  auto;
+    width: 220px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 0px 53px;
+}
+
+#pagination{   /*---------all poem view poet date---------------*/
+    float: left;
+    height:  auto;
+    width: 660px;
+    text-align: center;
+    /*background-color: grey;*/
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poem_view_by_image{   /*---------all poem view by image---------------*/
+    float: left;
+    height:  55px;
+    width: 55px;
+    text-align: left;
+    background-color: white;
+    border-style:solid;
+    border-width:1px;
+    border-color:#ddd;
+    border-radius: 5px;
+    margin:  3px 0px 6px 13px;
+}
+
+/* ---------------------------------- 
+all poem show css end
+---------------------------------- */
+
+
+/* ---------------------------------- 
+all new poem page show css start
+
+---------------------------------- */
+
+
+#all_poem_page_head{   /*---------all poem view head---------------*/
+    float: left;  
+    width: 550px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: bold;
+    margin:  13px 0px 7px 3px;
+}
+
+#new_poem_content_page{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: 963px;
+    /*background-color:  red;*/
+    border: solid 1px white;
+    border-radius:7px; /* round corners */
+    box-shadow: 1px 1px 0px 0px white;
+    margin:  13px 0px 0px 0px;
+}
+
+#mange_poem_to_poem_about{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: 958px;
+    /*background-color: blue;*/
+    /*    border: solid 1px #eee;*/
+    border-radius:7px; /* round corners */
+    /*    box-shadow: 1px 1px 0px 0px #2ae;*/
+    margin:  1px 0px 0px 1px;
+}
+
+#mange_to_registration{   /*---------all poem view head---------------*/
+    float: left;
+    height: 610px;
+    width: 215px;
+    background-color:  white   ;    
+
+    /*border-radius:7px; 295 round corners */   
+    margin:  0px 0px 0px 0px;
+}
+
+#mange_to_registration #login{
+    float: left;
+    height: 296px;
+    width:100%;
+    box-shadow:  0px 1px 1px 1px silver;
+    background-color:   white; 
+    margin: 7px 0px 0px 0px;
+}
+
+#mange_to_registration #login #title{
+    float: left;
+    height: 55px;
+    width:100%;
+    border-bottom: 1px #ddd solid;
+    /*    border-top-left-radius: 50%;
+        border-top-right-radius: 50%;*/
+    background-color:       #eee; 
+    margin: 0px 0px 0px 0px;
+}
+
+#mange_to_registration #login #menu{
+    float: left;
+    height: 240px;
+    width:100%;
+    background-color:    whitesmoke; 
+    margin: 1px 0px 0px 0px;
+}
+
+/*#mange_reg_button{   ---------all poem view head---------------
+    float: left;
+    height: 127px;
+    width: 198px; 
+    background-image: url(../banner/reg_button.jpg);
+    margin: 0px 0px 0px 0px;
+}*/
+
+/*#mange_reg_button_font{   ---------all poem view head---------------
+    float: left;    
+    margin: 33px 0px 0px 43px;
+}*/
+
+/*#reg_menu_poems{   ---------all poem view head---------------
+    float: left;
+    height: 381px;
+    width: 198px; 
+    background-image: url(../banner/reg_menu_poems.jpg);
+    margin: 0px 0px 0px 0px;
+}*/
+
+#reg_menu_button{   /*---------all poem view head---------------*/
+    float: left;
+    height: 98px;
+    width: 190px; 
+    /*background-color:#B3B4BD;*/
+
+    border-radius: 37px;
+    margin: 115px 0px 0px 13px;
+}
+
+#reg_menu_button_reg_info{   /*---------all poem view head---------------*/
+    float: left;
+    height: 78px;
+    width: 190px; 
+    font-size: 14px;
+    box-shadow: 0px 1px 1px 1px silver;
+    background-color: whitesmoke;  
+
+    border-radius: 37px;
+    margin: 0px 0px 0px 0px;
+}
+
+#reg_menu_button_reg_free{   /*---------all poem view head---------------*/
+    float: left;
+    height: 20px;
+    width: 67px; 
+    font-weight:bold;
+    box-shadow: 0px 1px 1px 1px silver;
+    color:  #777;
+    background-color:whitesmoke;
+    border-radius: 37px;
+    margin: 0px 0px 0px 63px;
+}
+
+
+#poem_day_to_month{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: 256px;
+    background-color:  white;
+    border-radius:7px; /* round corners */
+    margin:  1px 10px 1px 30px;
+}
+
+#poem_day_poem_page{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: auto;
+    /*background-color: red ;*/
+    margin:  0px 0px 0px 0px;
+}
+
+
+#poem_day_poem_page{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: auto;
+    /*    background-color:  #B3B4BD   ;*/
+    margin:  0px 0px 0px 9px;
+}
+
+#poem_month_poem_page{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: auto;
+    /*background-color:  #B3B4BD   ;*/
+    margin:  29px 0px 1px 0px;
+}
+
+#poem_category{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: 430px;
+    background-color: white;    
+    /*border-radius:27px;  round corners */    
+    margin:  7px 2px 1px 15px;
+}
+
+#poem_category #poem_category_title{   /*---------all poem view head---------------*/
+    float: left;
+    height: 47px;
+    width: 432px;
+    background-color: #eee;
+    box-shadow: 0px 1px 1px 1px silver;
+    border-bottom:  #ddd solid 1px;
+    margin:  0px 0px 0px 0px;
+}
+
+#poem_category #poem_category_title #poem_category_title_font{ 
+    float: left;
+    font:bold 15px/15px sans-serif;
+    text-align: left;
+    color: #B57340;
+    margin:  19px 0px 0px 14px;
+}
+
+#poem_category #poem_category_image{   /*---------all poem view head---------------*/
+    float: left;
+    height: 313px;
+    width: 432px;
+    background-color: white; 
+    box-shadow: 0px 1px 1px 1px silver;
+    border-bottom-left-radius: 5px ;
+    border-bottom-right-radius: 5px;
+    margin:  0px 0px 0px 0px;
+}
+
+#poem_category #poem_category_image #poem_category_detail{   /*---------all poem view head---------------*/
+    float: left;
+    height: 39px;
+    min-width: 143px;
+    text-align: left;
+    /*    padding: 5px;    */
+    background-color: whitesmoke;
+    margin:  1px 0px 0px 1px;
+}
+
+#poem_category #poem_category_image #poem_category_detail #poem_category_detail_font{   /*---------all poem view head---------------*/
+    float: left;
+    font: bold 14px/14px sans-serif; 
+    padding: 9px;
+    color:#555;
+    margin:  0px 0px 0px 6px;
+}
+
+#poem_category #poem_category_image #poem_category_more_topic{   /*---------all poem view head---------------*/
+    float: right;
+    height: 17px;
+    width: auto;  
+    box-shadow: 7px;
+    /*border-radius: 7px;*/
+    /*border-top: solid .5px whitesmoke ;*/
+    /*border-top: solid 1px  #D0D0D0;*/
+    /*box-shadow: 0px 0px 0px 0px #D0D0D0;*/    
+    margin:  11px 3px 7px 3px;
+}
+
+#poem_category #poem_category_image #poem_category_more_topic #font{   /*---------all poem view head---------------*/
+    font-size: 13px;    
+    margin:  0px 0px 1px 5px;
+}
+
+#poem_category #poem_category_image #poem_category_more_topic #font:hover{
+    color:orange;
+}
+
+
+
+#poem_category_detail_page_font{   /*---------all poem view head---------------*/
+    float: left;
+    width: auto;
+    color: #333;
+    font: bold 11px/11px sans-serif;
+    margin:  12px 0px 7px 21px;
+}
+
+#poem_category_detail_title{   /*---------all poem view head---------------*/
+    float: left;
+    height: 51px;
+    width: 100%; 
+    /*border-radius:7px;*/
+    border-bottom:  #ddd solid 1px;
+    background-color: #eee;
+    margin:  0px 0px 0px 0px;
+}
+
+#poem_category_detail_title_font{   /*---------all poem view head---------------*/
+    float: left;
+    font: bold 17px/17px sans-serif;
+    color:  #B57340;
+    margin:  19px 0px 0px 31px;
+}
+
+
+
+
+
+
+
+#poem_category_add{   /*---------all poem view head---------------*/
+    float: left;
+    height: 253px;
+    width: 430px;
+    background-image: url(../images/test.gif);
+    border-radius:13px;
+    background-color: #cccccc;
+    margin:  8px 0px 0px 0px;
+}
+
+
+#new_poems_to_top_poems{   /*---------all poem view head---------------*/
+    float: left;
+    height: auto;
+    width: 960px;
+    /*background-color:  #940;*/
+    margin:  31px 0px 3px 1px;
+}
+
+#all_new_poems_view{   /*---------all poem view head---------------*/
+    float: left;
+    height: 613px;
+    width: 474px;
+    /*background-color:  #A70000;*/
+    /*border: solid 1px #eee;*/
+    /*border-radius:7px;  round corners */
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    -webkit-box-shadow:    0px 0px 11px 0px silver;
+    -moz-box-shadow: 0px 0px 11px 0px silver;
+    box-shadow: 0px 0px 11px 0px silver;
+    margin:  1px 0px 5px 1px;
+}
+
+div {
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+
+#all_new_poems_view #all_new_poems_view_caption{   /*---------all_new_poems_view_caption--------------*/
+    float: left;
+    height: 48px;
+    width: 474px;
+    background-color: #eee;
+    border-bottom:  #ddd  solid 1px;
+    /*border: solid 1px #eee;*/
+    /*border-radius:7px;  round corners */
+    /*box-shadow: 1px 1px 0px 0px #2ae;*/
+    margin:  0px 0px 0px 0px;
+}
+
+#all_new_poems_view #all_new_poems_view_caption #font{   /*---------all_new_poems_view_caption_font--------------*/
+    float: left;  
+    color:#B57340;
+    margin:  15px 0px 0px 180px;
+}
+
+
+#all_new_poems_view #all_new_poems_view_title{   /*---------all_new_poems_view_title-------------*/
+    float: left;
+    height: 27px;
+    width: 474px;
+    background-color:#eee;
+    border-bottom:  #ddd solid 1px;
+    text-align: left;
+    margin:  51px 0px 0px 0px;
+}
+
+#all_new_poems_view #all_new_poems_view_title #title{   /*---------all_new_poems_caption_title-------------*/
+    float: left;    
+    text-align: left; 
+    color: #B57340;
+    font: bold 14px/14px sans-serif;
+    margin:  7px 0px 0px 5px;
+}
+
+#all_new_poems_view #all_new_poems_view_title #poet{   /*---------all_new_poems__poems_poet--------------*/
+    float: left;    
+    text-align: left;  
+    color: #B57340;
+    font: bold 14px/14px sans-serif;
+    margin:  7px 0px 0px 145px;
+}
+
+#all_new_poems_view #all_new_poems_view_title #date{   /*--------all_new_poems_submit_date---------------*/
+    float: left;    
+    text-align: left;  
+    color: #B57340;
+    font: bold 14px/14px sans-serif;
+    margin:  8px 0px 0px 161px;
+}
+
+#all_new_poems_page{   /*---------all_new_poems_page---------------*/
+    float: left;
+    height: auto;
+    width: 474px;
+    background-color:  white;
+    margin:  1px 0px 2px 0px;
+}
+
+#all_new_poems_page #sub_date{   /*---------all_poem_page_title_sub_date---------------*/
+    float: left;
+    height:  auto;
+    width: 472px;
+    text-align: left;
+    background-color: whitesmoke;
+    /*border-radius:7px;  round corners */
+    margin:  1px 0px 0px 1px;
+}
+
+#all_poem_page_title{   /*---------all_poem_page_title---------------*/
+    float: left;
+    height:  auto;
+    width: 174px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poem_page_date{   /*---------all_poem_page_date---------------*/
+    float: left;
+    height:  auto;
+    width: 200px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poems_page_submit_date{   /*---------all_poems_page_submit_date---------------*/
+    float: left;
+    height:  auto;
+    width: 85px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 5px 3px;
+}
+
+#all_poems_page_pagination{   /*---------all_poems_page_pagination---------------*/
+    float: left;
+    height:  19px;
+    width: 472px;
+    text-align: left;
+    background-color:  #D0D0D0;
+    margin:  7px 0px 5px 1px;
+}
+
+#all_new_poems_page #all_new_poems_page_batton{   /*---------all_new_poems_page_batton---------------*/
+    float:  left;
+    height: 34px;
+    width: 251px;
+    background-color:  whitesmoke;
+    text-align: left;
+    /*border: solid 1px #eee;*/
+    /*border-radius:7px;  round corners */
+    box-shadow: 0px 1px 1px 1px silver;
+    margin:  47px 0px 7px 109px;
+}
+
+
+/* ---------------------------------- 
+poem category detail page show css start
+
+---------------------------------- */
+#poem_page_famous_poem_view{
+    float: left;
+    height:auto;
+    width:auto;
+
+}
+
+#category_detail{
+    float:left;
+    height: auto;
+    width: 966px;
+    /*background-color:  #ea0;*/
+}
+
+
+#category_detail_reg_to_add{
+    float:left;
+    height: auto;
+    width: 290px;
+    /*background-color:  blueviolet;*/
+    border-radius:7px; 
+    margin: 1px 0px 0px 0px;
+}
+
+#category_detail_reg{
+    float:left;
+    height: auto;
+    width: 290px;  
+    margin: 1px 0px 0px 0px;
+}
+
+#category_detail_poem_of_day{
+    float:left;
+    height: auto;
+    width: auto;  
+    margin: 17px 0px 0px 20px;
+}
+
+#category_detail_new_poets{
+    float:left;
+    height: auto;
+    width: 290px;
+    /*background-color:  #940;*/
+    margin: 17px 0px 0px 0px;
+}
+
+#category_detail_add{
+    float:left;
+    height: 250px;
+    width: 276px;
+    background-color:#999999;   
+    margin: 17px 0px 7px 0px;
+}
+
+#category_detail_add_bottom{
+    float:left;
+    height: 250px;
+    width: auto;
+    background-color:#999999;   
+    margin: 17px 0px 1px 0px;
+}
+
+#category_detail_view{
+    float:left;
+    min-height: 550px;
+    width: 669px;
+    /*background: url(../images/category_image.jpg)repeat;*/
+    background-color:   white;
+    box-shadow: 0px 1px 7px 1px gray;
+    /*border-radius: 7px;*/
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin: 17px 0px 5px 7px;
+}
+
+
+#category_detail_view #detail_category{
+    float:left;
+    min-height: 550px;
+    width: 669px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 7px;
+    background-color:  white;
+    margin: 0px 0px 2px 0px;
+}
+
+
+#category_detail_view #detail_category #data{
+    float:left;
+    height: auto;
+    width: 222px;
+    background-color:   whitesmoke;    
+    margin: 1px 0px 0px 1px;
+}
+
+/* ---------------------------------- 
+poem category detail page show css end
+
+---------------------------------- */
+/* ----------------------------------
+all new poem page show css end */
+
+
+
+
+
+/*---------------------------------- */
+
+/* ---------------------------------- 
+all poem page css start
+
+---------------------------------- */
+#poems_page{   /*---------poems_page---------------*/
+    float:left;
+    height:  auto;
+    width: auto;
+    background-color: white;     
+    margin:  10px 0px 0px 0px;
+}
+
+#all_poem_page_head{   /*---------all poem view head---------------*/
+    float: left;  
+    width: 550px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: bold;
+    margin:  13px 0px 7px 3px;
+}
+
+#all_poem_view_page{   /*---------all poem view---------------*/
+    float:left;
+    height:  auto;
+    width: 738px;
+    background-color:   whitesmoke; 
+    background-color: lavender; 
+    border: solid 1px #eee;
+    border-radius:10px; /* round corners */
+    box-shadow:0px 1px 1px 2px slateblue  ; /* add shadow */
+    margin:  50px 0px 30px 21px;
+}
+
+#all_poem_view_page_add{   /*---------all_poem_view_page_add---------------*/
+    float:left;
+    height:  250px;
+    width: 200px;
+    background-color: red; 
+    background-color: lavender; 
+    border: solid 1px #eee;
+    border-radius:10px; /* round corners */
+    box-shadow:0px 0px 0px 1px   lightblue ;
+    margin:  50px 0px 0px 3px;
+}
+
+#all_poem_view_page_caption{   /*---------all_poem_view_page_caption---------------*/
+    float: left;
+    height:  auto;
+    width: 733px;
+    text-align: left;
+    background-color:  white;
+    margin:  55px 0px 11px 3px;
+}
+
+#all_poem_page_title_caption{   /*---------all poem view title caption---------------*/
+    float: left;    
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin:  3px 0px 7px 3px;
+}
+
+#all_poem_page_poet_caption{   /*---------all poem view poet caption---------------*/
+    float: left;    
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin:  3px 0px 7px 230px;
+}
+
+#all_poem_page_four_content{   /*---------all poem view four content---------------*/
+    float: left;
+    height:  auto;
+    width: 733px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  3px 0px 0px 3px;
+}
+
+#all_poem_page_by_title{   /*---------all poem view by title---------------*/
+    float: left;
+    height:  auto;
+    width: 254px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poem_page_poet_date{   /*---------all poem view poet date---------------*/
+    float: left;
+    height:  auto;
+    width: 230px;
+    text-align: left;
+    background-color: whitesmoke;
+    margin:  7px 0px 0px 3px;
+}
+
+#all_poem_page_image{   /*---------all poem view by image---------------*/
+    float: left;
+    height:  50px;
+    width: 50px;
+    text-align: left;
+    background-color: yellowgreen;
+    margin:  7px 0px 0px 123px;
+}
+
+
+/* ---------------------------------- 
+all new poems page show css end
+
+---------------------------------- */
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:400%;
+    line-height:1.2;
+    color:#ddd;
+    /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+#message_title{    
+    float: left;
+    height:51px;
+    width:756px;
+    /*    border-top-left-radius: 57px;
+        border-top-right-radius:57px;*/
+    background-color:#eee;
+    border-bottom: solid 1px  #D0D0D0;   
+    margin:  0px 0px 0px 10px;
+}
+
+#message_title #caption{
+    float: left;
+    height:21px;
+    width:134px;
+    font: bold 15px/17px sans-serif;
+    color: #555;
+    /*padding: 9px;*/
+    /*background-color: #5F78AB;*/
+    margin:  11px 0px 0px 3px;
+}
+
+#all_poem_of_day_view_title{    
+    float:left;
+    height:auto;
+    width:auto; 
+    text-align: left; 
+    border-radius: 21px;
+    padding: 9px;
+    box-shadow: 0px 0px 21px 0px #333 ;
+    color:  #555;
+    margin: 51px 0px 71px 0px;
+
+}
+
+#all_poem_of_day_view_title:hover{
+    background-color: #777;
+    color: orange;
+}
+
+#trending_pagination{
+    float: left;
+    height: auto;
+    width:737px;
+    /*background-color:  #666;*/
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#trending_pagination #pagination{
+    float: left;
+    height: 47px;
+    width:737px;
+    /*background-color: red;*/
+}
+
+#title_trending{
+    float:left;
+    height:33px;
+    width:736px;
+    background-color: whitesmoke;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: blanchedalmond;
+}
+
+#trending_wrapper{
+    float:left;
+    height:auto;
+    width: 736px;
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color:  #999999;
+}
+
+#trending_wrapper #title_value{
+    float:left;
+    height:27px;
+    width:337px;
+    /*text-align:left;*/
+    padding: 7px;
+    color: #333; 
+    font: normal 15px/15px  glyphicons-halflings-svg ;
+    background-color: whitesmoke;
+}
+#trending_wrapper #body{
+    float:left;
+    height: 27px;
+    width: 121px;
+    padding: 7px;
+    color: #333; 
+    font: normal 15px/15px  glyphicons-halflings-svg ;
+    background-color:  #ddd;
+
+}
+#trending_wrapper #trending{
+    float:left;
+    height: 27px;    
+    width: 31px;
+    padding: 7px;
+    color: #333;
+    font: normal 15px/15px  glyphicons-halflings-svg ;
+    background-color: thistle;    
+}
+
+#trending_wrapper #submit_date{
+    float:left;
+    height: 27px;    
+    width: 137px;
+    padding: 7px;
+    color: #333;
+    font: normal 15px/15px  glyphicons-halflings-svg ;
+    background-color: #ddd;    
+}
+
+#trending_wrapper #action{
+    float:right;
+    height: 27px;
+    width: 85px;
+    padding: 7px;
+    text-align: center;
+    color: #333;
+    font: normal 15px/15px  glyphicons-halflings-svg ;
+    background-color: lightblue;    
+}
+
+
+
+#all_poem_of_day_view{    
+    float:left;
+    min-height:191px;
+    width:891px;
+    /*background-color:orange;*/
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #B3B4BD;
+    box-shadow: 0px 0px 21px 0px #333 ;
+    margin: 31px 0px 0px 0px;
+}
+
+#all_poem_of_day_view #box_poem_of_day_date{    
+    float:left;
+    height:31px;
+    width:301px;
+    /*background-color: #c60;*/
+    margin: 11px 0px 0px 231px;
+}
+
+#all_poem_of_day_view #box{    
+    float:left;
+    height:21px;
+    width:21px;
+    border-radius: 50%;
+    /*background-color: brown;*/
+    background-image: url(../button_image/poem_day_tranding/poems_day_image.jpg);
+    /*background-image: url(../button_image/poem_day_tranding/poem_day_image.jpg);*/
+    margin: 0px 0px 0px 17px;
+}
+
+#all_poem_of_day_view #poem_of_day_date{    
+    float:left;
+    height:auto;
+    width:191px;
+    font: bold 13px/15px sans-serif;
+    /*background-color:   #333;*/
+    margin: 5px 0px 0px 7px;
+}
+
+#all_poem_of_day_view #pic_name_date{    
+    float:left;
+    height:151px;
+    width:600px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color:  whitesmoke;
+    /*background-color:  #cccccc;*/
+    margin: 11px 0px 0px 231px;
+}
+
+
+
+#all_poem_of_day_view #pic{    
+    float:left;
+    height:61px;
+    width:61px;
+    /*background-color:  #ea0;*/
+    margin: 5px 0px 0px 0px;
+}
+
+#pic_name_date #name_date{    
+    float:left;
+    height:85px;
+    width:490px;
+    /*background-color:  #9999ff;*/
+    margin: 5px 0px 0px 7px;
+}
+
+#all_poem_of_day_view #name{    
+    float:left;
+    height:auto;
+    min-width:475px;
+    font: bold 16px/16px sans-serif;
+    color: #666;
+    /*background-color:  #999999;*/
+    margin: 5px 0px 0px 0px;
+}
+
+#all_poem_of_day_view #boxs{    
+    float:left;
+    height:auto;
+    min-width:475px;
+    text-align: left;
+    /*background-color: red;*/
+    margin: 5px 0px 3px 0px;
+}
+
+#all_poem_of_day_view #submit_date{    
+    float:left;
+    height:auto;
+    min-width:475px;
+    font: bold 13px/15px sans-serif;
+    /*background-color:  #555;*/
+    margin: 5px 0px 0px 0px;
+}
+#all_poem_of_day_view #poem_of_day_date{    
+    float:left;
+    height:auto;
+    min-width:475px;
+    /*background-color:  #777;*/
+    margin: 0px 0px 0px 0px;
+}
+
+#all_poem_of_day_view #title{
+    float: left;
+    height: auto;
+    width: 491px;
+    padding: 21px;
+    font: bold 29px/33px sans-serif;
+    text-align: center;
+    color: #777;
+    /*background-color:  white;*/
+    margin: 5px 0px 0px 75px;
+}
+
+#all_poem_of_day_view #body{
+    float: left;
+    min-height: 359px;
+    min-width: 510px;
+    font: normal 15px/15px sans-serif;
+    padding: 11px;
+    background-color:  white;
+    margin: 5px 0px 21px 75px;
+}
+
+
+#all_poem_of_day_view #button_warapper{
+    float:left;
+    height: auto;
+    width:775px;
+    /*background-color: red;*/
+    margin: 0px 0px 21px 189px;
+
+}
+
+#all_poem_of_day_view #button_poem_detail{
+    float:left;
+    height: 21px;
+    width:auto;
+    border-radius:11px; 
+    padding: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color:  #CCC;
+    color:  #660033; 
+    box-shadow: 0px 0px 0px 0px;
+    margin: 1px 0px 21px 91px;
+
+}
+#all_poem_of_day_view  #button_poem_detail:hover{
+    background-color:#999999;
+    color:red;
+}
+
+#all_poem_of_day_view #button_poem_detail #font_poem_detail{
+    float:left;
+    padding: 3px;       
+}
+#all_poem_of_day_view #button_poem_detail #font_poem_detail:hover{
+    background-color:#999999;
+    color: white;
+    cursor:  pointer;
+}
+
+/*  trending poem css start*/
+
+/*#all_trending_poem_title{    
+    float:left;
+    height:73px;
+    width:auto; 
+    text-align: left; 
+    border-radius: 21px;
+    padding: 3px;
+    box-shadow: 0px 0px 11px 0px #333 ;
+    color:  tomato;
+    margin: 51px 0px 91px 0px;
+
+}*/
+
+
+/*trending*/
+
+
+#all_trending{
+    float: left;
+    height: auto;
+    width: 100%;
+    /*background-color: #2ae;*/
+}
+
+#all_trending #trending_poems_title_name{
+    float: right;
+    min-height: 351px;
+    width: 291px;
+    background-color:   white;
+    box-shadow: 0px 0px 17px 0px silver;
+    margin: 0px 0px 0px 15px;
+}
+
+#all_trending #trending_poems_title_name #title{
+    float: right;
+    height: 61px;
+    width: 291px;
+    font: bold 21px/21px serif;
+    color: #B57340;
+    background-color: #eee;
+    border-bottom: solid #ddd 1px;
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending #trending_poems_title_name #title #value{
+    float: left;    
+    margin: 25px 0px 0px 66px;
+}
+
+#all_trending #trending_poems_title_name #title_name{
+    float: right;
+    min-height: 461px;
+    width: 291px;
+    background-color: white;
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending #trending_poems_title_name #title_name #titleall_trending{
+    float: left;
+    height: 33px;
+    width: 146px;
+    text-align: left;
+    border-bottom:  #ddd  dotted 1px;
+    background-color: whitesmoke;
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending #trending_poems_title_name #title_name #nameall_trending{
+    float: left;
+    height: 33px;
+    width: 145px;
+    text-align: left;
+    border-bottom:  #ddd  dotted 1px;
+    background-color:    whitesmoke;
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper{
+    float: left;
+    min-height: 349px;
+    width:535px;
+    background-color:  #eee; 
+    /*opacity: 1;*/
+    /*border-bottom:  #B3B4BD solid 1px;*/
+    box-shadow: 0px 0px 51px 0px silver;
+    margin: 1px 0px 33px 71px;
+
+}
+
+#all_trending_poem_wrapper #image{
+    float:left;
+    height: 65px;
+    width: 375px;
+    /*background-color: thistle;*/
+    /*    border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #f3f3f3;*/
+}
+
+#all_trending_poem_wrapper #image #name{
+    float: left;
+    height: auto;
+    width: 317px;  
+    text-align: left;
+    /*background-color: orange;*/
+    margin: 11px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper #name_date #submit_date{
+    float: left;
+    height: auto;
+    width: 317px;
+    font:normal 12px/12px sans-serif;
+    color:  #B3B4BD;;
+    text-align: left;
+    /*background-color: royalblue;*/
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper #image #trending_page_image{
+    float: left;
+    min-height: 33px;
+    width: 29px;
+    /*background-color: whitesmoke;*/
+    background-image: url(../button_image/poem_day_tranding/trending_page_image.jpg);
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper #image #trending_image{
+    float: left;
+    min-height: 33px;
+    width: 29px;
+    /*background-color: whitesmoke;*/
+    background-image: url(../button_image/poem_day_tranding/trending_image.jpg);
+    margin: 0px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper #image #box{    
+    float:left;
+    height:21px;
+    width:21px;
+    border-radius: 50%;
+    /*background-color: brown;*/
+    background-image: url(../button_image/poem_day_tranding/poems_day_image.jpg);
+    /*background-image: url(../button_image/poem_day_tranding/poem_day_image.jpg);*/
+    margin: 3px 3px 0px 3px;
+}
+
+#all_trending_poem_wrapper #poem_title{
+    float: left;
+    height: auto;
+    width: 513px;
+    /*text-align: center;*/
+    /*background-color: darkgray;*/
+    margin: 7px 0px 0px 0px;
+}
+
+#all_trending_poem_wrapper #poem_title #poem_title_value{
+    float: left;
+    height: auto;
+    min-width: 375px;
+    text-align: left;    
+    font: bold 17px/19px sans-serif;
+    color: #333;
+    /*background-color: darkseagreen;*/
+    margin: 0px 0px 0px 7px;
+}
+
+#all_trending_poem_wrapper #poem_detail{
+    float: left;
+    min-height: 155px;
+    width: 100%;
+    min-width: 20em;
+    text-align: left;
+    background-color: whitesmoke;
+    color: #333;
+    overflow: hidden;
+    position: relative;
+    box-shadow:  0px 0px 1px 0px silver;    
+    margin: 0px 0px 31px 0px;
+}
+
+#all_trending_poem_wrapper #poem_detail:hover{    
+    min-width: 460px;
+    /*background-color:  red;*/
+
+}
+
+#all_trending #fade{
+    float: left;
+    height: 15px;
+    width: 16px;
+    /*background-image: url(../button_image/loading.gif);*/ 
+}
+#all_trending #fade #image{
+    float: left;
+    height: 15px;
+    width: 16px;
+    background-image: url(../button_image/loading.gif);
+    margin: 0px 0px 0px 295px;
+}
+
+#all_trending_poem_wrapper #button{
+    float: left;
+    height:45px;
+    width:90%;
+    /*background-color:  yellowgreen;*/
+    box-shadow: 0px 0px 0px 0px;
+    color:  #333;    
+    margin: 7px 0px 31px 0px;
+}
+
+#all_trending_poem_wrapper #button #button_value{
+    float: left;
+    height:17px;
+    width:auto;
+    /*text-align: center;*/
+    padding: 7px;
+    border-radius: 47%;
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #B3B4BD;
+    color:  tomato; 
+    font: bold 15px/15px sans-serif;
+    /*background-color:   #940;*/
+    margin: 7px 0px 7px 269px;
+}
+
+#all_trending_poem_wrapper #button #button_value:hover{
+    background-color:  #CCC;
+    border-style: solid;
+    border-width: 2px;
+    border-color:  wheat;
+    color:   #A70000;
+    font: bold 15px/15px sans-serif;
+    cursor:   pointer;
+}
+
+/* category wise poem view  */
+
+#category_wise_poem_view{
+    float: left;
+    height: auto;
+    width: 100%;
+    /*background-color:  #B57340;*/
+}
+
+#category_wise_poem_view #poems_about{
+    float: left;
+    min-height: 795px;
+    width:26%;
+    /*background-color:  #666;*/ 
+    margin: 41px 0px 0px 0px;
+}
+
+#category_wise_poem_view #poems_about #poems_menu{
+    float: left;
+    height: 295px;
+    width:99%;
+    background-color:   white; 
+    margin: 1px 0px 0px 1px;
+}
+
+#category_wise_poem_view #poems_about #poems_menu #title{
+    float: left;
+    height: 55px;
+    width:100%;
+    border-bottom: 1px #ddd solid;
+    /*    border-top-left-radius: 50%;
+        border-top-right-radius: 50%;*/
+    background-color:       #eee; 
+    margin: 0px 0px 0px 0px;
+}
+
+#category_wise_poem_view #poems_about #poems_menu #menu{
+    float: left;
+    height: 240px;
+    width:100%;
+    background-color:    whitesmoke; 
+    margin: 1px 0px 0px 0px;
+}
+
+#category_wise_poem_view #poems_about #about{
+    float: left;
+    min-height: 495px;
+    width:99%;
+    background-color:   white; 
+    margin: 13px 0px 7px 1px;
+}
+
+#category_wise_poem_view #poems_about #about #title{
+    float: left;
+    min-height: 55px;
+    width:100%;
+    /*    border-top-left-radius: 50%;
+        border-top-right-radius: 50%;*/
+    border-bottom: 1px #ddd solid;
+    background-color:    #eee;
+    margin: 0px 0px 0px 0px;
+}
+
+#category_wise_poem_view #poems_about #about #detail{
+    float: left;
+    min-height: 440px;
+    width:100%;
+    background-color:  #ddd;
+    border-bottom: 1px #ddd solid;
+    margin: 1px 0px 0px 0px;
+}
+
+#category_wise_poem_view #title_name{  
+    float: left;
+    min-height:250px;
+    width: 41%;
+    /*background-color:  #FFCCBA;*/   
+    margin: 21px 0px 7px 9px;
+}
+
+#category_wise_poem_view #category_wise_new_poems{  
+    float: left;
+    height:auto;
+    width: 298px;
+    background-color:  white;   
+    margin: 41px 0px 0px 11px;
+}
+
+#category_wise_poem_view #category_wise_new_poems #title{  
+    float: left;
+    min-height:55px;
+    width: 298px;
+    /*border-bottom: 1px #ddd solid;*/
+    background-color:   #eee;   
+    margin: 0px 0px 0px 0px;
+}
+
+#category_wise_poem_view #category_wise_new_poems #details{  
+    float: left;
+    height:auto;
+    width: 298px;
+    background-color:    #ddd;   
+    margin: 1px 0px 7px 0px;
+}
+
+/*#category_wise_poem_view #title_name #title{
+    float: left;
+    height: auto;
+    width: 100%; 
+    font: bold 23px/23px sans-serif;
+    color: #333;
+    background-color: #D0D0D0;
+    margin: 11px 0px 21px 0px;
+}
+
+ #title_name #name{
+    float: left;
+    height: auto;
+    width: 100%; 
+    font: bold 13px/13px sans-serif;
+    color: #333;
+    background-color:   #5F78AB;
+    margin: 11px 0px 21px 0px;
+}*/
+
+#famous_poet_total{
+    float: left;
+    min-height: 451;
+    width: auto;
+    background-color:whitesmoke;
+    margin: 21px 0px 0px 0px;
+}
+
+#famous_poet_total #right{
+    float: left;
+    min-height: 451px;
+    width: 30%;    
+    box-shadow: 0px 0px 9px 0px;
+    background-color:  whitesmoke;
+    margin:  0px 0px 11px 18px;
+}
+#famous_poet_total #right_title{
+    float: left;
+    min-height: 61px;
+    width: 100%;
+    border-bottom:  #CCC 1px solid;
+    background-color:  #eee;
+    margin:  0px 0px 0px 0px;
+}
+
+#famous_poet_total #right_title #value{
+    float: left;
+    text-align: center;
+    font: bold 17px/17px sans-serif;
+    color: #B57340;
+    margin:  21px 0px 0px 81px;
+}
+
+#famous_poet_total #right #famous_poems_total{
+    float: left;
+    height: 31px;
+    width: 100%;  
+    border-bottom:  #B3B4BD solid 1px;
+    background-color:  whitesmoke;
+    margin:  0px 0px 1px 0px;
+}
+
+#famous_poet_total #right #famous_poems_total #serial_no{
+    float: left;
+    height: 21px;
+    width: 10%;
+    color:  #555;
+    font: bold 14px/14px sans-serif;
+    background-color:   whitesmoke;
+    margin:  7px 0px 0px 0px;
+}
+
+#famous_poet_total #right #famous_poems_total #poem_title{
+    float: left;
+    height: 21px;
+    width: 60%;
+    text-align: left;
+    color:  #333;
+    font: bold 12px/12px sans-serif;
+    background-color:    whitesmoke;
+    margin:  9px 0px 0px 0px;
+}
+
+#famous_poet_total #right #famous_poems_total #poet_name{
+    float: left;
+    height: 21px;
+    width: 30%;
+    text-align: left;
+    color:  #333;
+    font: bold 12px/12px sans-serif;
+    background-color:     whitesmoke;
+    margin:  9px 0px 0px 0px;
+}
+
+
+#famous_poet_total #middle{
+    float: left;
+    height: auto;
+    width: 40%;
+    box-shadow:1px 0px 31px 0px #B3B4BD;
+    /*background-color:   #888;*/
+}
+
+#famous_poet_total #middle #value{
+    float: left;
+    min-height: 61px;
+    width: 100%;
+    font: bold 15px/15px sans-serif;
+    color: #333;
+    box-shadow: 1px 0px 21px 0px #ddd ;
+    /*background-color:  #B57340;*/
+    margin: 1px 0px 0px 0px;
+}
+
+#famous_poet_total #middle #value #serial_no{
+    float: left;
+    min-height: 21px;
+    width: 15%;
+    font: normal 14px/14px sans-serif;
+    color:  #555;
+    /*background-color:   #FFCCBA;*/
+    margin: 25px 0px 0px 0px;
+}
+
+#famous_poet_total #middle #value #name{
+    float: left;
+    min-height: 21px;
+    width: 65%;
+    font: bold 13px/13px sans-serif;
+    text-align: left;
+    /*background-color:   #CCC;*/
+    margin: 25px 0px 0px 0px;
+}
+
+#famous_poet_total #middle #value #picture{
+    float: left;
+    min-height: 51px;
+    width: 20%;
+    /*background-color:   #FFCCBA;*/
+    margin: 3px 0px 0px 0px;
+}
+
+#famous_poet_total #left{
+    float: left;
+    height: 451px;
+    width: 26%;    
+    /*background-color:  #999999;*/
+    margin: 0px 19px 0px 0px;
+}
+
+#famous_poet_total #left #poems_menu{
+    float: left;
+    min-height: 295px;
+    width:100%;
+    box-shadow: 0px 0px 9px 0px;
+    background-color:   white; 
+    margin: 1px 0px 0px 1px;
+}
+
+#famous_poet_total #left #poems_menu #title{
+    float: left;
+    height: 61px;
+    width:100%;
+    border-bottom: 1px #ddd solid;
+    /*  border-top-left-radius: 50%;
+        border-top-right-radius: 50%;*/
+    background-color:   #eee; 
+    margin: 0px 0px 0px 0px;
+}
+
+#famous_poet_total #left #poems_menu #menu{
+    float: left;
+    height: 240px;
+    width:100%;
+    background-color:    whitesmoke; 
+    margin: 1px 0px 0px 0px;
+}

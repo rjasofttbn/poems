@@ -1,0 +1,15 @@
+#eee======>titles
+#ddd =====> backend
+whitesmoke====> background
+ #B57340========> font color
+
+Snow 	======#FFFAFA
+OldLace =======	#FDF5E6
+MintCream====== #F5FFFA
+Linen 	=======#FAF0E6
+Ivory 	=======#FFFFF0
+GhostWhite ======#F8F8FF
+FloralWhite====== #FFFAF0
+Cornsilk 	=======#FFF8DC
+Azure 	=======#F0FFFF
+AliceBlue =======#F0F8FF

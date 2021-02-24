@@ -1,0 +1,17 @@
+CREATE TABLE `famous_poet` (
+`famous_poet_id` MEDIUMINT( 15 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`famous_poet_name` VARCHAR( 55 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_poem` VARCHAR( 1000 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_image` VARCHAR( 45 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_others` VARCHAR( 150 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'this table is famous poet for home page';
+
+2:48 PM 13/1/2015
+CREATE TABLE  `poems`.`tbl_reply` (
+`reply_id` INT( 15 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`comments_id` INT( 15 ) NOT NULL ,
+`user_id` INT( 15 ) NOT NULL ,
+`poem_id` INT( 15 ) NOT NULL ,
+`reply_data` VARCHAR( 351 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`reply_date` TIMESTAMP NOT NULL
+) ENGINE = MYISAM ;

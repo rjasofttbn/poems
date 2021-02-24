@@ -1,0 +1,63 @@
+ <!-- accordian -->
+        <script type="text/javascript">
+            
+            $(document).ready(function()
+            {
+                $(".accordian>li.expanded").removeClass("expanded");
+                $(".accordian>li h2").addClass("jse").click(function() {
+                    var doOpen = !$(this).parent().hasClass('expanded');
+                    var openContainers = $(".accordian>li.expanded").length > 0;
+                    var targetNode = this;
+                    if (openContainers) {
+                        $(".accordian>li.expanded h2")
+                                .parent()
+                                .removeClass('expanded')
+                                .end()
+                                .nextAll()
+                                .slideUp(100, function() {
+                                    if ($(".accordian>li.expanded").length == 0)
+                                        performOpen(doOpen, targetNode);
+                                });
+                    }
+                    else {
+                        performOpen(doOpen, targetNode);
+                    }
+                    // if containers are open, proceed on callback
+                    // else proceed immediately
+                }).nextAll().slideUp(100);
+            });
+
+            function performOpen(doOpen, whichNode) {
+                if (doOpen) {
+                    $('html,body').animate({scrollTop: $(whichNode).offset().top}, 1000); //target code
+                    $(whichNode).nextAll().slideDown(1000).parent().addClass('expanded');
+                }
+            }
+           
+        </script>
+
+ <!--ajax fade -->
+        <script type="text/javascript">
+            //<![CDATA[ 
+            $(document).ready(function() {
+
+                /* Every time the window is scrolled ... */
+                $(window).scroll(function() {
+
+                    /* Check the location of each desired element */
+                    $('.hideme').each(function(i) {
+
+                        var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                        var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                        /* If the object is completely visible in the window, fade it it */
+                        if (bottom_of_window > bottom_of_object) {
+
+                            $(this).animate({'opacity': '7'}, 900);
+                        }
+                    });
+                });
+            });
+            //]]>  
+
+        </script>

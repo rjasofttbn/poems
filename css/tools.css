@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 24, 2014, 12:19:24 PM
+    Author     : omar faruk---01729158473
+*/
+
+#update_e_book_caption{    /*--------------update_e_book caption------------*/
+    float:left;
+    height: auto;
+    width: 900px;
+    text-align: left;
+    font-size: 33px;
+    color:   background;
+    font-weight: bold;
+    background-color:white;
+    padding-bottom: 20px;
+}
+
+#download_ebook{         /*--------------download ebook----------*/
+    float:left;
+    height: auto;
+    width:900px;  
+    text-align: left;
+    background-color:white;
+    margin: 0px 0px 0px 0px;
+}
+
+#ebook_rules{         /*--------------ebook rules---------*/
+    float:left;
+    height: auto;
+    width:900px;  
+    text-align: left;
+    background-color:white;
+    margin: 0px 0px 0px 0px;
+}
+
+#why_pdf{         /*--------------why pdf------------*/
+    float:left;
+    height: auto;
+    width:auto;  
+    text-align: left;
+    background-color:white;
+    margin: 0px 0px 0px 0px;
+}
+
+#why_pdf_font{         /*--------------why pdf font-------*/
+    float:left;    
+    font-weight: normal;
+    background-color:white;
+    margin: 0px 0px 0px 0px;
+}
+
+
+/* menu end         */

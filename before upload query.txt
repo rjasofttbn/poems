@@ -1,0 +1,49 @@
+5:28 PM 30/03/2015
+SELECT u.activation_status,p.poem_id,p.user_id,p.title,total_comments_multiple,avg_vote,total_read_value,total_like,poem_submit_date,
+sum(COALESCE(c.total_comments_multiple,0)+COALESCE(v.avg_vote,0)+COALESCE(r.total_read_value,0)+COALESCE(l.total_like,0))as top_poem
+FROM `tbl_poems` p
+left join vb_poem_wise_total_comments c on p.poem_id = c.poem_id
+left join vb_poem_wise_total_vote v on p.poem_id = v.poem_id
+left join vb_poem_wise_total_read_value r on p.poem_id = r.poem_id
+left join vb_poem_wise_total_like l on p.poem_id = l.poem_id
+left join tbl_user u on u.user_id = p.user_id
+where poem_activation !=1
+and activation_status !=1
+and `poem_submit_date` >= (CURDATE() + INTERVAL -15 DAY)
+group by p.poem_id order by top_poem desc
+
+=======================
+poem day member
+
+12:43 PM 04/04/2015
+
+SELECT tbl_poems.`user_id`,tbl_poems.poem_id,poem_day_member_display_date,concat(`tbl_user`.`first_name`,' ',`last_name`)as name,`title`,`body`,tbl_user.picture_small
+FROM `tbl_poems`
+inner join tbl_user on tbl_user.user_id = tbl_poems.user_id
+where poem_activation !=1
+and `poem_day_member`='podm'
+and tbl_user.activation_status !=1
+and `poem_day_member_display_date` = CURRENT_DATE
+order by `poem_day_member_display_date` desc
+
+======================
+
+poem of month
+12:47 PM 04/04/2015
+
+SELECT tbl_poems.`user_id`,activation_status,`poem_day_member_display_date`,concat(`tbl_user`.`first_name`,' ',`last_name`)as name,tbl_poems.`poem_id`,
+
+`title`,`body`,tbl_user.picture_small FROM `tbl_poems`
+inner join tbl_user on tbl_user.user_id = tbl_poems.user_id
+where poem_activation !=1
+and `poem_day_member`='podm'
+and activation_status !=1
+and  MONTH(poem_day_member_display_date) = MONTH(CURDATE())
+order by poem_day_member_display_date desc limit 0,1
+============================
+poem of month
+
+
+
+
+

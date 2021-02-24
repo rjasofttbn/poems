@@ -1,0 +1,53 @@
+3:23 PM 23/02/2015
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .c1
+        {
+
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+
+        function k()
+        {
+            $("#c1").show();
+        }
+        function hide()
+        {
+            $("#c1").hide();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input id="Button1" type="button" value="button" onclick="k()" />
+        <div id="c1" style="display:none;">
+            <table>
+                <tr>
+                    <th>Enter Name</th>
+                    <th>
+                        <input id="Text1" type="text" />
+                    </th>
+                </tr>
+                <tr>
+                    <th>Enter Password</th>
+                    <th>
+                        <input id="Text1" type="text" />
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>
+                        <input id="Button1" type="button" value="button" onclick="hide()" />
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

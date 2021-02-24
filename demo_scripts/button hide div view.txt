@@ -1,0 +1,89 @@
+3:23 PM 24/02/2015
+
+<script>
+function showHide(btn)
+{
+  var target;
+  if(btn.parentNode.parentNode.className=='more')
+  {
+    target=btn.parentNode.parentNode;
+  }
+  else
+  {
+    target=btn.parentNode.getElementsByTagName('div')[0];
+  }
+  
+  target.style.display=(target.style.display == 'block')?'none':'block';  
+  target.parentNode.getElementsByTagName('a')[0].style.display
+    =(target.style.display != 'none')?'none':'block';
+}
+</script>
+<style>
+.more{display:none;}
+div{border:1px solid silver;margin:6px;}
+div.more{background:silver;}
+</style>
+
+<div>
+  <a href="#" class="showLink" onclick="showHide(this);return false;">Vizualizare</a></p>
+  <div class="more">
+    <p>Example1</p>
+      <p><a href="#" class="hideLink" onclick="showHide(this);return false;">Ascunde</a></p>
+  </div>
+</div>
+<div>
+  <a href="#" class="showLink" onclick="showHide(this);return false;">Vizualizare</a></p>
+  <div class="more">
+    <p>Example2</p>
+      <p><a href="#" class="hideLink" onclick="showHide(this);return false;">Ascunde</a></p>
+  </div>
+</div>
+<div>
+  <a href="#" class="showLink" onclick="showHide(this);return false;">Vizualizare</a></p>
+  <div class="more">
+    <p>Example3</p>
+      <p><a href="#" class="hideLink" onclick="showHide(this);return false;">Ascunde</a></p>
+  </div>
+</div>
+
+=====================
+
+4:33 PM 24/02/2015
+
+<script>
+function showHide(btn)
+{
+  var target;
+  if(btn.parentNode.parentNode.className=='more')
+  {
+    target=btn.parentNode.parentNode;
+  }
+  else
+  {
+    target=btn.parentNode.getElementsByTagName('div')[0];
+  }  
+  target.style.display=(target.style.display == 'block')?'none':'block';  
+  target.parentNode.getElementsByTagName('a')[0].style.display
+    =(target.style.display != 'none')?'none':'block';
+}
+</script>
+
+<style>
+.more{display:none;}
+div{border:1px solid silver;margin:6px;}
+div.more{background:silver;}
+</style>
+
+<div>
+  <a href="#" class="showLink" onclick="showHide(this);return false;">show</a></p>
+  <div class="more">
+    <!--<p>Example1</p>!-->
+         <input type="text" name="first_name"  placeholder="First Name" style="  text-align: center; height: 33px; width: 350px; outline:  0;  border-radius: 35px; border-width: 2px; border-color:  #CCC; margin:11px 0px 0px 0px;" size="30px" maxlength="20" required="1" err="Please enter valid first name"<span class="required">*</span>
+   
+   <div style="height:310px; width:450px; background:red;">
+    </div>
+    <!--<p><a href="#" class="hideLink" onclick="showHide(this);return false;">hide</a></p>
+   --!-->
+   </div> 
+   </div>
+

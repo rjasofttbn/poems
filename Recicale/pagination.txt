@@ -1,0 +1,55 @@
+ //Pagination end
+
+
+
+        $this->load->library('pagination');
+        $config = array();
+        $config['base_url'] = base_url() . 'administrator_controller/user_show/';
+        $result = $this->administrator_model->user_data_view();
+        $config['total_rows'] = count($result);
+        $config['per_page'] = '8';
+        $config['full_tag_open'] = '<p>';
+        $config['full_tag_close'] = '</p>';
+
+        $this->pagination->initialize($config);
+
+        //load the model and get results
+        $this->load->model('administrator_model');
+        $data['user_view'] = $this->administrator_model->select_user_For_Pagination($config['per_page'], $this->uri->segment(3));
+
+
+
+        ///=========================
+
+
+
+
+    public function poem_of_day($data) {      //This code for save poem Info
+        $this->db->insert('tbl_poem_day', $data);
+    }
+
+
+
+    public function user_data_view() { // retrives product information from tbl_product table if it has a feature
+        $this->db->select('*');
+        $this->db->from('tbl_user');
+       // $this->db->where('featured', 'on');
+        $resultSet = $this->db->get();
+        $result = $resultSet->result();
+        return $result;
+    }
+
+
+    public function select_user_For_Pagination($num, $offset) { // retrives product information from tbl_product table if it has a feature
+        $this->db->select('*');
+        $this->db->from('tbl_user');
+       // $this->db->where('featured', 'on');
+        $resultSet = $this->db->get('', $num, $offset);
+        $result = $resultSet->result();
+        return $result;
+    }
+
+
+
+
+<td><a><?php echo $user_view->last_name; ?></a></td>

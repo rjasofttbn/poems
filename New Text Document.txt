@@ -1,0 +1,174 @@
+2:05 PM 01/01/2015
+/*   last word  */
+ <?php
+                                        $aContent = explode(' ', $row->body);
+                                        $cContent = '';
+                                        $nCount = count($aContent);
+                                        for ($nI = 0; ($nI < 20 && $nI < $nCount); $nI++) {
+                                            $cContent .= $aContent[$nI] . ' ';
+                                        }
+                                        trim($cContent, ' ');
+                                        echo '<p>' . $cContent . '</p>';
+
+ ?>
+
+
+2:05 PM 01/01/2015
+
+/* ajax fade*/
+
+ <script type="text/javascript" src="<?php echo base_url(); ?>scripts/jquery-1.7.1.js" language="javascript"></script>
+        <style type="text/css">
+            #container
+            {
+                height:2000px;    
+            }
+            #container DIV
+            { 
+                margin:50px; 
+                padding:50px; 
+                background-color:lightgreen; 
+            }
+            .hideme
+            {
+                opacity:0;
+            }
+
+        </style>
+        <!--ajax fade -->
+        <script type="text/javascript">
+            //<![CDATA[ 
+            $(document).ready(function() {
+
+                /* Every time the window is scrolled ... */
+                $(window).scroll(function() {
+
+                    /* Check the location of each desired element */
+                    $('.hideme').each(function(i) {
+
+                        var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                        var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                        /* If the object is completely visible in the window, fade it it */
+                        if (bottom_of_window > bottom_of_object) {
+
+                            $(this).animate({'opacity': '7'}, 900);
+                        }
+                    });
+                });
+            });
+            //]]>  
+
+        </script>
+
+
+
+2:06 PM 01/01/2015
+
+/* accordian*/
+
+ <!-- accordian -->
+        <script type="text/javascript">
+
+            $(document).ready(function()
+            {
+                $(".accordian>li.expanded").removeClass("expanded");
+                $(".accordian>li h2").addClass("jse").click(function() {
+                    var doOpen = !$(this).parent().hasClass('expanded');
+                    var openContainers = $(".accordian>li.expanded").length > 0;
+                    var targetNode = this;
+                    if (openContainers) {
+                        $(".accordian>li.expanded h2")
+                                .parent()
+                                .removeClass('expanded')
+                                .end()
+                                .nextAll()
+                                .slideUp(100, function() {
+                                    if ($(".accordian>li.expanded").length == 0)
+                                        performOpen(doOpen, targetNode);
+                                });
+                    }
+                    else {
+                        performOpen(doOpen, targetNode);
+                    }
+                    // if containers are open, proceed on callback
+                    // else proceed immediately
+                }).nextAll().slideUp(100);
+            });
+
+            function performOpen(doOpen, whichNode) {
+                if (doOpen) {
+                    $('html,body').animate({scrollTop: $(whichNode).offset().top}, 1000); //target code
+                    $(whichNode).nextAll().slideDown(1000).parent().addClass('expanded');
+                }
+            }
+        </script>
+
+2:06 PM 01/01/2015
+
+/* date ago*/
+
+
+<?php
+
+function get_time_difference_php($created_time) {
+    date_default_timezone_set('Europe/London'); //Change as per your default time
+    $str = strtotime($created_time);
+    $today = strtotime(date('Y-m-d H:i:s'));
+
+    // It returns the time difference in Seconds...
+    $time_differnce = $today - $str;
+
+    // To Calculate the time difference in Years...
+    $years = 60 * 60 * 24 * 365;
+
+    // To Calculate the time difference in Months...
+    $months = 60 * 60 * 24 * 30;
+
+    // To Calculate the time difference in Days...
+    $days = 60 * 60 * 24;
+
+    // To Calculate the time difference in Hours...
+    $hours = 60 * 60;
+
+    // To Calculate the time difference in Minutes...
+    $minutes = 60;
+
+    if (intval($time_differnce / $years) > 1) {
+        return intval($time_differnce / $years) . " years ago";
+    } else if (intval($time_differnce / $years) > 0) {
+        return intval($time_differnce / $years) . " year ago";
+    } else if (intval($time_differnce / $months) > 1) {
+        return intval($time_differnce / $months) . " months ago";
+    } else if (intval(($time_differnce / $months)) > 0) {
+        return intval(($time_differnce / $months)) . " month ago";
+    } else if (intval(($time_differnce / $days)) > 1) {
+        return intval(($time_differnce / $days)) . " days ago";
+    } else if (intval(($time_differnce / $days)) > 0) {
+        return intval(($time_differnce / $days)) . " day ago";
+    } else if (intval(($time_differnce / $hours)) > 1) {
+        return intval(($time_differnce / $hours)) . " hours ago";
+    } else if (intval(($time_differnce / $hours)) > 0) {
+        return intval(($time_differnce / $hours)) . " hour ago";
+    } else if (intval(($time_differnce / $minutes)) > 1) {
+        return intval(($time_differnce / $minutes)) . " minutes ago";
+    } else if (intval(($time_differnce / $minutes)) > 0) {
+        return intval(($time_differnce / $minutes)) . " minute ago";
+    } else if (intval(($time_differnce)) > 1) {
+        return intval(($time_differnce)) . " seconds ago";
+    } else {
+        return "few seconds ago";
+    }
+}
+?>
+
+2:08 PM 01/01/2015
+
+/* date format*/
+
+<?php
+    $cls_date = new DateTime($v_comments->comments_post_date);
+     echo $cls_date->format('M d Y');
+   ?>
+
+                                       

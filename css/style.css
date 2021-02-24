@@ -1,0 +1,529 @@
+/* 
+    Document   : Style
+    Created on : apri 10, 2014, 10:49:26 am
+    Author     : Md Omar Faruk
+    Description: Home page css
+        Purpose of the stylesheet follows.
+*/
+/* 
+   TODO customize this sample style
+*/
+
+@font-face
+{
+    font-family: montez;
+    src: url('../font/Montez-Regular.ttf');
+}
+@font-face
+{
+    font-family: Damion;
+    src: url('../font/CabinCondensed-Medium.ttf');
+}
+@font-face
+{
+    font-family: musfiq;
+    src: url('../font/segoepr.ttf');
+}
+
+
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 70%;*/
+    background: url(../images/backgroundo.jpg)repeat;    
+}
+
+
+#wrapper{            	/*--------------wrapper*/
+    float:left;
+    height:  auto;
+    width: 1007px;
+    background-color: white;
+    text-align: center; 
+    margin:  auto;
+}
+
+#search{                  /*--------------wrapper_search*/
+    float:left;
+    height:40px;
+    width:967px;
+    margin: 1px 0px 0px 20px;
+    background-color:  whitesmoke;
+}
+#invalid_message{
+    float: right;
+    height:auto;
+    width:auto;
+    color:red;
+    font-weight: bold;
+    margin: 9px 3px 0px 0px;
+}
+
+#banner{                 /*--------------wrapper_banner*/
+    float:left;
+    height:141px;
+    width:967px;
+    margin: 1px 0px 0px 20px;
+    background-color:  buttonface;
+    background-image: url(../banner/banner.jpg);
+}
+
+
+#add_up{
+    float:left;
+    height: 150px;
+    width: 966px;
+    background-color:whitesmoke; 
+    margin:0px 0px 11px 0px;
+}
+
+#add_home{                 /*--------------wrapper_banner*/
+    float:left;
+    height:200px;
+    width:967px;
+    box-shadow:  0px 0px 2px 2px green;
+    margin: 21px 0px 11px 0px;
+    background-color:  buttonface;
+}
+
+/*--------------banner_search
+06-05-2014
+--------------banner_search*/
+
+#banner_search{            /*--------------banner_search*/
+    float:left;
+    height:78px;
+    width:967px;
+    margin: 1px 0px 0px 0px;
+    background-color:  buttonface;
+    background-image: url(../banner/banner.jpg);
+}
+
+#banner_search_email{            /*--------------for email address*/
+    float:left;
+    height:auto;
+    width:auto;
+    font: normal 14px/14px sans-serif;
+    text-align: left;
+    color:#555;
+    margin: 11px 0px 0px 2px;
+    background-color:  whitesmoke;    
+}
+
+#banner_search_email_text{            /*--------------email text decoration */
+    float:left;
+    height:auto;
+    width:auto;
+    border-color:  #000;
+    margin: 9px 0px 0px 11px;
+    background-color:  whitesmoke;    
+}
+
+#banner_search_password{            /*--------------search password caption*/
+    float:left;
+    height:auto;
+    width:auto;
+    font: normal 14px/14px sans-serif;
+    color:#555;
+    text-align: left;
+    margin: 11px 0px 0px 20px;
+    background-color:  whitesmoke;    
+}
+
+#banner_search_password_text{            /*--------------password text decoration*/
+    float:left;
+    height:auto;
+    width:auto;
+    border-color:  #000;
+    border-radius:10px; /* round corners */
+    margin: 9px 0px 0px 11px;
+    background-color:  whitesmoke;    
+}
+
+#banner_search_batton{            /*--------------search batton decoration*/
+    float:left;
+    height:auto;
+    width:auto;
+    border-color:  #000;
+    border-radius:10px; /* round corners */
+    margin: 7px 0px 0px 11px;
+    background-color:  buttonface;    
+}
+
+#banner_search_become_member{            /*--------------registration link*/
+    float:left;
+    height:auto;
+    width:auto;
+    text-align: left;
+    font: normal 13px/13px sans-serif;
+    color:#777;
+    background-color:  whitesmoke; 
+    margin: 12px 0px 0px 15px;   
+}
+
+#logout_poet{            /*--------------log out from page*/
+    float:left;
+    height:auto;
+    width:auto;
+    text-align: left;    
+    margin: 8px 0px 0px 15px;
+    background-color:  #eee;    
+}
+
+#header_logout_poet{            /*--------------log out from page*/
+    float:left;
+    height:auto;
+    width:auto;
+    text-align: left;    
+    margin: 8px 0px 0px 15px;
+    background-color:  whitesmoke;    
+}
+
+#header_login{                 /*--------------wellcome page---------------*/
+    float:left;
+    text-align: center;
+    background-color: whitesmoke;
+    font-size: 17px;
+    font-weight:  bold;
+    margin: 3px 0px 0px 3px;      
+}
+
+#wrapper_login_wellcome{                 /*--------------wellcome page---------------*/
+    float:left;
+    text-align: center;
+    background-color:  #eee; 
+    font-size: 27px;
+    color: #444;
+    font-weight:  bold;
+    margin: 7px 0px 0px 3px;      
+}
+
+#wrapper_login_logout{                 /*--------------logout from page---------------*/
+    float:right;    
+    font-weight:  bold;    
+    color:  orchid;
+    margin: 7px 3px 0px 0px;      
+}
+
+/*--------------banner_search
+06-05-2014 End
+--------------banner_search*/
+
+#banner_logo{                /*--------------banner logo----------*/
+    float:left;
+    height:70px;
+    width:960px;
+    border-radius: 7px;
+    border-top: solid .5px whitesmoke ;
+    border-bottom: solid 1px  #D0D0D0;
+    box-shadow: 0px 0px 0px 0px #D0D0D0; 
+    margin: 9px 0px 0px 3px;    
+
+}
+
+#banner_domain_poets{                /*------#990000--------banner logo----------*/
+    float:left;
+    font-size:42px;
+    font-weight:bold;
+    color: #990000;
+    margin: 3px 0px 0px 77px; 
+}
+
+#banner_domain_feeling{                /*---------#66afe9-----banner logo----------*/
+    float:left;
+    font-size:43px;
+    font-weight:bold;
+    color:   steelblue;
+    margin: 3px 0px 0px 0px;    
+
+}
+
+#banner_domain_com{                /*--------------banner logo----------*/
+    float:left;
+    font-size:43px;
+    font-weight:bold;
+    color: #666;
+    margin: 3px 0px 0px 0px;    
+
+}
+
+#banner_name_to_contact{                /*--------------banner logo----------*/
+    float:left;
+    height:65px;
+    width:530px; 
+    margin: 3px 0px 0px 31px;       
+}
+
+#banner_search_text{                /*--------------banner logo----------*/
+    float:left;
+    height:63px;
+    width:427px;
+    text-align: left;
+    margin: 1px 0px 0px 1px;       
+}
+
+#banner_contact_us{                /*--------------banner logo----------*/
+    float:left;
+    height:63px;
+    width:100px;
+    margin: 1px 0px 0px 1px;       
+}
+
+#banner_contact_us_font{                /*--------------banner logo----------*/
+    float:left;
+    text-decoration:  underline;
+    color:grey;
+    margin: 21px 0px 0px 23px;       
+}
+
+#button{                      /*--------------button----------*/
+    float:left;
+    height:45px;
+    width:124px;
+    margin: 9px 0px 0px 0px;    
+    background-image: url(../banner/button_home1.jpg);
+}
+
+
+#buttonf{                     /*--------------button_font*/
+    margin: 11px 0px 0px 0px;    
+}
+
+#middle_wrapper{              /*--------------middle_wrapper*/
+    float:left;
+    height: auto;
+    width:967px;
+    border-style:none;
+    margin: 25px 0px 0px 20px;
+    background-color:white;
+} 
+
+#comming_soon{                 /*--------------comming_soon---------------*/
+    float:left;
+    text-align: center;
+    font-size: 45px;
+    margin: 100px 0px 100px 300px;      
+}
+
+#contact{                     /*--------------contact---------------*/
+    float:left;
+    height: 200px;
+    width: 450px;
+    text-align: center;
+    background-color: buttonface;
+    font-size: 25px;
+    margin: 60px 0px 60px 260px;      
+}
+
+#hit{            	/*--------------wrapper*/
+    float:left;
+    height:  auto;
+    width: 230px;
+    /*background-color: buttonface;*/
+    color:orange;
+    border-radius:10px; /* round corners */
+    text-align: center; 
+    margin: 261px 0px 0px 22px;
+}
+
+/* --------------bannar end-------------------- */
+
+#wrapper_bottom{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    height: 200px;
+    width:967px;
+    border-radius: 3px;
+    background-color:      azure;
+    box-shadow:0px 0px 1px 0px #E2E2E2; /* add shadow */
+    border: solid 1px  #D0D0D0;
+    margin: 40px 1px 41px 20px;
+}
+
+#wrapper_bottom_main{		/*------azure--------wrapper_bottom---------------*/
+    float: left;
+    height: 198px;
+    width:965px;
+    background-color:  azure;
+    margin: 1px 0px 0px 1px;
+}
+#wrapper_bottom_top{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    height: 47px;
+    width:965px;
+    /*background-color:skyblue;*/
+    margin: 0px 0px 0px 0px;
+}
+
+#wrapper_bottom_top #social_title{
+    float: right;
+    height: 23px;
+    width:217px;
+    font: bold 15px/15px sans-serif;
+    color: #666;
+    margin: 11px 1px 0px 3px;
+}
+
+#wrapper_bottom_top_home{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    height:40px;
+    width:85px;
+    padding-right: 3px;
+    border-right-style: solid;
+    border-top-style: none;
+    border-right-width: 1px;
+    text-align: left;
+    border-bottom-right-radius: 100% ; 
+    /*background-color: red;*/
+    border-right-color: #B2B2B2;     
+    box-shadow: 0px 0px 1px 0px  #B2B2B2;
+    margin: 0px 0px 0px 0px;
+}
+
+#wrapper_bottom_top_home:hover{
+    background-color: whitesmoke;
+    color: #333;
+    /*font-weight: bold;*/
+}
+#wrapper_bottom_top_font{
+    float: left;
+    text-align: left;
+    color: #555;
+    margin: 7px 0px 0px 27px;
+}
+
+#wrapper_bottom_top_poets{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    height:40px;
+    width:85px;
+    padding-right: 3px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #B2B2B2;
+    border-bottom-right-radius: 100% ;
+    box-shadow: 0px 0px 1px 0px  #B2B2B2;
+    margin: 0px 0px 0px 0px;
+}
+#wrapper_bottom_top_poets:hover{
+    background-color: whitesmoke;
+    color: #333;
+}
+
+#wrapper_bottom_top_poems{
+    float:left;
+    height:40px;
+    width:85px;
+    padding-right: 3px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #B2B2B2;
+    border-bottom-right-radius: 100% ;
+    box-shadow: 0px 0px 1px 0px  #B2B2B2;
+    margin: 0px 0px 0px 0px;        
+}
+
+#wrapper_bottom_top_poems:hover{
+    background-color: whitesmoke;
+    color: #333;
+}
+
+#wrapper_bottom_top_memberarea{
+    float:left;
+    height:40px;
+    width:135px;
+    padding-right: 3px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #B2B2B2;
+    border-bottom-right-radius: 100% ;
+    box-shadow: 0px 0px 1px 0px  #B2B2B2;
+    margin: 0px 0px 0px 0px;        
+}
+
+#wrapper_bottom_top_memberarea:hover{
+    background-color: whitesmoke;
+    color: #333;
+}
+
+#wrapper_bottom_top_poetry_contest{
+    float:left;
+    height:40px;
+    width:147px;
+    /*border-bottom-right-radius: 100%;*/
+    /*border-right-style: solid;*/
+    /*border-right-width: 1px;*/
+    /*border-right-color: #B2B2B2;*/
+    border-bottom-right-radius: 100% ;
+    padding-right: 3px;
+    box-shadow: 0px 0px 1px 0px  #B2B2B2;
+    margin: 0px 0px 0px 1px;        
+}
+
+#wrapper_bottom_top_poetry_contest:hover{
+    background-color: whitesmoke;
+    color: #333;
+}
+
+#wrapper_bottom_middle{		/*---azure-----------wrapper_bottom---------------*/
+    float: left;
+    height: 90px;
+    width:965px;
+    border-top: whitesmoke .1em solid;
+    /*background-color:  wheat;*/
+    margin: 0px 0px 0px 0px;
+}
+
+#wrapper_bottom_middle #poem_title{
+    float:left;
+    height:77px;
+    width:745px;
+    font:  normal 13px/15px sans-serif;
+    text-align: left;
+    color: #555;
+    /*background-color: #D0D0D0;*/
+    margin:9px 0px 0px 1px;
+}
+
+#wrapper_bottom_middle #poem_title #category_data{
+    float: left; 
+    height: 21px; 
+    width: 117px; 
+    padding: 1px;  
+    margin: 4px 0px 0px 3px;
+    /*background-color:   tan;*/
+}
+
+
+#wrapper_bottom_middle #social_image{
+    float:left;
+    height:88px;
+    width:217px;
+    /*background-color:  #E2E2E2;*/
+    margin:3px 0px 0px 1px;
+}
+#wrapper_bottom_last{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    height: 57px;
+    width:950px;
+    background-color:  azure;
+    border-top-style: solid ;
+    border-top: solid 1px  #D0D0D0;
+    margin: 0px 0px 0px 6px;
+}
+
+#wrapper_bottom_last_menu_font{		/*--------------wrapper_bottom---------------*/
+    float: left;
+    text-align:left;
+    margin: 0px 0px 0px 0px;
+}
+
+
+
+
+
+/* ----------------buttom end------------------ */
+/* ---------------------------------- */
+/* ---------------------------------- */
+
+
+

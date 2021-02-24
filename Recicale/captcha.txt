@@ -1,0 +1,92 @@
+
+<!--- captcha code here--->
+
+<center>
+<table width="454" height="122" border="0" cellspacing="0" cellpadding="0" background="reCAPbg.png">
+  <tr>
+    <td height="73" colspan="2" align="center" valign="middle"><label for="code"><span id="txtCaptchaDiv" style="color:#333; font-size:18px;"></span><!-- this is where the script will place the generated code --> 
+      <input type="hidden" id="txtCaptcha" /></label></td>
+    <td width="136" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="145"> type the code here:</td>
+    <td width="173" height="47" align="center"><input type="text" name="txtInput" id="txtInput" size="20" /></td>
+  </tr>
+</table>
+</center>
+<!--- captcha code ends here--->
+
+
+
+<!--- CODE---->
+<table width="454" height="122" border="0" cellspacing="0" cellpadding="0" background="reCAPbg.png">
+  <tr>
+    <td height="73" colspan="2" align="center" valign="middle"><label for="code"><span id="txtCaptchaDiv" style="color:#333; font-size:18px;"></span><!-- this is where the script will place the generated code --> 
+      <input type="hidden" id="txtCaptcha" /></label></td>
+    <td width="136" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="145"> type the code here:</td>
+    <td width="173" height="47" align="center"><input type="text" name="txtInput" id="txtInput" size="20" /></td>
+  </tr>
+</table>
+
+
+3:52 PM 16/04/2014
+
+
+CREATE TABLE captcha (
+ captcha_id bigint(13) unsigned NOT NULL auto_increment,
+ captcha_time int(10) unsigned NOT NULL,
+ ip_address varchar(16) default '0' NOT NULL,
+ word varchar(20) NOT NULL,
+ PRIMARY KEY `captcha_id` (`captcha_id`),
+ KEY `word` (`word`)
+);
+
+
+[array]
+(
+  'image' => IMAGE TAG
+  'time' => TIMESTAMP (in microtime)
+  'word' => CAPTCHA WORD
+)
+
+
+ CREATE TABLE captcha ( captcha_id bigint(13) unsigned NOT NULL auto_increment,
+ captcha_time int(10) unsigned NOT NULL,
+ ip_address varchar(16) default '0' NOT NULL, 
+word varchar(20) NOT NULL, PRIMARY KEY captcha_id (captcha_id), KEY word (word) ); 
+
+
+//checking input
+$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? 
+AND captcha_time > ?";
+$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+$query = $this->db->query($sql, $binds);
+$row = $query->row();
+
+
+View
+
+Create a file htdocs/ci_captcha/system/application/view/testcapcha_view.php
+
+<html> <head></head> <body> <h2>Captcha Test</h2> <form method="post"> 
+<?php echo $cap_img ;?> <p><?php echo $cap_msg ;?></p> 
+<input type="text" name="captcha" value="" /> 
+<input type="submit" name="submit" value="Submit"> </form> </body> </html> 
+
+
+
+Name
+<input type="text" name="name" id="name" value="<?php echo set_value('name'); ?>" size="40" />
+Email
+<input type="text" name="email" id="email" value="<?php echo set_value('email'); ?>" size="40" />
+Are you human?
+<?php echo "
+
+$cap_img
+" ;?> <input type="text" name="captcha" value="" size="40" />
+<input type="submit" value="Subscribe" /></div> <?php echo form_fieldset_close(); ?> </form>
+
+</body> </html>

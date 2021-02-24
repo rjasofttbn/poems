@@ -1,0 +1,64 @@
+<style>
+.accordian {
+list-style : none;
+padding : 0px;
+margin : 0px;
+font-size : 12px;
+}
+.accordian li {
+list-style : none;
+padding : 0px;
+margin : 0px;
+}
+.accordian li a:hover {
+/*text-decoration : underline;*/
+}
+.accordian li h2 {
+/*cursor : auto;
+text-decoration : none;
+padding : 0px 0px 4px 22px;*/
+}
+.accordian li h2.jse {
+ /*background-image : url(http://www.apus.edu/bin/m/p/toggle_arrow.gif);*/
+background-position : 4px -35px;
+background-repeat : no-repeat;
+}
+.accordian li h2:hover {
+cursor : pointer;
+/*text-decoration : underline;*/
+}
+.accordian li li {
+/*margin-bottom : 5px;*/
+margin-left : 0px;
+margin-top : 0px;
+padding : 0px;
+}
+.accordian li p {
+display : block;
+/*padding-top : 0px;
+padding-bottom : 15px;
+padding-left : 10px;
+margin-left : 30px;*/
+margin-top : 0px;
+}
+.accordian li ul {
+/*margin-bottom : 30px;*/
+margin-top : 0px;
+padding-top : 0px;
+padding-left : 0px;
+margin-left : 0px;
+}
+.accordian li.expanded h2.jse {
+background-position : 4px -5px;
+}
+.accordianContainer {
+margin-top : 0px;
+padding-top : 0px;
+}
+.accordianContainer h2 {
+/*padding : 3px;*/
+}
+.accordian_nolist {
+list-style : none;
+}
+</style>

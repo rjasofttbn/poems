@@ -1,0 +1,89 @@
+
+
+
+<link href="<?php echo base_url(); ?>/css/user_admin.css" rel="stylesheet" type="text/css"></link>  
+<div id="poem_edit_delete">
+    <div id="edit_delete_caption">
+        Your Poems
+    </div>
+    <div id="search_text">
+        <form action="<?php echo base_url(); ?>user_admin_controller/searchpoems" method="post">
+            <input type="text" name="search_text" />
+            <input type="submit" name="btn" value="Search"/>
+        </form>
+    </div>
+    </br>
+
+    </br>
+    </br>
+
+    </br>
+    <table border="1" align="center">
+        <tr>
+            <th>Title</th>
+            <th>About Poem</th>
+            <th>Submitted at</th> 
+            <th>Action</th>
+        </tr>
+        <?php
+        // echo '<pre>';
+        // print_r($result);
+        // exit();
+
+        foreach ($result as $aresult) {
+            ?>
+            <tr>
+                <td><a style="color: blue;" href="<?php echo base_url() ?>view_user_admin/poem_Detail/<?php echo $aresult->poem_id ?>"><?php echo $aresult->title; ?></a></td>
+                <td><?php echo $aresult->aboutP; ?></td>
+                <td><?php echo $aresult->poem_submit_date; ?></td>        
+                <td>
+                    <a style="color: blue;" href="<?php echo base_url() ?>view_user_admin/editContact/<?php echo $aresult->poem_id ?>">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a style="color: blue;" href="<?php echo base_url() ?>user_admin/deleteContact/<?php echo $aresult->poem_id ?>" onclick="return checkDelete();">Delete</a>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+    <br/>
+
+#menus{     /*--------------administrator_menu--------------------*/
+    float: left;
+    width:962px;
+    height:50px;
+    background-color:whitesmoke;
+    margin-top: 5px;
+}
+
+
+#menus ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+#menus ul li{
+    float: left;
+    width: 120px;
+    height: 20px;
+    list-style-type: none;
+    background-color: white;
+    color: black;
+    margin: 5px 10px;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 25px 0px 25px 0px;
+    border-style: solid;
+    border-width: 0px 4px 4px 0px;
+    
+    border-color:  green;
+    background: linear-gradient(to left,olive,orange,olive,green);
+    transition: all 1s;
+}
+
+#menus ul li:hover{
+
+    background: linear-gradient(to left,olive,orange,olive,olive,green,gray);
+    /*color:white;*/
+/*    font-style:  italic;*/
+    font-stretch:    semi-expanded;
+    color:  burlywood;
+    border-radius: 0px 25px 0px 25px;
+}

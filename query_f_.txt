@@ -1,0 +1,108 @@
+7:02 PM 24/02/2015
+sub query by 4 tbls for poem result
+=======================
+
+select d.poem_id, c.user_id, concat(c.first_name,' ',c.last_name)as name,
+d.title,d.body,d.poem_submit_date,d.trending_date,
+b.Total_Voter, a.Total_Comments,  b.Average_vote,d.read_value
+
+from(select tbl_vote.poem_id, count(tbl_vote.vote_id)as Total_Voter,
+     avg(poem_vote ) as Average_Vote from tbl_vote group by tbl_vote.poem_id) b,
+
+(select poem_id, count(comments_id)as Total_Comments  from tbl_comments_poem group by poem_id) a,
+
+tbl_user c ,tbl_poems d
+where a.poem_id=b.poem_id
+and c.user_id=d.user_id
+and a.poem_id=d.poem_id
+
+7:00 PM 24/02/2015
+vb_comments
+=================
+
+CREATE VIEW `vb_comments` AS select `tbl_comments_poem`.`poem_owner_id` AS `poem_owner_id`,
+count(`tbl_comments_poem`.`comments_id`) AS `total_comments` 
+from `tbl_comments_poem` group by `tbl_comments_poem`.`poem_owner_id`
+
+6:59 PM 24/02/2015
+vb_vote
+=================
+
+CREATE VIEW `vb_vote` AS select `tbl_vote`.`poem_owner_id` AS `poem_owner_id`,
+count(`tbl_vote`.`vote_id`) AS `total_voter`,sum(`tbl_vote`.`poem_vote`) AS `total_vote`,
+avg(`tbl_vote`.`poem_vote`) AS `Average_vote` from `tbl_vote` group by `tbl_vote`.`poem_owner_id`;
+
+6:56 PM 24/02/2015
+vb_vote,vb_comments,tbl_poems and tbl_user by create vb_rank_value
+=================
+
+
+CREATE  VIEW `vb_rank_value` AS select `c`.`user_id` AS `user_id`,
+concat(`c`.`first_name`,' ',`c`.`last_name`) AS `name`,sum(`b`.`total_voter`) AS `total_voter`,
+sum(`a`.`total_comments`) AS `total_comments`,sum(`b`.`Average_vote`) AS `Average_vote`,
+sum(`b`.`total_vote`) AS `total_vote`,sum(`d`.`read_value`) AS `read_value`,((sum(`d`.`read_value`) + 
+sum((`b`.`Average_vote` * `b`.`total_voter`))) + sum((`a`.`total_comments` * 2))) AS `rankvalue` 
+from (((`vb_vote` `b` join `vb_comments` `a`) join `tbl_user` `c`) join `tbl_poems` `d`) 
+where ((`c`.`user_id` = `b`.`poem_owner_id`) and (`c`.`user_id` = `a`.`poem_owner_id`) 
+and (`c`.`user_id` = `d`.`user_id`) and (`c`.`activation_status` <> 1) and (`d`.`trending` = 'tre')) 
+group by `c`.`user_id`,`name` limit 2,18446744073709551615;
+
+11:05 AM 11/03/2015
+create or replace view vb_rank_value as select `c`.`user_id` AS `user_id`,
+concat(`c`.`first_name`,' ',`c`.`last_name`) AS `name`,sum(`b`.`total_voter`) AS `total_voter`,
+sum(`a`.`total_comments`) AS `total_comments`,sum(`b`.`Average_vote`) AS `Average_vote`,
+sum(`b`.`total_vote`) AS `total_vote`,sum(`d`.`read_value`) AS `read_value`,((sum(`d`.`read_value`) + 
+
+sum((`b`.`Average_vote` * `b`.`total_voter`))) + sum((`a`.`total_comments` * 2))) AS `rankvalue` 
+
+from (((`vb_vote` `b` join `vb_comments` `a`) join `tbl_user` `c`) join `tbl_poems` `d`)
+
+where ((`c`.`user_id` = `b`.`poem_owner_id`) and (`c`.`user_id` = `a`.`poem_owner_id`) 
+       
+and (`c`.`user_id` = `d`.`user_id`) and (`c`.`activation_status` <> 1) ) 
+group by `c`.`user_id`,`name`
+order by rankvalue desc
+
+6:55 PM 24/02/2015
+create tbl_rank
+================
+
+CREATE TABLE IF NOT EXISTS `tbl_rank` (
+  `rank_id` int(15) NOT NULL AUTO_INCREMENT,
+  `user_id` int(15) NOT NULL,
+  `rank_no` int(17) NOT NULL,
+  `rank_value` int(19) NOT NULL,
+  PRIMARY KEY (`rank_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+6:55 PM 24/02/2015
+insert data in tbl_rank
+===================
+
+insert into tbl_rank (user_id,rank_no,rank_value)                       
+select  user_id, @acount:=@acount +1 serial_number,          
+rankvalue from  (SELECT @acount:= 0) AS acount,vb_rank_value
+
+
+1:51 PM 15/03/2015
+
+=======================
+poem rank
+
+SELECT p.poem_id,p.title,total_comments_multiple,avg_vote,total_read_value,total_like,
+sum(COALESCE(c.total_comments_multiple,0)+COALESCE(v.avg_vote,0)+COALESCE(r.total_read_value,0)+COALESCE(l.total_like,0)) top_poem
+FROM `tbl_poems` p
+left join vb_poem_wise_total_comments c on p.poem_id = c.poem_id
+left join vb_poem_wise_total_vote v on p.poem_id = v.poem_id
+left join vb_poem_wise_total_read_value r on p.poem_id = r.poem_id
+left join vb_poem_wise_total_like l on p.poem_id = l.poem_id
+group by p.poem_id order by top_poem desc
+
+4:07 PM 16/03/2015
+============
+vb_top_poem
+
+SELECT `poem_id`,count(user_id)as total_voter,`poem_owner_id`,sum(`poem_vote`) as poem_total_vote, avg(poem_vote)avg_vote 
+FROM `tbl_vote` group by poem_id
+
+

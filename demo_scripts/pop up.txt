@@ -1,0 +1,63 @@
+11:18 AM 05/03/2015
+.bigbutton {
+    width:100px;
+    height:50px;
+    background-color:red;
+}
+.modal-mask {
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0px;
+    z-index: 100;
+    background-color:#000;
+    opacity:0.4;
+    display:none;
+}
+.modal-popup {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width: 5%;
+    height: 5%;
+    z-index: 101;
+    background-color:#fff;
+    display:none;
+}
+
+
+11:18 AM 05/03/2015
+<div class="bigbutton"></div>
+<div class="modal-mask"></div>
+<div class="modal-popup">
+ 
+   <div style="height:310px; width:450px; background:red;"> </div>
+   <input type="button" value="Insert" style="margin-top:11px;">
+</div>
+
+
+11:18 AM 05/03/2015
+$(function () {
+    $(".bigbutton").on("mouseover", function () {
+        $(".modal-mask, .modal-popup").fadeIn();
+        $(".modal-popup").animate({
+            width: '80%',
+            left: '10%'
+        }, 'slow', function () {
+            $(".modal-popup").animate({
+                'height': '80%',
+                    'top': '10%'
+            }, 200, "swing", function () {});
+        });
+    });
+    $(document).on("mouseover", function (event) {
+        if (event.keyCode === 27) {
+            $(".modal-popup").animate({
+                width: '5%',
+                left: '50%'
+            }, 'slow', function () {
+                $(".modal-mask, .modal-popup").fadeOut();
+            });
+        }
+    });
+});

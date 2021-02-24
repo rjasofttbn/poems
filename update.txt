@@ -1,0 +1,38 @@
+12:19 PM 2/23/2015
+
+
+        $this->user_admin_model->delete_rank();
+        $this->user_admin_model->create_table_rank();
+        $this->user_admin_model->insert_rank_data();
+
+
+
+
+    public function delete_rank() {
+//        $this->db->from('tbl_rank'); 
+//        $this->db->truncate(); 
+//$this->db->truncate('tbl_rank'); 
+        
+        $sql = "drop TABLE tbl_rank";
+        $this->db->query($sql);
+//        $this->db->empty_table('tbl_rank');
+    }
+    
+    public function create_table_rank(){
+            $sql = "
+CREATE TABLE IF NOT EXISTS `tbl_rank` (
+  `rank_id` int(15) NOT NULL AUTO_INCREMENT,
+  `user_id` int(15) NOT NULL,
+  `rank_no` int(17) NOT NULL,
+  `rank_value` int(19) NOT NULL,
+  PRIMARY KEY (`rank_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;";
+            $this->db->query($sql);
+    }
+
+    public function insert_rank_data(){
+        $sql = " insert into tbl_rank (user_id,rank_no,rank_value)                       
+                 select  user_id, @acount:=@acount +1 serial_number,          
+                 rankvalue from  (SELECT @acount:= 0) AS acount,vb_rank_value";
+        $this->db->query($sql);
+    }

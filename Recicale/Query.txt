@@ -1,0 +1,937 @@
+poetry contrest
+5:12 PM 06/05/2014
+
+
+ $sql = 'SELECT CONCAT(first_name, " ",last_name) as Name,tbl_poems.poem_id,
+(tbl_poems.title) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote ,
+tbl_vote.countryp, round(AVG( tbl_vote . `poem_vote` ),2) as avg_vote ,
+( tbl_user. picture_small ) as pictures ,tbl_poems.poem_submit_date '
+                . ' FROM `tbl_vote` '
+                . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+                . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+                . ' where Date(poem_submit_date) BETWEEN \'2014-01-01 \' AND \'2014-04-31\''
+                . ' GROUP BY tbl_vote . `user_id` '
+                . ' order by avg_vote desc '
+                . ' LIMIT 0, 15 ';
+
+====================================================================================
+
+all poems show
+4:58 PM 06/05/2014
+
+
+create or replace view vw_all_poems_show as
+SELECT tbl_user.user_id,tbl_poems.`poem_id`, CONCAT(first_name, "  ",last_name) 
+as Name,(tbl_poems.title) Poem,( tbl_user. picture_small ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM `tbl_poems` 
+                 INNER JOIN tbl_user ON tbl_user . `user_id` = tbl_poems . `user_id`                                
+                order by tbl_poems.poem_submit_date desc 
+                 LIMIT 0, 30
+
+
+11:29 PM 06/05/2014
+
+create view vw_read_data_insert as
+SELECT `user_id` , `poem_id` , `ip` , `countryp` , `read_value` , `read_value_info` , `vote_date` AS read_date
+FROM `tbl_vote`
+LIMIT 0 , 30	
+
+11:10 AM 08/05/2014
+
+$sql = 'SELECT CONCAT(first_name, " ",last_name) '
+                . ' as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . '
+                . ' `poem_vote` ),2) as avg_vote '
+                . ' FROM `tbl_vote` '
+                . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+                . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+                . ' GROUP BY tbl_vote. `user_id` '
+                . ' order by avg_vote desc '
+                . ' LIMIT 0, 5';
+
+
+11:54 AM 10/05/2014
+
+SELECT tbl_vote.poem_id,`ip`,`poem_vote` FROM `tbl_vote` WHERE tbl_vote.`poem_vote` >0
+and tbl_vote.`user_id`='37'
+
+
+
+5:12 PM 10/05/2014
+
+last_poets
+
+SELECT tbl_user.`user_id`,concat (`first_name`,' ',`last_name`)as name, count(tbl_poems.poem_id)as totalpoem,`title`,`poem_submit_date` FROM tbl_poems
+
+ 
+INNER JOIN tbl_user ON tbl_user. `user_id` = tbl_poems . `user_id`
+group by user_id
+order by `user_id` desc	
+
+create  view vw_all_new_poets_page as
+SELECT tbl_user.`user_id`,concat(`first_name`,' ',`last_name`)as name, count(tbl_poems.poem_id)as totalpoem,`title`,tbl_user.`picture_small`,`poem_submit_date` FROM tbl_poems 
+INNER JOIN tbl_user ON tbl_user. `user_id` = tbl_poems . `user_id`
+group by user_id
+order by `user_id` desc	
+
+
+3:28 PM 17/05/2014
+create view vw_poem_personal_page as
+
+SELECT tbl_user.user_id,tbl_poems.`poem_id`,(tbl_poems.title) Poem,(tbl_poems.poem_submit_date )
+                 FROM `tbl_poems` 
+                 INNER JOIN tbl_user ON tbl_user . `user_id` = tbl_poems . `user_id`                                
+                order by tbl_poems.title
+                 
+
+
+1:37 PM 18/05/2014
+
+
+create view vw_poem_comments as
+SELECT `comments`, `comments_post_date`,`tbl_comments_poem`.`user_id`,
+concat(tbl_user.first_name,'',tbl_user.last_name)as name
+FROM `tbl_comments_poem`
+inner join tbl_user on tbl_user.user_id= tbl_comments_poem.user_id
+GROUP BY `tbl_comments_poem`.`poem_id`
+
+
+SELECT `comments`, `comments_post_date`,`tbl_comments_poem`.`user_id`,
+concat(tbl_user.first_name,'',tbl_user.last_name)as name
+FROM `tbl_comments_poem`
+inner join tbl_user on tbl_user.user_id= tbl_comments_poem.user_id
+GROUP BY `tbl_comments_poem`.`poem_id`
+
+
+4:07 PM 18/05/2014
+
+
+SELECT sum(tbl_vote.poem_vote)as vote,tbl_poems.poem_id, (tbl_poems.poem_submit_date) as Date,
+ count(tbl_comments_poem.poem_id) as totalcomments,tbl_poems.user_id 
+FROM tbl_poems 
+
+right join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id 
+
+right join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id 
+
+GROUP BY tbl_poems.poem_id
+
+
+5:21 PM 18/05/2014
+
+SELECT count(`poem_vote`)as vote FROM `tbl_vote` where poem_id =60
+
+
+SELECT sum(`poem_vote`)as vote,`tbl_vote`.`user_id` FROM `tbl_vote` 
+group by user_id
+order by vote desc limit 1,6;
+
+
+4:53 PM 18/05/2014
+
+
+SELECT count(`user_id`)as comments,`poem_id` FROM `tbl_comments_poem`
+where user_id = 37
+group by user_id 
+
+
+5:21 PM 18/05/2014
+
+SELECT `tbl_user`.`insert_date` FROM `tbl_user` WHERE `tbl_user`.user_id =37
+
+
+6:25 PM 20/05/2014
+
+SELECT concat( first_name, '', last_name, '/', date_of_birth, '/', city, '/', country ) AS poet_info
+FROM `tbl_user`
+WHERE user_id =37
+LIMIT 0 , 30
+
+
+10:22 AM 21/05/2014
+
+
+CREATE TABLE `tbl_comments_poet` (
+`tbl_comments_poet_id` MEDIUMINT( 15 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` MEDIUMINT( 15 ) NOT NULL ,
+`comments_poet` VARCHAR( 700 ) NOT NULL ,
+`date_comments_poet` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = MYISAM ;
+
+
+
+11:43 AM 22/05/2014
+
+create or replace view vw_poet_page_poem as
+SELECT tbl_poems.`poem_id`,tbl_poems.`user_id`,CONCAT(first_name, "  ",last_name) 
+as Name,(tbl_poems.title) Poem,( tbl_user. `picture_small` ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM `tbl_poems` 
+                 INNER JOIN tbl_user ON tbl_user . `user_id` = tbl_poems . `user_id`                                
+                order by tbl_poems.poem_submit_date desc 
+
+11:43 AM 22/05/2014
+SELECT sum( `poem_vote` ) as vote , `tbl_vote` . `poem_id`,`tbl_vote` . `user_id`FROM `tbl_vote` where poem_id = 88 and user_id = 55 group by poem_id
+
+
+
+
+SELECT sum( `poem_vote` ) as vote ,tbl_poems.`poem_id`,tbl_poems.`user_id`,CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.title) Poem,( tbl_user. `picture_small` ) as pictures ,tbl_poems.poem_submit_date 
+
+                 FROM `tbl_poems` 
+                 INNER JOIN tbl_user ON tbl_user . `user_id` = tbl_poems . `user_id`
+where poem_id = 88 and user_id = 55 group by poem_id                                
+                order by tbl_poems.poem_submit_date desc 
+
+
+12:21 PM 22/05/2014
+
+SELECT sum( tbl_vote.`poem_vote` ) as vote ,count(tbl_comments_poem.user_id)as comments,tbl_poems.`poem_id`,tbl_poems.`user_id`,(tbl_poems.title) Poem,tbl_poems.poem_submit_date 
+
+                 FROM `tbl_poems` 
+
+right join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id
+
+right join tbl_comments_poem on tbl_comments_poem.poem_id= tbl_poems.poem_id group by tbl_poems.poem_id
+
+
+12:29 PM 22/05/2014
+
+SELECT sum( tbl_vote.`poem_vote` ) as vote 
+
+,count(tbl_comments_poem.user_id)as comments,tbl_poems.`poem_id`,tbl_poems.`user_id`,(tbl_poems.title) Poem,tbl_poems.poem_submit_date 
+
+                 FROM `tbl_poems` 
+
+right join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id
+
+right join tbl_comments_poem on tbl_comments_poem.poem_id= tbl_poems.poem_id group by tbl_poems.poem_id
+order by tbl_poems.poem_submit_date desc 
+
+
+12:54 PM 22/05/2014
+
+SELECT sum( tbl_vote.`poem_vote` ) as vote 
+,count(tbl_comments_poem.user_id)as comments,tbl_poems.`poem_id`,tbl_poems.`user_id`,(tbl_poems.title)as Poem,tbl_poems.poem_submit_date 
+                 FROM `tbl_poems` 
+where tbl_poems.poem_id = '18'
+Inner join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id
+
+Inner join tbl_comments_poem on tbl_comments_poem.poem_id= tbl_poems.poem_id group by tbl_poems.poem_id
+order by tbl_poems.poem_submit_date desc 
+
+read value
+
+2:19 PM 22/05/2014
+
+SELECT *  FROM `tbl_vote` WHERE tbl_vote.`poem_id` = 88
+                and tbl_vote.`user_id`= 37 and tbl_vote.read_value_info='rv'
+
+10:40 AM 24/05/2014
+
+$sql = ''
+        . ' SELECT sum( poem_vote ) , user_id , poem_id FROM `tbl_vote` where user_id = 37 
+and poem_id = 66 group by poem_id LIMIT 0, 30 ';
+
+
+11:44 AM 24/05/2014
+
+view for vw_poem_by_poet
+
+create or replace view  vw_poem_by_poet as
+SELECT tbl_poems.user_id,tbl_poems.`poem_id`,tbl_poems.`title` FROM `tbl_poems` 
+
+
+
+
+11:59 AM 24/05/2014
+
+view for vw_vote_poem
+
+
+create or replace view vw_vote_by_poem as
+SELECT sum(`tbl_vote`.poem_vote) vote, `tbl_vote`.`user_id` , `tbl_vote`.`poem_id`
+FROM `tbl_vote`
+ group by poem_id
+
+
+
+3:46 PM 24/05/2014
+
+SELECT `tbl_comments_poem`.`comments_id`,count(`tbl_comments_poem`.user_id) as comments,`tbl_comments_poem`.user_id,tbl_poems.title,`tbl_comments_poem`.poem_id 
+FROM `tbl_comments_poem`
+inner join tbl_poems on tbl_poems.poem_id = tbl_comments_poem.poem_id
+ group by poem_id
+
+
+12:15 PM 26/05/2014
+
+$sql = 'SELECT tbl_comments_poet .`user_id`,concat(`tbl_user`.`first_name`,\'\',`last_name`)as name,`date_comments_poet`,`comments_poet` FROM tbl_comments_poet '
+        . ' inner join tbl_user on tbl_user.user_id = tbl_comments_poet.user_id'
+        . ' WHERE tbl_comments_poet .user_id = 37';
+
+
+1:39 PM 26/05/2014
+
+SELECT tbl_vote.user_id,tbl_vote.poem_id,sum(tbl_vote.poem_vote)as vote,tbl_poems.title FROM  tbl_vote 
+inner join tbl_poems on tbl_vote.poem_id = tbl_poems.poem_id
+
+group by poem_id limit 1,30
+
+3:37 PM 26/05/2014
+
+SELECT tbl_vote.user_id,tbl_vote.poem_id,sum(tbl_vote.poem_vote)as vote,round(avg(tbl_vote.poem_vote),2)as rate,tbl_poems.title FROM  tbl_vote 
+inner join tbl_poems on tbl_vote.poem_id = tbl_poems.poem_id
+where tbl_vote .user_id = 37
+group by poem_id limit 1,30
+
+
+2:04 PM 27/05/2014
+
+SELECT tbl_vote.user_id, tbl_vote.poem_id, count( tbl_vote.poem_vote ) AS vote, round( avg( tbl_vote.poem_vote ) , 2 ) AS rate, tbl_poems.title
+FROM tbl_vote
+INNER JOIN tbl_poems ON tbl_vote.poem_id = tbl_poems.poem_id
+WHERE tbl_vote.user_id = '37'
+AND tbl_vote.poem_vote & gt;
+
+0 GROUP BY poem_id ORDER BY poem_id DESC LIMIT 1 , 30
+
+SELECT tbl_vote.user_id, tbl_vote.poem_id, count( tbl_vote.poem_vote ) AS vote, round( AVG( NULLIF( tbl_vote.poem_vote, 0 ) ) , 2 ) AS rate, tbl_poems.title
+FROM tbl_vote
+INNER JOIN tbl_poems ON tbl_vote.poem_id = tbl_poems.poem_id
+WHERE tbl_vote.user_id = '37'
+AND tbl_vote.poem_vote & gt;
+
+0 GROUP BY poem_id ORDER BY poem_id DESC LIMIT 1 , 30
+
+
+
+2:13 PM 27/05/2014
+
+
+SELECT tbl_vote.user_id,tbl_vote.poem_id,count(NULLIF(tbl_vote.poem_vote,0)) as 
+
+
+vote,round(AVG(NULLIF(tbl_vote.poem_vote ,0)),2)as rate,
+
+tbl_poems.title 
+
+FROM tbl_vote inner join tbl_poems on tbl_vote.poem_id = tbl_poems.poem_id 
+
+where tbl_vote .user_id = '37' 
+
+
+
+group by poem_id 
+
+order by poem_id desc limit 1,30
+
+3:36 PM 28/05/2014
+
+CREATE TABLE `famous_poet` (
+`famous_poet_id` MEDIUMINT( 15 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`famous_poet_name` VARCHAR( 55 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_poem` VARCHAR( 1000 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_image` VARCHAR( 45 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`famous_poet_others` VARCHAR( 150 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'this table is famous poet for home page';
+
+
+
+1:19 PM 01/06/2014
+
+SELECT tbl_vote.user_id,tbl_vote.poem_id,count(NULLIF(tbl_vote.poem_vote,0)) 
+
+as vote,round(AVG(NULLIF(tbl_vote.poem_vote ,0)),2)as rate, 
+
+tbl_poems.title FROM tbl_vote inner join tbl_poems on 
+
+tbl_vote.poem_id = tbl_poems.poem_id where tbl_vote.user_id = '37' and tbl_vote.poem_id = '122' 
+
+
+ group by poem_id order by poem_id desc 
+
+
+
+1:32 PM 01/06/2014
+
+$sql = 'SELECT `user_id` , `poem_id` , `comments` FROM `tbl_comments_poem` WHERE poem_id = 60 LIMIT 0, 30 ';
+
+12:06 PM 03/06/2014
+
+$sql = 'SELECT CONCAT(first_name, " ",last_name) as Name,`place_of_birth`,`address`,`country`,`picture_small`,`gender`,`date_of_birth`,`insert_date`,`email_address` FROM `tbl_user` WHERE 1';
+
+
+1:04 PM 03/06/2014
+
+$sql = 'SELECT `tbl_vote`.`user_id`,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,\'\',`last_name`)as name, tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small FROM `tbl_vote`'
+        . ' inner join tbl_user on tbl_user.user_id = tbl_vote.user_id'
+        . ' inner join tbl_poems on tbl_poems.poem_id = tbl_vote.poem_id'
+        . ' group by `tbl_vote`.poem_id order by count(`tbl_vote`.`read_value_info`) desc limit 1,30';
+
+
+4:28 PM 03/06/2014
+
+        $sql = 'SELECT `tbl_vote`.`user_id`,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,\'\',`last_name`)as name, tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small FROM `tbl_vote`'
+                . ' inner join tbl_user on tbl_user.user_id = tbl_vote.user_id'
+                . ' inner join tbl_poems on tbl_poems.poem_id = tbl_vote.poem_id'
+                . ' group by `tbl_vote`.poem_id order by count(`tbl_vote`.`read_value_info`) desc limit 1,1';
+
+
+11:41 AM 04/06/2014
+
+SELECT `user_id`,CONCAT(first_name,'',last_name) as Name,`place_of_birth`,`address`,`country`,`picture_small`,`gender`,`date_of_birth`,`insert_date`,`email_address`,`activation_status` FROM `tbl_user` WHERE 1
+
+
+12:54 PM 04/06/2014
+
+SELECT `tbl_vote`.`user_id`,member_type ,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,'
+
+
+',`last_name`)as name, 
+
+tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small
+
+
+ FROM `tbl_vote` in tbl_vote.user_id (select member_type from tbl_user where member_type ='poet') 
+        
+ inner join tbl_user on tbl_user.user_id = tbl_vote.user_id
+        
+
+inner join tbl_poems on tbl_poems.poem_id = tbl_vote.poem_id
+       
+
+ group by `tbl_vote`.poem_id order by count(`tbl_vote`.`read_value_info`) desc 
+
+limit 1,30
+
+
+
+1:02 PM 04/06/2014
+
+
+SELECT `tbl_vote`.`user_id`,member_type ,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,'
+
+',`last_name`)as name, 
+
+tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small
+
+ FROM tbl_user          
+ inner join tbl_vote on tbl_user.user_id = tbl_vote.user_id        
+
+inner join tbl_poems on tbl_poems.poem_id = tbl_vote.poem_id
+    where member_type ='poet' 
+
+ group by `tbl_vote`.poem_id  order by count(`tbl_vote`.`read_value_info`) desc 
+
+limit 1,30
+
+
+1:04 PM 04/06/2014
+
+SELECT `tbl_vote`.`user_id`,member_type ,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,'
+
+
+',`last_name`)as name, 
+
+tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small
+
+
+ FROM tbl_user  
+        
+ inner join tbl_vote on tbl_user.user_id = tbl_vote.user_id
+        
+
+inner join tbl_poems on tbl_poems.poem_id = tbl_vote.poem_id
+    where member_type ='poet'   
+
+ group by `tbl_vote`.poem_id  order by count(`tbl_vote`.`read_value_info`) desc 
+
+limit 1,1
+
+
+10:34 AM 05/06/2014
+
+$sql = 'SELECT `tbl_vote`.`user_id`,member_type ,`tbl_vote`.`poem_id`,concat(`tbl_user`.`first_name`,\''
+        . ' \',`last_name`)as name, '
+        . ' tbl_poems.title,tbl_poems.body,count(`tbl_vote`.`read_value_info`),tbl_user.picture_small'
+        . ' FROM tbl_user '
+        . ' '
+        . ' inner join tbl_vote on tbl_user.user_id = tbl_vote.user_id'
+        . ' '
+        . ' inner join tbl_poems on tbl_user.user_id = tbl_poems.user_id'
+        . ' where member_type =\'poety\' '
+        . ' group by `tbl_vote`.poem_id order by count(`tbl_vote`.`read_value_info`) desc '
+        . ' limit 1,1';
+
+
+SELECT `tbl_vote`.`user_id` , member_type, `tbl_vote`.`poem_id` , concat( `tbl_user`.`first_name` , ' ', `last_name` ) AS name, tbl_poems.title, tbl_poems.body, count( `tbl_vote`.`read_value_info` ) , tbl_user.picture_small
+FROM tbl_user
+INNER JOIN tbl_vote ON tbl_user.user_id = tbl_vote.user_id
+INNER JOIN tbl_poems ON tbl_user.user_id = tbl_poems.user_id
+WHERE member_type = 'poety'
+GROUP BY `tbl_vote`.poem_id
+ORDER BY count( `tbl_vote`.`read_value_info` ) DESC
+LIMIT 1 , 1
+
+
+5:14 PM 05/06/2014
+
+hot poem
+
+SELECT tbl_vote.poem_id,(tbl_poems.title) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id`             
+
+                GROUP BY tbl_poems . `poem_id` 
+                order by Totalvote desc 
+                 LIMIT 0, 7
+
+
+5:14 PM 05/06/2014
+
+ $sql = 'SELECT CONCAT(first_name, " ",last_name) '
+                . ' as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . '
+                . ' `poem_vote` ),2) as avg_vote '
+                . ' FROM `tbl_vote` '
+                . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+                . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+                . ' GROUP BY tbl_vote. `user_id` '
+                . ' order by avg_vote desc '
+                . ' LIMIT 0, 7';
+
+
+5:38 PM 07/06/2014
+
+
+CREATE TABLE `tbl_poems_category` (
+`poems_category_id` MEDIUMINT( 11 ) NOT NULL ,
+`poems_category_name` VARCHAR( 75 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poems_category_description` VARCHAR( 150 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+`poems_category_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+PRIMARY KEY ( `poems_category_id` )
+) ENGINE = MYISAM COMMENT = 'this table for poems category.';
+
+4:35 PM 15/06/2014
+
+UPDATE `tbl_poems_category` SET `poems_category_name` = 'Poverty' WHERE `tbl_poems_category`.`poems_category_id` =81 LIMIT 1 ;
+
+
+2:52 PM 16/06/2014
+
+ALTER TABLE `tbl_user` CHANGE `member_type` `user_type` VARCHAR( 11 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'this field for user type selection'
+
+11:13 AM 18/06/2014
+
+ALTER TABLE `advertise` ADD `poem_page_add_Second` VARCHAR(75) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'this field for poem page Second advertise' AFTER `poem_page_add_first`;
+
+
+
+3:33 PM 18/06/2014
+
+SELECT `home_add_image` FROM `advertise` where home_add_image is not null order by `home_add_image` desc
+
+
+11:29 AM 19/06/2014
+
+$sql = 'SELECT `add_id` , `poem_page_add_first` , `poem_page_add_first_date`'
+        . ' FROM `advertise`'
+        . ' WHERE `poem_page_add_first` IS NOT NULL'
+        . ' ORDER BY `poem_page_add_first_date` DESC'
+        . ' LIMIT 0 , 1';
+
+
+SELECT `add_id` , `poem_page_add_Second` , `poem_page_add_Second_date`
+FROM `advertise`
+WHERE `poem_page_add_Second` IS NOT NULL
+order by `poem_page_add_Second_date` desc limit 0,1 ;
+
+
+12:45 PM 24/06/2014
+
+popular poets
+
+SELECT u.`user_id`,concat(`first_name`,' ',`last_name`)as name, 
+
+count(p.poem_id)as totalpoem,p.`title`,u.`picture_small`,u.`user_type`,
+
+p.`poem_submit_date` FROM tbl_user u,tbl_poems p  
+
+where  p.user_id = u.user_id and u.`user_type`='Poet'
+
+group by user_id
+
+order by `user_id` desc	
+
+1:02 PM 24/06/2014
+memberpoet
+
+SELECT u.`user_id`,concat(`first_name`,' ',`last_name`)as name,u.`user_type`, 
+
+count(p.poem_id)as totalpoem,p.`title`,u.`picture_small`,
+
+p.`poem_submit_date` FROM tbl_poems p,tbl_user u
+
+where  u. `user_id` = p . `user_id`
+group by user_id
+order by `user_id` desc
+
+
+SELECT `user_id` ,@acount:=@acount 1 serial_number, `picture_small` , concat( `first_name` ,' ', `last_name` ) name, `date_of_birth`, count(poem_id) total_poem
+FROM (SELECT @acount:= 0) AS acount,`tbl_user` group by poem_id
+WHERE `user_type` = 'famous poet'
+LIMIT 0 , 12
+
+12:34 PM 01/07/2014
+
+SELECT *   
+FROM book_mast  
+WHERE pub_id='P001' UNION  
+SELECT *   
+FROM book_mast    
+WHERE book_name BETWEEN 'A' AND 'G' UNION  
+SELECT *  
+FROM book_mast   
+WHERE no_page IN(165,250,350,400,510); 
+
+
+
+12:35 PM 01/07/2014
+
+CREATE VIEW view_author   
+AS SELECT *  
+FROM author  
+WHERE aut_name    
+NOT LIKE 'T%' AND aut_name NOT LIKE 'W%'; 
+
+12:36 PM 01/07/2014
+
+CREATE VIEW view_purchase   
+AS SELECT invoice_no,book_name,cate_id   
+FROM purchase     
+WHERE cate_id=  (SELECT cate_id FROM book_mast WHERE no_page=201);  
+
+
+3:53 PM 01/07/2014
+
+SELECT `tbl_poems`.`poem_id`, `tbl_poems`.`user_id`,COUNT(`poem_id`),CONCAT(first_name, "  ",last_name) 
+as Name,`read_value`
+FROM `tbl_user`
+INNER JOIN `tbl_poems`
+ON `tbl_user`.`user_id`=`tbl_poems`.`user_id` group by `tbl_poems`.user_id
+ORDER BY `tbl_user`.`user_id`
+
+ 
+SELECT `tbl_poems`.`poem_id`, `tbl_poems`.`user_id`,COUNT(`poem_id`) total_poem,CONCAT(first_name, "  ",last_name) 
+as Name,`read_value`,`date_of_birth`,`picture_small`
+FROM `tbl_user`
+INNER JOIN `tbl_poems`
+ON `tbl_user`.`user_id`=`tbl_poems`.`user_id` group by `tbl_poems`.user_id
+ORDER BY `tbl_user`.`user_id`
+
+4:08 PM 01/07/2014
+SELECT `user_id` ,@acount:=@acount+1 serial_number, `picture_small` , concat( `first_name` ,' ', `last_name` ) name, `date_of_birth`
+FROM (SELECT @acount:= 0) AS acount,`tbl_user`
+WHERE `user_type` = 'famous poet'
+LIMIT 0 , 30"
+
+
+11:19 AM 09/07/2014
+
+total_vote
+
+select tbl_user.user_id,last_name,tbl_poems.user_id,tbl_poems.poem_id,tbl_poems.read_value,
+
+tbl_vote.poem_vote,tbl_comments_poem.user_id,sum(tbl_poems.read_value+tbl_vote.poem_vote), 
+
+tbl_comments_poem.poem_id,tbl_comments_poem.comments from tbl_user   
+
+inner join tbl_poems on tbl_user.user_id = tbl_poems.user_id 
+
+inner join tbl_vote on tbl_poems.poem_id = tbl_vote.poem_id 
+
+inner join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id
+
+where tbl_vote.poem_vote is not null and tbl_poems.read_value  >0
+
+group by tbl_poems.poem_id
+
+
+
+
+11:31 AM 09/07/2014
+
+select tbl_user.user_id,last_name,tbl_poems.read_value,
+
+tbl_vote.poem_vote,sum(tbl_poems.read_value+tbl_vote.poem_vote), 
+
+tbl_comments_poem.comments from tbl_user   
+
+inner join tbl_poems on tbl_user.user_id = tbl_poems.user_id 
+
+inner join tbl_vote on tbl_poems.poem_id = tbl_vote.poem_id 
+
+inner join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id
+
+where tbl_vote.poem_vote is not null and tbl_poems.read_value  >0
+
+group by tbl_poems.user_id
+
+
+11:49 AM 13/07/2014
+
+all famous_poems view
+
+SELECT `tbl_poems`.`user_id`,tbl_poems.poem_id,CONCAT(first_name, " ",last_name) as Name, `tbl_poems`.`title`,`tbl_poems`.`read_value` FROM
+
+`tbl_poems` inner join tbl_user on
+
+tbl_user.user_id = `tbl_poems`.user_id  where
+
+read_value >0 order by read_value desc
+
+
+11:01 AM 14/07/2014
+
+two_table total_vote
+SELECT concat(first_name,' ',last_name)as
+
+name,tbl_poems.read_value + tbl_vote.poem_vote as total_vote , 
+
+
+tbl_poems.read_value , tbl_vote.poem_vote
+
+FROM `tbl_user` inner
+
+join tbl_poems on tbl_user.user_id =
+
+tbl_poems.user_id
+
+ join tbl_vote on tbl_poems.poem_id = tbl_vote.poem_id
+
+left join tbl_comments_poem on tbl_poems.poem_id = tbl_comments_poem.poem_id
+
+order by total_vote desc
+
+
+11:09 AM 14/07/2014
+
+total_vote
+
+SELECT concat(first_name,' ',last_name)as
+
+name,`picture_small`,tbl_poems.title,tbl_vote.poem_vote,tbl_poems.read_value ,
+
+tbl_poems.read_value +
+
+tbl_vote.poem_vote as total_vote  
+
+FROM `tbl_user` inner
+
+join tbl_poems on tbl_user.user_id =
+
+tbl_poems.user_id
+
+ join tbl_vote on tbl_poems.poem_id = tbl_vote.poem_id
+
+left join tbl_comments_poem on tbl_poems.poem_id = tbl_comments_poem.poem_id
+
+order by total_vote desc
+
+
+
+11:37 AM 20/07/2014
+
+most popular poets.
+
+SELECT concat(first_name,'',last_name)as name,
+
+tbl_poems.`read_value` FROM `tbl_poems` inner
+
+join tbl_user on tbl_poems.user_id =
+
+tbl_user.user_id where read_value >0 group by
+
+tbl_poems.user_id  order by read_value desc
+
+3:20 PM 21/07/2014
+
+SELECT poem_id,`title`,`poem_submit_date` FROM tbl_poems
+WHERE `poem_submit_date` >= curdate() - INTERVAL DAYOFWEEK(curdate())+29 DAY
+AND `poem_submit_date` < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY
+
+
+
+
+
+3:37 PM 21/07/2014
+
+present date from last 30 Days data view query
+
+$sql="SELECT @acount:=@acount+1 serial_number, `poem_id`,concat(first_name,'',last_name)as name,country,`picture_small`,`title`,`body`,`read_value`, DATE_FORMAT(`poem_submit_date`, '%d/%m/%Y')as date,`poem_activation`
+FROM    (SELECT @acount:= 0) AS acount,tbl_poems inner join tbl_user on tbl_poems.user_id = tbl_user.user_id
+WHERE   `poem_submit_date` BETWEEN NOW() - INTERVAL 30 DAY AND NOW() and read_value >0
+order by `read_value` desc";
+
+
+SELECT e1.employee_id, e1.manager_id, e2.employee_id
+   FROM employees e1, employees e2
+   WHERE e1.manager_id(+) = e2.employee_id;
+
+
+SELECT  `tbl_poems`.`user_id` , tbl_user.`user_type` , tbl_poems.poem_id, tbl_user.`insert_date` , CONCAT( first_name,  ' ', last_name ) AS Name,  `picture_small` ,  `tbl_poems`.`title` ,  `tbl_poems`.`body` ,  `tbl_poems`.`read_value` ,poem_vote
+
+,(`tbl_poems`.`read_value` + poem_vote) as total
+FROM  `tbl_poems` 
+INNER JOIN tbl_user ON tbl_user.user_id =  `tbl_poems`.user_id
+INNER JOIN tbl_vote ON tbl_poems.poem_id = tbl_vote.poem_id
+
+inner join tbl_poem_comments on tbl_poems.poem_id = tbl_poem_comments.poem_id
+
+
+WHERE tbl_poems.read_value >0
+AND tbl_user.`user_type` =  'Famous Poet'
+
+
+1:46 PM 22/07/2014
+
+SELECT  `tbl_poems`.`user_id` , tbl_user.`user_type` , tbl_poems.poem_id, tbl_user.`insert_date` , CONCAT( first_name,  ' ', last_name ) AS Name,
+
+
+`picture_small` ,  `tbl_poems`.`title` ,  `tbl_poems`.`body` ,  `tbl_poems`.`read_value` ,poem_vote,count(tbl_comments_poem.user_id)as comments
+
+,(`tbl_poems`.`read_value` + poem_vote + count(tbl_comments_poem.user_id)) as total
+
+
+FROM  `tbl_poems` 
+
+INNER JOIN tbl_user ON tbl_user.user_id =  `tbl_poems`.user_id
+
+INNER JOIN tbl_vote ON tbl_poems.poem_id = tbl_vote.poem_id
+
+inner join tbl_comments_poem on tbl_poems.poem_id = tbl_comments_poem.poem_id
+
+WHERE tbl_poems.read_value >0
+
+AND tbl_user.`user_type` =  'Famous Poet'
+
+
+
+
+SELECT  `tbl_poems`.`user_id` , tbl_user.`user_type` , tbl_poems.poem_id, tbl_user.`insert_date` , CONCAT( first_name,  ' ', last_name ) AS Name, 
+
+ `picture_small` ,  `tbl_poems`.`title` ,  `tbl_poems`.`body` ,  `tbl_poems`.`read_value` ,poem_vote,count(tbl_comments_poem.user_id)as comments
+
+,(`tbl_poems`.`read_value` <=> 0 + poem_vote <=> 0 + count(tbl_comments_poem.user_id <=> 0)) as total
+
+FROM  `tbl_poems` 
+
+INNER JOIN tbl_user ON tbl_user.user_id =  `tbl_poems`.user_id
+
+INNER JOIN tbl_vote ON tbl_poems.poem_id = tbl_vote.poem_id
+
+INNER join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id 
+
+WHERE tbl_poems.read_value >0
+
+AND tbl_user.`user_type` =  'Famous Poet'
+
+
+5:37 PM 22/07/2014
+
+
+Popularity query
+
+SELECT tbl_poems.`user_id`,concat(first_name,'',last_name)as name,country,sum(`read_value`) as read_value
+FROM tbl_poems inner join tbl_user on tbl_poems.user_id = tbl_user.user_id where `read_value`>0
+GROUP BY tbl_poems.`user_id` order by `read_value` DESC
+
+
+
+3:44 PM 23/07/2014
+
+poem detail comments save forgin key insert
+
+SELECT tbl_user.user_id,tbl_poems.user_id,tbl_comments_poem.`user_id`,concat(first_name,'',last_name)as name,tbl_comments_poem.`poem_id`,`comments`,
+`comments_post_date` FROM `tbl_comments_poem`
+ inner join tbl_user on tbl_comments_poem.user_id = tbl_user.user_id 
+ inner join tbl_poems on tbl_comments_poem.poem_id = tbl_poems.poem_id WHERE 1 
+order by comments_post_date desc
+
+1:20 PM 18/08/2014
+
+three table join
+
+SELECT tbl_poems.`user_id`,concat(`tbl_user`.`first_name`,' ',`last_name`)as name,tbl_poems.`poem_id`,
+
+`title`,`body`,tbl_poems.`read_value`,sum(tbl_vote.poem_vote)as user_votes,round(AVG(tbl_vote.poem_vote),2)as avg_vote,(count(tbl_comments_poem.user_id)*2)as comment,
+
+
+(sum(tbl_vote.poem_vote)+tbl_poems.`read_value`+(count(tbl_comments_poem.poem_id)*2))as
+
+vote,tbl_user.picture_small FROM `tbl_poems`
+
+inner join tbl_user on tbl_user.user_id = tbl_poems.user_id
+inner join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id
+
+inner join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id
+
+where user_type = 'member'
+group by tbl_vote.poem_id
+ order by vote desc 
+
+12:47 PM 19/08/2014
+
+SELECT tbl_poems.`user_id`,tbl_poems.`poem_id`,concat(`tbl_user`.`first_name`,' ',`last_name`)as name,
+
+`title`,`body`,tbl_poems.`read_value`,sum(tbl_vote.poem_vote)as user_votes,round(AVG(tbl_vote.poem_vote),2)as avg_vote,count(tbl_comments_poem.poem_id) as total_comment,(count(tbl_comments_poem.user_id)*2)as comment,
+
+
+(sum(tbl_vote.poem_vote)+tbl_poems.`read_value`+(count(tbl_comments_poem.poem_id)*2))as
+
+vote,tbl_user.picture_small FROM `tbl_poems`
+
+inner join tbl_user on tbl_user.user_id = tbl_poems.user_id
+inner join tbl_vote on tbl_vote.poem_id = tbl_poems.poem_id
+
+inner join tbl_comments_poem on tbl_comments_poem.poem_id = tbl_poems.poem_id
+
+where user_type = 'member'
+group by tbl_vote.poem_id
+ order by vote desc 
+
+
+11:56 AM 01/09/2014
+
+SELECT tbl_message.user_id,concat (`first_name`,' ',`last_name`)as name,`subject`,`message_detail`,`message_date` 
+FROM `tbl_message` inner join tbl_user on tbl_message.user_id = tbl_user.user_id where `poets_id` = '37'
+
+2:04 PM 11/09/2014
+
+SELECT max(val) FROM (SELECT val FROM data ORDER BY val limit @middlevalue) x;
+
+
+SELECT `poem_id`,tbl_poems.`poems_category_id`,poems_category_name,`poem_submit_date` FROM `tbl_poems` 
+
+inner join tbl_poems_category on tbl_poems.`poems_category_id` = tbl_poems_category.`poems_category_id` 
+where tbl_poems.`user_id`=37 and tbl_poems.`poems_category_id`>0 order by poem_id desc
+
+6:23 PM 16/09/2014
+
+SELECT count(`poem_owner_id`)as vote FROM `tbl_vote` WHERE `poem_owner_id`=88 group by `poem_owner_id`
+
+
+
+12:07 PM 21/09/2014
+
+poem of day
+
+SELECT tbl_poems.`user_id`,concat(`tbl_user`.`first_name`,' ',`last_name`)as name,tbl_poems.`poem_id`,
+
+`title`,`body`,tbl_user.picture_small FROM `tbl_poems`
+
+inner join tbl_user on tbl_user.user_id = tbl_poems.user_id
+
+where tbl_user.activation_status !=1
+and `poem_of_day`='pod'
+ order by `poem_of_day_date` desc limit 0,1

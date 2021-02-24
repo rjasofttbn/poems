@@ -1,0 +1,34 @@
+By default, the captcha plug-in generates 8 letter words. But, I wanted to vary this length. So, I made a little change in this plug-in. In line 156 of "captcha_pi.php":
+Collapse | Copy Code
+
+
+
+$defaults = array('word'       => '',    'img_path' => '',
+                  'img_url'    => '',    'img_width' => '150',
+                  'img_height' => '30',  'font_path' => '',
+                  'expiration' => 7200); 
+
+ 
+
+was changed to:
+Collapse | Copy Code
+
+$defaults = array('word'      => '',    'word_length' => 8,
+                  'img_path'  => '',    'img_url'     => '',
+                  'img_width' => '150', 'img_height'  => '30',
+                  'font_path' => '',    'expiration'  => 7200);
+
+
+
+
+Next, line 226:
+Collapse | Copy Code
+
+for ($i = 0; $i < 8; $i++)
+
+
+
+was changed to:
+Collapse | Copy Code
+
+for ($i = 0; $i < $word_length; $i++)

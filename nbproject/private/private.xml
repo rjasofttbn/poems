@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="188">
+        <file>
+            <url>application/views/index.php</url>
+            <bookmark id="172">
+                <name/>
+                <line>86</line>
+                <key/>
+            </bookmark>
+            <bookmark id="173">
+                <name/>
+                <line>475</line>
+                <key/>
+            </bookmark>
+            <bookmark id="162">
+                <name/>
+                <line>486</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/welcome.php</url>
+            <bookmark id="114">
+                <name/>
+                <line>53</line>
+                <key/>
+            </bookmark>
+            <bookmark id="175">
+                <name/>
+                <line>221</line>
+                <key/>
+            </bookmark>
+            <bookmark id="111">
+                <name/>
+                <line>241</line>
+                <key/>
+            </bookmark>
+            <bookmark id="157">
+                <name/>
+                <line>253</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/view_user_admin/poem_detail.php</url>
+            <bookmark id="61">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="90">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>login/registration_login.css</url>
+            <bookmark id="49">
+                <name/>
+                <line>737</line>
+                <key/>
+            </bookmark>
+            <bookmark id="50">
+                <name/>
+                <line>999</line>
+                <key/>
+            </bookmark>
+            <bookmark id="51">
+                <name/>
+                <line>1013</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/models/administrator_model.php</url>
+            <bookmark id="158">
+                <name/>
+                <line>313</line>
+                <key/>
+            </bookmark>
+            <bookmark id="144">
+                <name/>
+                <line>419</line>
+                <key/>
+            </bookmark>
+            <bookmark id="159">
+                <name/>
+                <line>422</line>
+                <key/>
+            </bookmark>
+            <bookmark id="68">
+                <name/>
+                <line>499</line>
+                <key/>
+            </bookmark>
+            <bookmark id="183">
+                <name/>
+                <line>635</line>
+                <key/>
+            </bookmark>
+            <bookmark id="182">
+                <name/>
+                <line>687</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>css/administrator.css</url>
+            <bookmark id="41">
+                <name/>
+                <line>74</line>
+                <key/>
+            </bookmark>
+            <bookmark id="40">
+                <name/>
+                <line>164</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/view_user_admin/poets_info/poets_data.php</url>
+            <bookmark id="10">
+                <name/>
+                <line>102</line>
+                <key/>
+            </bookmark>
+            <bookmark id="11">
+                <name/>
+                <line>106</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/login_controller.php</url>
+            <bookmark id="64">
+                <name/>
+                <line>101</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/poems.php</url>
+            <bookmark id="155">
+                <name/>
+                <line>84</line>
+                <key/>
+            </bookmark>
+            <bookmark id="137">
+                <name/>
+                <line>278</line>
+                <key/>
+            </bookmark>
+            <bookmark id="156">
+                <name/>
+                <line>315</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>css/user_admin.css</url>
+            <bookmark id="45">
+                <name/>
+                <line>440</line>
+                <key/>
+            </bookmark>
+            <bookmark id="91">
+                <name/>
+                <line>1057</line>
+                <key/>
+            </bookmark>
+            <bookmark id="92">
+                <name/>
+                <line>1348</line>
+                <key/>
+            </bookmark>
+            <bookmark id="75">
+                <name/>
+                <line>1574</line>
+                <key/>
+            </bookmark>
+            <bookmark id="80">
+                <name/>
+                <line>1729</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/view_user_admin/all_trending_poem_view.php</url>
+            <bookmark id="138">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="139">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="132">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="133">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+            <bookmark id="134">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/models/user_admin_model.php</url>
+            <bookmark id="186">
+                <name/>
+                <line>39</line>
+                <key/>
+            </bookmark>
+            <bookmark id="188">
+                <name/>
+                <line>239</line>
+                <key/>
+            </bookmark>
+            <bookmark id="187">
+                <name/>
+                <line>536</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/view_user_admin/poetprofile/edityourbiography.php</url>
+            <bookmark id="48">
+                <name/>
+                <line>115</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/view_user_admin/poem_submit.php</url>
+            <bookmark id="54">
+                <name/>
+                <line>171</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/user_admin_controller.php</url>
+            <bookmark id="174">
+                <name/>
+                <line>42</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/views/manage_poets.php</url>
+            <bookmark id="14">
+                <name/>
+                <line>44</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/administrator_controller.php</url>
+            <bookmark id="166">
+                <name/>
+                <line>522</line>
+                <key/>
+            </bookmark>
+            <bookmark id="167">
+                <name/>
+                <line>540</line>
+                <key/>
+            </bookmark>
+            <bookmark id="169">
+                <name/>
+                <line>581</line>
+                <key/>
+            </bookmark>
+            <bookmark id="170">
+                <name/>
+                <line>639</line>
+                <key/>
+            </bookmark>
+            <bookmark id="171">
+                <name/>
+                <line>657</line>
+                <key/>
+            </bookmark>
+            <bookmark id="184">
+                <name/>
+                <line>673</line>
+                <key/>
+            </bookmark>
+            <bookmark id="178">
+                <name/>
+                <line>951</line>
+                <key/>
+            </bookmark>
+            <bookmark id="181">
+                <name/>
+                <line>978</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/models/add_model.php</url>
+            <bookmark id="63">
+                <name/>
+                <line>74</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/poets_profile_controller.php</url>
+            <bookmark id="165">
+                <name/>
+                <line>67</line>
+                <key/>
+            </bookmark>
+            <bookmark id="58">
+                <name/>
+                <line>111</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>css/poems_home.css</url>
+            <bookmark id="87">
+                <name/>
+                <line>496</line>
+                <key/>
+            </bookmark>
+            <bookmark id="88">
+                <name/>
+                <line>2097</line>
+                <key/>
+            </bookmark>
+            <bookmark id="89">
+                <name/>
+                <line>2247</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/F:/server/htdocs/poems/application/controllers/user_admin_controller.php</file>
+            <file>file:/F:/server/htdocs/poems/application/views/index.php</file>
+            <file>file:/F:/server/htdocs/poems/application/models/welcome_model.php</file>
+            <file>file:/F:/server/htdocs/poems/application/models/user_admin_model.php</file>
+        </group>
+    </open-files>
+</project-private>

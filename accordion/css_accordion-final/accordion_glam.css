@@ -1,0 +1,51 @@
+body {
+	background-color:#252422;
+	padding:50px;
+	padding-top:130px;
+	background-image:url(../img/logo.gif);
+	background-repeat:no-repeat;
+	background-position:60px 40px;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Sans-serif;
+	font-size:11px;
+	line-height:18px;
+}
+
+div#test-accordion{
+    border: 1px solid #343230;
+	background-color:#21201f;
+	padding:10px;
+}
+
+div.accordion {
+	position: relative; /* required for bounding */
+	width:800px;
+}
+
+div.accordion-toggle{
+    position: relative; /* required for effect */
+    z-index: 10;		/* required for effect */
+	background: #3f3c38;
+	background-image:url(../img/off.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	color:#ffffff;   
+    cursor: pointer;
+	margin-bottom:1px;
+	padding:9px 14px 6px 14px;
+	border-top:1px solid #5d5852;	
+}
+div.accordion-toggle:hover, div.accordion-toggle-active{
+	background-image:url(../img/on.jpg);
+	background-color:#6d493a;
+	border-top:1px solid #a06b55;
+}
+
+div.accordion-content{
+    overflow: hidden;	/* required for effect */
+    background: #302e2c;
+	padding:9px 24px 6px 24px;
+	color:#c4bab1;
+	border-bottom:1px solid #000000;
+}
+.whites{ color:#FFFFFF;}
+.whites a{ color: #F0F0F0;}

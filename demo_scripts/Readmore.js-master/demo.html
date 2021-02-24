@@ -1,0 +1,49 @@
+
+  
+  <title>Readmore.js: jQuery plugin for long blocks of text</title>
+  
+  <style media="screen">
+    body { font: 16px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; color: #444; }
+    code { color: #777; font-family: "Source Code Pro", "Menlo", "Courier New", monospace;}
+    a { color: #178DB1; }
+    .container { margin: 0 auto; max-width: 960px; }
+    #info + .readmore-js-toggle { padding-bottom: 1.5em; border-bottom: 1px solid #999; font-weight: bold;}
+    #demo { padding: 0 10%; }
+  </style>
+
+
+
+
+  <div class="container">    
+    <section id="demo">   
+      <article>
+        
+        <p>Here's how it is: Earth got used up, so we terraformed a whole new galaxy of Earths, some rich and flush with the new technologies, some not so much. Central Planets, them was formed the Alliance, waged war to bring everyone under their rule; a few idiots tried to fight it, among them myself. I'm Malcolm Reynolds, captain of Serenity. Got a good crew: fighters, pilot, mechanic. We even picked up a preacher, and a bona fide companion. There's a doctor, too, took his genius sister out of some Alliance camp, so they're keeping a low profile. You got a job, we can do it, don't much care what it is.</p>
+
+        <p>I am Duncan Macleod, born 400 years ago in the Highlands of Scotland. I am Immortal, and I am not alone. For centuries, we have waited for the time of the Gathering when the stroke of a sword and the fall of a head will release the power of the Quickening. In the end, there can be only one.</p>
+
+       </article>
+     
+    </section>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script src="readmore.js"></script>
+  <script>
+    $('#info').readmore({
+      moreLink: '<a href="#">Usage, examples, and options</a>',
+      collapsedHeight: 384,
+      afterToggle: function(trigger, element, expanded) {
+        if(! expanded) { // The "Close" link was clicked
+          $('html, body').animate({scrollTop: $(element).offset().top}, {duration: 100});
+        }
+      }
+    });
+    $('article').readmore({speed: 500});
+  </script>
+  
+  
+
+</html>
+

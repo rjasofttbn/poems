@@ -1,0 +1,100 @@
+3:57 PM 3/11/2014
+
+New column add
+
+ALTER TABLE tbl_user
+ADD COLUMN `insert` date AFTER `password`;
+
+
+
+3:27 PM 18/03/2014
+
+ALTER TABLE `tbl_user` CHANGE `picture` `picture` VARCHAR( 150 ) 
+
+CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL 
+
+6:40 AM 10/04/2014
+
+UPDATE `tbl_poems` SET `title` = 'submit' WHERE `tbl_poems`.`poem_id` =1 LIMIT 1 ;
+
+UPDATE Customers
+SET ContactName='Alfred Schmidt', City='Hamburg'
+WHERE CustomerName='Alfreds Futterkiste';
+
+6:48 AM 10/04/2014
+
+DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 1 LIMIT 1;
+
+
+DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 1 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 2 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 3 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 0 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 5 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 6 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 7 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 8 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 9 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 10 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 11 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 12 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 13 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 14 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 15 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 18 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 19 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 20 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 21 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 22 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 23 LIMIT 1; DELETE FROM `tbl_poems` WHERE `tbl_poems`.`poem_id` = 24 LIMIT 1; 
+
+CREATE TABLE `vote` (
+`vote_id` MEDIUMINT( 15 ) UNSIGNED NOT NULL ,
+`user_id` INT( 15 ) NOT NULL ,
+`poem_id` INT( 15 ) NOT NULL ,
+`user_vote` INT NULL DEFAULT '0',
+`poem_vote` INT NULL DEFAULT '0',
+`vote_date` DATE NOT NULL ,
+PRIMARY KEY ( `vote_id` )
+) ENGINE = MYISAM ;
+
+
+
+12:42 PM 17/04/2014
+
+admin
+
+SELECT *
+FROM `tbl_user`
+WHERE `user_id` = '37'
+AND `activation_status` = '1'
+LIMIT 0 , 30
+
+
+11:45 AM 21/04/2014
+
+
+
+SELECT tbl_vote.poem_id 
+FROM tbl_vote,tbl_poems
+ WHERE tbl_vote.user_id = tbl_user.user_id
+and tbl_vote.user_id= '47'
+
+
+
+
+SELECT tbl_vote.`user_id`,tbl_vote.`poem_id` 
+FROM `tbl_vote`,tbl_poems
+ WHERE tbl_vote.user_id = tbl_vote.`user_id`
+
+12:00 PM 21/04/2014
+
+SELECT * FROM table1,table2 WHERE table1.id=table2.id;
+
+SELECT * FROM table1 LEFT JOIN table2 ON table1.id=table2.id;
+
+SELECT * FROM table1 LEFT JOIN table2 USING (id);
+
+SELECT * FROM table1 LEFT JOIN table2 ON table1.id=table2.id
+  LEFT JOIN table3 ON table2.id=table3.id;
+
+SELECT COUNT(poem_id) FROM tbl_poems;
+
+SELECT AVG(`poem_vote`) FROM tbl_vote where user_id = '37' 
+
+SELECT sum(`poem_vote`) FROM tbl_vote where user_id = '37' 
+
+SELECT max(`poem_vote`)AS highestmark  FROM tbl_vote where user_id = '37'
+
+SELECT count( DISTINCT `user_id` )
+FROM `tbl_vote` 
+
+SELECT count( DISTINCT `user_id` )
+FROM tbl_vote
+WHERE poem_id = '86'
+
+
+SELECT `poem_submit_date`FROM tbl_poems
+ORDER BY `poem_submit_date`DESC/ASC
+
+

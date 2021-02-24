@@ -1,0 +1,62 @@
+/* 
+    Document   : Style
+    Created on : Fab 08, 2014, 10:49:26 am
+    Author     : Administrator
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+#banner_menu{       /*--------------banner menu----------*/
+    float:left;
+    height:60px;    
+    margin: 0px 0px 0px 0px;   
+    list-style: none;
+    background-image: url(../banner/banner_menu1.jpg);
+}
+
+#banner_menu ul li:hover{
+    
+    background-color: gray;
+    color:orange;
+}
+
+#button{       /*--------------button_home*/
+    float:left;
+    height:45px;
+    width:124px;
+/*   // margin: 9px 0px 0px 0px;
+    //border-top-color: none;
+    //border-top-style:  none;
+    //border-left-right-bottom-radius: 7px;*/
+    box-shadow: .1em .1em .1em .1em  gray;
+    /*//background-image: url(../banner/button_home1.jpg);*/
+}
+
+#button_home{       /*--------------button_home*/
+    float:left;
+    height:45px;
+    width:124px;
+    margin: 9px 0px 0px 0px;	
+/*    //border-bottom-left-radius: 7px;
+    //border-left-right-bottom-radius: 7px;*/
+    box-shadow: .1em .1em .1em .1em  gray;
+    background-image: url(../banner/button_home1.jpg);
+}
+
+
+.buttonf1{                      /*--------------button font---------*/
+    margin: 7px 0px 0px 0px;
+    
+color: white;	
+	
+}
+
+/*a:link, a:visited { color: white; text-decoration: none; font-weight: normal;}*/ 
+/*a:active, a:hover { color: white; text-decoration:  underline; font-weight:bold;}*/
+

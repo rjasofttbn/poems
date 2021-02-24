@@ -1,0 +1,56 @@
+Controller code
+
+$results = NULL;
+$this->load->model('User');
+$form_data['results'] = $this->User->view_table();
+$this->load->view('User/User_login', $form_data);
+
+View Code in user_login.php
+
+<?php 
+            if(sizeof($results)>0){
+                foreach ($results as $row){
+                    echo "<tr style='text-align:center';>";
+                    echo "<td>".$id=$row->id."</td>";
+                    echo "<td>".$row->first_name."</td>";
+                    echo "<td>".$row->last_name."</td>";
+                    echo "<td>".$row->username."</td>";
+                    echo "<td>".$row->email."</td>";
+                    echo "<td><a href = ".base_url().'Users/user_edit'.">Edit</a>|<a href=".base_url().'Users/user_delete/'.$id=$row->id.">Delete</a></td>";
+                   // echo $id; die();
+                echo "</tr>";
+            }
+            }else{
+                echo "no record found";
+            }
+
+            ?>
+
+
+===================================
+
+
+<?php 
+        if(isset($results)){
+            foreach ($results as $row){
+                echo "<tr style='text-align:center';>";
+                echo "<td>".$id=$row->id."</td>";
+                echo "<td>".$row->first_name."</td>";
+                echo "<td>".$row->last_name."</td>";
+                echo "<td>".$row->username."</td>";
+                echo "<td>".$row->email."</td>";
+                echo "<td><a href = ".base_url().'Users/user_edit'.">Edit</a>|<a href=".base_url().'Users/user_delete/'.$id=$row->id.">Delete</a></td>";
+               // echo $id; die();
+            echo "</tr>";
+        }
+        }else{
+            echo "no record found";
+        }
+
+        ?>
+
+
+==============================
+
+
+

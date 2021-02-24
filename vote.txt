@@ -1,0 +1,24 @@
+						<form action="/p/m/vote1.asp" method="get">
+							<select name="vote">
+								<option value="0">- Rate poem -</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+							</select>
+							<a class="button brown">
+								<input type="submit" value="Vote" name="submit0" />
+							</a>
+							<input type="hidden" name="num" value="1" />
+							<input type="hidden" name="poem" value="38313103" />
+							<input type="hidden" name="poet" value="1998275" />
+							<input type="hidden" name="total" value="16" />
+						</form>
+					</div> <!-- .poem-rating -->
+

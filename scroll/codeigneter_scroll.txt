@@ -1,0 +1,151 @@
+5:59 PM 01/03/2015
+Controller 
+=============
+<?php
+class Demo extends Controller {
+
+	function Demo(){
+		parent::Controller();		
+		$this->load->model('MiscellaneousModel');		
+	}
+
+	public function index(){
+		$query = $this->MiscellaneousModel->getEmployee();
+		echo json_encode (array($query));		
+	}
+}
+?>
+
+5:59 PM 01/03/2015
+Model 
+
+<?php
+class MiscellaneousModel extends Model {
+
+	function MiscellaneousModel(){
+		parent::Model();		
+	}
+	
+	function getEmployee(){	
+		$this->db->select("EMPLOYEE_ID,EMPLOYEE_NAME");
+		$this->db->from('trn_employee');				
+		$query = $this->db->get();		
+		return $query->result();			
+	}	
+}
+?>
+
+6:00 PM 01/03/2015
+Json Response
+==============
+echo json_encode (array($query)); Method json_encode converts the resultant employee list into json format.
+
+[
+	[
+		{"EMPLOYEE_ID":"1","EMPLOYEE_NAME":"Yashwant Chavan"},
+		{"EMPLOYEE_ID":"2","EMPLOYEE_NAME":"Mahesh Diwan"},
+		{"EMPLOYEE_ID":"3","EMPLOYEE_NAME":"Rajesh Limaye"},
+		{"EMPLOYEE_ID":"4","EMPLOYEE_NAME":"Pankaj Patil"}
+	]
+]
+
+6:00 PM 01/03/2015
+html
+============
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+p{margin: 10px;
+	padding: 5px;}
+#finalResult{
+	list-style-type: none;
+	margin: 10px;
+	padding: 5px;
+	width:300px;
+}
+</style>
+<script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/jquery.js"></script>
+<script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/json2.js"></script>
+<script>
+$(document).ready(function () {
+    $(window).scroll(function () {        	
+        if ($(window).scrollTop() == ( $(document).height() - $(window).height())) {
+            loadData();
+        }
+    });
+
+    function loadData() {
+    	$.ajax({
+			type: "post",
+			url: "http://yourdomainname/demo",
+			cache: false,				
+			data:'',
+			success: function(response){
+				
+    			var obj = JSON.parse(response);
+				try{
+					var str = '';
+					var items=[]; 	
+					$.each(obj[0], function(i,val){														
+						    items.push($('<li/>').text(val.EMPLOYEE_NAME));
+					});	
+					
+					$('#finalResult').fadeOut('slow', function() {
+						$(this).append(str).fadeIn('slow').fadeIn(3000);
+						$('#finalResult').css({backgroundColor: ''});
+						$('#finalResult').append.apply($('#finalResult'), items);
+					}).css({backgroundColor: '#D4ED91'});
+											
+				}catch(e) {		
+					alert('Exception while request..');
+				}		
+			},
+			error: function(){						
+				alert('Error while request..');
+			}
+		 });
+        
+
+    }
+
+});
+</script>
+</head>
+<body>		
+	<h1>Load data on page scroll using jQuery Php Codeigniter and Mysql  </h1>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Php Jquery Example Php Jquery Example Php Jquery Example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Php Jquery Example Php Jquery Example Php Jquery Example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Php Jquery Example Php Jquery Example Php Jquery Example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Ajax Load data Demo, Ajax Demo, Jquery Ajax Example</p>
+	<p>Php Jquery Example Php Jquery Example Php Jquery Example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>
+	<p>Jquery ajax script demo, Jquery tutorial example</p>	
+	<ul id="finalResult">
+	</ul>
+	
+	
+</body>
+</html>

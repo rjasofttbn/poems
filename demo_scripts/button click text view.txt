@@ -1,0 +1,98 @@
+4:29 PM 24/02/2015
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Show Hide Elements Using Radio Buttons</title>
+<style type="text/css">
+    .box{
+        padding: 20px;
+        display: none;
+		height:95px;
+		width:371px;
+		margin-top: 20px;
+        border: 1px solid #000;
+    }
+    .Comment{ background: #ff0000; }
+    
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type="button"]').click(function(){
+            if($(this).attr("value")=="Comment"){
+                $(".box").hide();
+                $(".Comment").show();
+            }
+            
+        });
+    });
+</script>
+</head>
+<body>
+    <div>
+        <input type="button" name="colorRadio" value="Comment">
+    </div>
+    <div class="Comment box"><textarea placeholder="Write a reply" title="Write a reply" name="" id=""  style="float: left; height: 65px; width: 381px; border-radius: 7px; display: block; position: relative; outline: none;"></textarea><br>
+<button title="Click for reply post" type="button" style="float: left; font:  bold 13px/13px 'Josefin Slab',Georgia; text-shadow: 1px 1px 1px #fff; display: block; position: relative; height: 29px; width: 71px; border-radius: 7px; outline: none; margin-top: 11px;"
+name="button")
+;">Post</button></div>
+ <div>
+
+ </div>
+ </body>
+</html>
+
+===============================
+
+4:29 PM 24/02/2015
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Show Hide Elements Using Radio Buttons</title>
+<style type="text/css">
+    .box{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+        border: 1px solid #000;
+    }
+    .red{ background: #ff0000; }
+    .green{ background: #00ff00; }
+    .blue{ background: #0000ff; }
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")=="red"){
+                $(".box").hide();
+                $(".red").show();
+            }
+            if($(this).attr("value")=="green"){
+                $(".box").hide();
+                $(".green").show();
+            }
+            if($(this).attr("value")=="blue"){
+                $(".box").hide();
+                $(".blue").show();
+            }
+        });
+    });
+</script>
+</head>
+<body>
+    <div>
+        <label><input type="radio" name="colorRadio" value="red"> red</label>
+        <label><input type="radio" name="colorRadio" value="green"> green</label>
+        <label><input type="radio" name="colorRadio" value="blue"> blue</label>
+    </div>
+    <div class="red box">You have selected <strong>red radio button</strong> so i am here</div>
+    <div class="green box">You have selected <strong>green radio button</strong> so i am here</div>
+    <div class="blue box">You have selected <strong>blue radio button</strong> so i am here</div>
+</body>
+</html>

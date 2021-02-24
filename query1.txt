@@ -1,0 +1,684 @@
+4:54 PM 24/04/2014
+
+$result = $sql->query('
+    SELECT  hour(temperature.date) AS hourtemp,
+            hour(humidite.date) AS hourhum,
+            ROUND(AVG(temperature.valeur),1) AS avgtemp,
+            ROUND(AVG(humidite.valeur),1) AS avghum
+    FROM temperature
+    INNER JOIN humidite on hour(temperature.date) = hour(humidite.date)  
+    WHERE temperature.date >= (now() - INTERVAL 1 DAY)
+    GROUP BY HOUR(date)
+    ORDER BY DATE;');
+
+
+$sql->query('SELECT hour(date) AS humhour,ROUND(AVG(valeur),1) AS avghum 
+FROM humidite WHERE date >= (now() - INTERVAL 1 DAY) 
+GROUP BY HOUR(date) ORDER BY DATE;');
+
+SELECT
+  q.id,
+  AVG(t.rating) AS avgTotal,
+  AVG(m.rating) AS avgMale,
+  AVG(f.rating) AS avgFemale
+FROM questions AS q
+
+LEFT JOIN ratings AS t
+ON q.id = t.question_id
+
+LEFT JOIN ratings AS m
+ON q.id = m.question_id AND m.gender = 'male'
+
+LEFT JOIN ratings AS f
+ON q.id = f.question_id AND f.gender = 'female'
+
+GROUP BY q.id
+
+
+
+4:56 PM 24/04/2014
+
+
+SELECT
+  averageRating,
+  averageMaleRating,
+  averageFemaleRating
+FROM (
+  SELECT
+    question_id AS q_id,
+    ROUND(AVG(rating)) AS averageRating
+  FROM
+    wp_ratings
+  WHERE
+    club_id = ?
+  GROUP BY question_id
+
+  UNION
+
+  SELECT
+    question_id AS q_id,
+    ROUND(AVG(rating)) AS averageMaleRating
+  FROM
+    wp_ratings
+  WHERE
+    club_id = ?
+  AND
+    GENDER = 'male'
+  GROUP BY question_id
+
+  UNION
+
+  SELECT
+    question_id AS q_id,
+    ROUND(AVG(rating)) AS averageFemaleRating
+  FROM
+    wp_ratings
+  WHERE
+    club_id = ?
+  AND
+    GENDER = 'female'
+  GROUP BY question_id
+ )AS bigU
+JOIN
+  wp_ratings
+ON
+  wp_ratings.question_id = bigU.q_id
+
+
+4:57 PM 24/04/2014
+
+
+
+CREATE TABLE `item` (
+  `iditem` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `itemname` varchar(200) NOT NULL,
+  `desc` text NOT NULL,
+  `ok` int(11) NOT NULL DEFAULT '10',
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`iditem`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `item_property` (
+  `iditem` int(11) unsigned NOT NULL,
+  `proptype` varchar(64) NOT NULL DEFAULT '',
+  `propvalue` varchar(200) NOT NULL DEFAULT '',
+  KEY `iditem` (`iditem`,`proptype`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+And here's the query:
+
+SELECT *
+FROM item 
+JOIN item_property ON item.iditem=item_property.iditem 
+WHERE 
+    item.ok > 70 
+    AND item_property.proptype='section'
+    AND item_property.propvalue = 'hotdeals' 
+
+ORDER BY item.date_created desc
+LIMIT 20
+
+
+
+SELECT cll.cl_id, cc.cc_id, cc_rego, cc_model, cll.cl_dateIn, cll.cl_dateOut
+FROM courtesycar cc, courtesyloan cll
+WHERE cl_dateIn = ( 
+  SELECT  MAX( cl.cl_dateIn )
+  FROM courtesyloan cl
+  WHERE cl.cc_id = cc.cc_id )
+AND cc.cc_id = cll.cc_id
+
+
+4:59 PM 24/04/2014
+
+
+SELECT company_code, MAX(datetime) AS maxdatetime
+FROM eod_stock
+GROUP BY company_code
+
+Join this to a query that gets company code, company name, and end-of-day values, and you should be all set:
+
+SELECT
+  company.code,
+  company.name,
+  eod_stock.open,
+  eod_stock.high
+FROM eod_stock
+INNER JOIN company ON company.code = eod_stock.company_code
+INNER JOIN (
+    SELECT company_code, MAX(datetime) AS maxdatetime
+    FROM eod_stock
+    GROUP BY company_code) maxdt
+  ON maxdt.company_code = eod_stock.company_code AND
+     maxdt.maxdatetime = eod_stock.datetime
+
+
+select
+  eod_stock.company_code,
+  max(eod_stock.close),
+  eod_stock.total_volume,
+  eod_stock.total_trade,
+  eod_stock.high,
+  eod_stock.low,
+  eod_stock.ltp,
+  max(eod_stock.datetime),
+  company.name 
+from
+  eod_stock 
+ inner join company on (company.code = eod_stock.company_code) group by eod_stock.company_code;
+
+
+
+select
+  company.code,
+  company.name,
+  eod_stock.open,
+  eod_stock.high,
+  max(eod_stock.datetime)
+from 
+  company
+  right join company on company.code= eod_stock.company_code;
+
+and
+
+select
+  eod_stock.company_code,
+  max(eod_stock.close),
+  eod_stock.total_volume,
+  eod_stock.total_trade,
+  eod_stock.high,
+  eod_stock.low,
+  eod_stock.ltp,
+  max(eod_stock.datetime),
+  company.name 
+from
+  eod_stock 
+  inner join company on (company.code = eod_stock.company_code);
+
+but first one gives me error and 2nd one returns only one row, but i need all 200 companies with their associated info.
+
+
+SELECT p.id, count(clicks.ip)
+FROM `p`
+LEFT JOIN c clicks ON p.id = clicks.pid
+WHERE clicks.ip = '111.222.333.444'
+
+
+SELECT p.id, 
+          COUNT(clicks.ip)
+     FROM `p`
+LEFT JOIN c clicks ON clicks.pid = p.id 
+                  AND clicks.ip = '111.222.333.444'
+                  AND clicks.time BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY)
+                                      AND NOW()
+
+
+
+6:29 PM 24/04/2014
+
+
+SELECT `aboutP` FROM `tbl_poems` limit 0,15;
+
+
+
+6:54 PM 24/04/2014
+
+
+SELECT entries.*, 
+    (SELECT avg(value) 
+    FROM `ratings`
+    WHERE ratings.entry_id = entries.id) as avg_rating
+FROM `entries` 
+ORDER BY avg_rating DESC
+
+
+
+SELECT entries.*, 
+    (SELECT avg(value) 
+    FROM `ratings` 
+    WHERE ratings.entry_id = entries.id) as avg_rating 
+FROM `entries` 
+WHERE avg_rating < '4.5000' ORDER BY avg_rating DESC
+
+
+SELECT entries.*, AVG(value)
+FROM entries INNER JOIN ratings ON entries.id = ratings.entry_id 
+GROUP BY entries.*
+HAVING AVG(value) < '4.5000' 
+ORDER BY AVG(value)
+
+6:54 PM 24/04/2014
+
+SELECT entries.*, AVG(value) as avg_value
+FROM entries INNER JOIN ratings ON entries.id = ratings.entry_id 
+GROUP BY entries.*
+HAVING avg_value < '4.5000' 
+ORDER BY avg_value
+
+
+SELECT article.* , section.title, category.title, user.name, user.name
+FROM article
+INNER JOIN section ON article.section_id = section.id
+INNER JOIN category ON article.category_id = category.id
+INNER JOIN user ON article.author_id = user.id
+LEFT JOIN user ON article.modified_by = user.id
+WHERE article.id = '1'========================================================error
+
+
+SELECT article . * , section.title, category.title, user.name, u2.name 
+FROM article 
+INNER JOIN section ON article.section_id = section.id 
+INNER JOIN category ON article.category_id = category.id 
+INNER JOIN user ON article.author_id = user.id 
+LEFT JOIN user u2 ON article.modified_by = u2.id 
+WHERE article.id = '1'========================================================w
+
+
+CREATE TABLE runs (
+code_teachers int(8),
+code_department int(8),
+primary key(code_teachers, code_department),
+foreign key(code_teachers)references teachers,
+foreign key(code_department)references department
+);
+
+
+FOREIGN KEY ( columnName ) REFERENCES tableName(columnName)
+
+
+creators (
+creatorid int not null,
+title varchar(100) not null, 
+primary key(creatorid)
+);
+
+authors (
+creatorid int not null,
+titleid int not null,
+primary key (creatorid, titleid)
+);
+
+ALTER TABLE `authors` ADD INDEX ( `creatorid` );
+ALTER TABLE `authors` ADD CONSTRAINT `FK_creators` FOREIGN KEY (`creatorid`) REFERENCES `creators` (`creatorid`);
+
+
+CREATE TABLE runs (
+code_teachers int(8),
+code_department int(8),
+primary key(code_teachers, code_department),
+foreign key(code_teachers)references teachers,
+foreign key(code_department)references department
+);
+
+FOREIGN KEY ( columnName ) REFERENCES tableName(columnName)
+
+CREATE TABLE accounts(
+    account_id INT NOT NULL AUTO_INCREMENT,
+    customer_id INT( 4 ) NOT NULL ,
+    account_type ENUM( 'savings', 'credit' ) NOT NULL,
+    balance FLOAT( 9 ) NOT NULL,
+    PRIMARY KEY (account_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE customers(
+    customer_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    address VARCHAR(20) NOT NULL,
+    city VARCHAR(20) NOT NULL,
+    state VARCHAR(20) NOT NULL,
+     PRIMARY KEY ( account_id ), 
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id) 
+)ENGINE=InnoDB; 
+
+CREATE VIEW SalePerOrder
+   AS
+  SELECT orderNumber,
+  SUM  (quantityOrdered * priceEach) total
+  FROM orderDetails
+  GROUP by orderNumber
+  ORDER BY total DESC
+
+
+ CREATE VIEW customerOrders AS
+SELECT  D.orderNumber,
+         customerName,
+         SUM(quantityOrdered * priceEach) total
+FROM orderDetails D
+INNER JOIN orders O ON O.orderNumber = D.orderNumber
+INNER JOIN customers C ON O.customerNumber =  C.customerNumber  
+GROUP BY D.orderNumber
+ORDER BY total DESC
+
+ CREATE VIEW vwProducts  AS
+SELECT productCode,
+        productName,
+        buyPrice
+FROM products
+WHERE buyPrice > (
+      SELECT AVG  (buyPrice)
+      FROM  products
+)
+ORDER BY buyPrice DESC
+
+
+
+6:56 PM 26/04/2014
+
+ 
+select name,@acount:=@acount+1 serial_number
+from (SELECT @acount:= 0) AS acount,user
+order by name asc
+
+and i need result like this
+Collapse | Copy Code
+
+ 
+name     serial_number
+deepak   1
+gita     2
+harshit  3
+prashant 4
+ram      5
+sita     6
+
+
+10:05 PM 26/04/2014
+
+
+
+CREATE OR REPLACE VIEW 'vw_students1' 
+AS
+  SELECT 
+    lastname    , 
+    firstname   , 
+    concat(firstname,' ',lastname) as "Fullname_fl",
+    concat(lastname,', ',firstname) as "Fullname_lf",
+    birth_dttm  ,
+    DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(birth_dttm)), '%Y')+0 as "Age"
+  FROM students  
+
+
+SELECT CONCAT(tbl_user.first_name, "  ",tbl_user.last_name) as Name,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . `poem_vote` ),2) as avg_vote ,( tbl_poems . aboutp )as poem ,( tbl_user. user_pictures ) as pictures  
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+                GROUP BY tbl_vote . `user_id` 
+                order by avg_vote desc 
+                 LIMIT 0, 15 
+
+
+11:56 PM 26/04/2014
+
+
+SELECT CONCAT(first_name, "  ",last_name) as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . `poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+where Date(poem_submit_date) BETWEEN '2014-01-01 ' AND '2014-04-31'
+                GROUP BY tbl_vote . `user_id` 
+                order by avg_vote desc 
+                 LIMIT 0, 15 
+
+
+SET @slno=0;
+SELECT @slno:=@slno+1 AS slno,@acount:=@acount+1 serial_number, CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM (SELECT @acount:= 0) AS acount,`tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+where Date(poem_submit_date) BETWEEN '2014-01-01 ' AND '2014-04-31'
+                GROUP BY tbl_vote . `user_id` 
+                order by avg_vote desc 
+                 LIMIT 0, 15 count(tbl_comments_poem.`user_id`)
+
+
+10:34 AM 27/04/2014
+
+SELECT @slno:=@slno+1 AS slno,@acount:=@acount+1 serial_number, CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM (SELECT @acount:= 0) AS acount,`tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+where Date(poem_submit_date) BETWEEN '2014-04-01' AND '2014-04-23'
+                GROUP BY tbl_vote . `user_id` 
+                order by avg_vote desc 
+                 LIMIT 0, 15 ORDER BY parent_cat_id 
+
+
+3:04 PM 30/04/2014 ============================ query for poem ===> comments
+
+SELECT tbl_comments_poem.`poem_id`,tbl_user.last_name,tbl_comments_poem.user_id,tbl_poems.aboutP,tbl_comments_poem.`comments_post_date`,tbl_comments_poem.`comments` FROM tbl_comments_poem 
+
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = tbl_comments_poem.`poem_id`
+inner join tbl_user on tbl_user.user_id = tbl_comments_poem.user_id 
+
+3:24 PM 30/04/2014
+
+CREATE OR REPLACE VIEW view_comments AS
+SELECT tbl_comments_poem.`comments_id` , tbl_comments_poem.`poem_id` , tbl_user.last_name, tbl_comments_poem.user_id, tbl_poems.aboutP, tbl_comments_poem.`comments_post_date` , tbl_comments_poem.`comments`
+FROM tbl_comments_poem
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = tbl_comments_poem.`poem_id`
+INNER JOIN tbl_user ON tbl_user.user_id = tbl_comments_poem.user_id
+
+
+
+create  view vbpoem_comments
+SELECT tbl_comments_poem.`comments_id` , CONCAT( tbl_comments_poem.`poem_id` , & quot;
+& quot ; , tbl_user.last_name ) AS member, tbl_comments_poem.user_id, tbl_poems.aboutP,
+ tbl_comments_poem.`comments_post_date` , tbl_comments_poem.`comments` FROM tbl_comments_poem 
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = 
+tbl_comments_poem.`poem_id` INNER JOIN tbl_user ON tbl_user.user_id = tbl_comments_poem.user_id ORDER BY `comments_id` DESC 
+ORDER BY `comments_id` DESC 
+
+
+11:54 AM 04/05/2014
+
+SELECT tbl_comments_poem.`comments_id` , CONCAT(tbl_user.first_name,'' , tbl_user.last_name ) AS member, tbl_comments_poem.user_id, CONCAT(tbl_poems.poem_id,'-',tbl_poems.aboutP) as poem,tbl_poems.poem_id,
+ tbl_comments_poem.`comments_post_date` , tbl_comments_poem.`comments` FROM tbl_comments_poem 
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = 
+tbl_comments_poem.`poem_id` INNER JOIN tbl_user ON tbl_user.user_id = tbl_comments_poem.user_id ORDER BY `comments_id` DESC 
+
+12:02 PM 04/05/2014
+
+SELECT tbl_comments_poem.`comments_post_date` as comments,
+CONCAT(tbl_poems.poem_id,' - ',tbl_poems.aboutP) as poem,
+CONCAT(tbl_user.first_name,'' , tbl_user.last_name ) AS member,
+tbl_comments_poem.`comments`,tbl_comments_poem.`comments_id` ,
+ tbl_comments_poem.user_id, tbl_poems.poem_id FROM tbl_comments_poem 
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = 
+tbl_comments_poem.`poem_id` INNER JOIN tbl_user 
+ON tbl_user.user_id = tbl_comments_poem.user_id ORDER BY `comments_id` DESC 
+
+SELECT CONCAT(tbl_user.first_name,'' , tbl_user.last_name ) AS member FROM tbl_user 
+ ORDER BY `user_id` DESC 
+
+
+6:04 PM 04/05/2014
+
+$sql = 'SELECT ( tbl_poems . aboutP ) Poem , sum( tbl_vote . `poem_vote` ) as Totalvote FROM `tbl_vote` INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+        . ' GROUP BY tbl_vote . `user_id` '
+        . ' order by Totalvote desc LIMIT 0, 30 ';
+
+6:29 PM 04/05/2014
+
+SELECT CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,count( tbl_comments_poem . `user_id` ) as Totalcomments ,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote  
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+
+                GROUP BY tbl_comments_poem . `user_id` 
+                order by Totalvote desc 
+                 LIMIT 0, 15=======wrrong
+
+
+
+6:32 PM 04/05/2014
+
+$sql = 'SELECT CONCAT(first_name, " ",last_name) '
+        . ' as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . '
+        . ' `poem_vote` ),2) as avg_vote '
+        . ' FROM `tbl_vote` '
+        . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+        . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+        . ' GROUP BY tbl_vote. `user_id` '
+        . ' order by avg_vote desc '
+        . ' LIMIT 0, 15';==============famous
+
+
+7:05 PM 04/05/2014
+
+SELECT  count(tbl_comments_poem.`user_id`),CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+INNER JOIN tbl_comments_poem ON tbl_poems . `poem_id` =  tbl_comments_poem . `poem_id`
+                GROUP BY tbl_vote . `user_id` 
+                order by Totalvote desc 
+                 LIMIT 0, 15
+
+
+7:25 PM 04/05/2014
+
+SELECT  count(tbl_comments_poem.`user_id`)as id ,CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+INNER JOIN tbl_comments_poem ON tbl_comments_poem . `poem_id`  =  tbl_poems . `poem_id`
+
+                GROUP BY tbl_comments_poem . `user_id` 
+                order by id desc 
+                 LIMIT 0, 5s
+
+
+10:23 AM 05/05/2014
+
+$sql = 'SELECT @acount:=@acount+1 acount, CONCAT(first_name, " ",last_name) '
+        . ' as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote , round(AVG( tbl_vote . '
+        . ' `poem_vote` ),2) as avg_vote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date '
+        . ' FROM (SELECT @acount:= 0) AS acount,`tbl_vote` '
+        . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+        . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+        . ' where Date(poem_submit_date) BETWEEN \'2014-04-01\' AND \'2014-04-23\''
+        . ' GROUP BY tbl_vote . `user_id` '
+        . ' order by acount,avg_vote desc '
+        . ' LIMIT 0, 15';
+
+
+10:30 AM 05/05/2014
+
+$sql = ''
+                . ' SELECT  (tbl_poems.aboutP)as Poem, CONCAT(first_name, " ",last_name) '
+                . ' as Name, round(AVG( tbl_vote . '
+                . ' `poem_vote` ),2) as avg_vote ,( tbl_user.picture_small ) as pictures ,tbl_poems.poem_id,tbl_poems.poem_submit_date '
+                . ' FROM `tbl_vote`'
+                . ' INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` '
+                . ' INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id '
+                . ' where Date(poem_submit_date) BETWEEN \'2014-01-01 \' AND \'2014-04-31\''
+                . ' GROUP BY tbl_vote . `user_id` '
+                . ' order by avg_vote desc '
+                . ' LIMIT 0, 15 ';
+
+10:54 AM 05/05/2014
+
+SELECT @acount:=@acount+1 sl_no, CONCAT(first_name, "  ",last_name) 
+
+as Name,(tbl_poems.aboutP) Poem,round(AVG( tbl_vote . 
+`poem_vote` ),2) as avg_vote , sum( tbl_vote . `poem_vote` ) as Totalvote ,( tbl_user. user_pictures ) as pictures ,tbl_poems.poem_submit_date 
+                 FROM (SELECT @acount:= 0) AS acount,`tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+where Date(poem_submit_date) BETWEEN '2014-04-01' AND '2014-04-23'
+                GROUP BY tbl_vote . `user_id` 
+                 
+ORDER BY avg_vote DESC
+
+                 LIMIT 0, 15 
+
+
+
+12:59 PM 05/05/2014
+
+CREATE OR REPLACE VIEW vw_comments AS
+SELECT tbl_comments_poem.`comments_id` , (
+tbl_user.last_name
+) AS member, tbl_comments_poem.user_id, tbl_comments_poem.`poem_id` , tbl_poems.title, tbl_comments_poem.`comments_post_date` , tbl_comments_poem.`comments`
+FROM tbl_comments_poem 
+
+INNER JOIN tbl_poems ON tbl_poems.`poem_id` = tbl_comments_poem.`poem_id`
+
+INNER JOIN tbl_user ON tbl_user.user_id = tbl_comments_poem.user_id
+ 
+where tbl_poems.user_id  = '37'
+
+ORDER BY `comments_id` DESC
+
+
+4:33 PM 05/05/2014
+SELECT `poem_id`,`user_id`,`title`,`id_poem`,`id_user`,`ip`,`country`,`read_value`,`read_date` FROM `tbl_poems` 
+INNER JOIN tbl_read ON tbl_read . `id_poem` = tbl_poems . `poem_id`
+
+WHERE `poem_id`='88'
+
+
+
+
+6:00 PM 05/05/2014
+
+SELECT CONCAT(first_name, "  ",last_name) as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+
+                GROUP BY tbl_vote . `user_id` 
+                order by Totalvote desc 
+                 LIMIT 0, 15 =====================popular member
+
+
+6:06 PM 05/05/2014
+
+
+create view vw_hot_poems as
+SELECT CONCAT(first_name, "  ",last_name) as Name,(tbl_poems.aboutP) Poem,sum( tbl_vote . `poem_vote` ) as Totalvote 
+                 FROM `tbl_vote` 
+                 INNER JOIN tbl_poems ON tbl_poems . `poem_id` = tbl_vote . `poem_id` 
+                INNER JOIN tbl_user ON tbl_vote . user_id = tbl_user . user_id 
+
+                GROUP BY tbl_poems . `poem_id` 
+                order by Totalvote desc 
+                 LIMIT 0, 40 ==========================top poems
+
+12:43 PM 02/02/2015
+
+select d.poem_id,r.poem_id ,a.comments_id,a.poem_id,r.comments_id,c.user_id, concat(c.first_name,' ',c.last_name)as name,c.picture_small,
+                d.title,d.body,d.poem_submit_date,d.trending_date,
+                d.read_value,b.total_vote, a.total_comments,b.Average_vote,b.total_voter
+
+                from(select tbl_vote.poem_id, count(tbl_vote.vote_id)as total_voter,sum(tbl_vote.poem_vote)as total_vote,
+                avg(poem_vote ) as Average_Vote from tbl_vote group by tbl_vote.poem_id) b,
+
+                (select poem_id,comments_id, count(comments_id)as total_comments  from tbl_comments_poem group by poem_id) a,
+
+                tbl_user c ,tbl_poems d,tbl_reply  r
+
+                where a.poem_id=b.poem_id
+                and c.user_id=d.user_id
+                and a.poem_id=d.poem_id
+		and a.poem_id=r.poem_id
+                
+                and c.activation_status !=1
+                and d.`trending`='tre'
+                
+                order by d.`trending_date` desc LIMIT 2,18446744073709551615

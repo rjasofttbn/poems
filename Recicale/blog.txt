@@ -1,0 +1,33 @@
+<div class="sharing-bar page-top">
+			<p class="title">Share this poems :</p>
+			<ul class="addthis_toolbox addthis_default_style">
+				<li class="facebook">
+					<a class="addthis_button_facebook" target="_blank" href="http://www.facebook.com/sharer.php?title=READ ALL POEMS - SEND YOUR POEM&amp;u=http://www.poemhunter.com/poems/">
+						<img src="/static/images/blank.gif" alt="Share on Facebook" height="20" width="20">
+					</a>
+				</li>
+				<li class="twitter">
+					<a class="addthis_button_twitter" target="_blank" href="http://twitter.com/?status=READ ALL POEMS - SEND YOUR POEM%20http://www.poemhunter.com/poems/">
+						<img src="/static/images/blank.gif" alt="Share on Twitter" height="20" width="20">
+					</a>
+				</li>
+				<li class="google-plus">
+					<a target="_blank" href="https://plus.google.com/share?url=http://www.poemhunter.com/poems/" title="Share on Google+">
+						<img src="/static/images/blank.gif" alt="Share on Google+" height="20" width="20">
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+
+
+<a href="#" onclick="window.print();return false;">Print</a>
+
+<!--<button type="button" onmousemove = "alert('Hello world!')">Click Me!</button>--!-->
+
+<audio controls>
+<source  src="horse.ogg" type="audio/ogg">
+<source src="horse.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+

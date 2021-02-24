@@ -1,0 +1,11 @@
+CREATE TABLE `tbl_poems` (
+`poem_id` INT( 15 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`poem_title` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_text` VARCHAR( 500 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_topic` VARCHAR( 45 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_story` VARCHAR( 250 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_vote` VARCHAR( 1 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_comments` VARCHAR( 1 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`others` VARCHAR( 300 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`poem_submit_date` DATETIME NOT NULL
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'this table for poem submit';

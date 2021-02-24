@@ -1,0 +1,42 @@
+.rating_wrapper{width:1240px;height:65px;margin:5px 0;padding:5px 0;}
+.poll2{color:white;font-weight:auto;width:308px;float:left;}
+.simpleRatings{display:block;}
+.simpleRatings input{border:none;background:none;position:absolute;left:0;height:200%;text-indent:-300px;cursor:pointer;text-transform:uppercase;margin:0;padding:0;}
+.simpleRatings input:active,.simpleRatings input:focus{outline:none;}
+.current_rating{height:100%;z-index:1;}
+.starsmediumorange{background:url(http://ffpstatic.com/images/star-rating2.png) repeat-x;width:200px;height:20px;overflow:hidden;border:none;position:relative;text-align:left;margin:0;padding:0;}
+.starsmediumorange input:hover{background:url(http://ffpstatic.com/images/star-rating2.png) bottom left repeat-x;}
+.starsmediumorange .current_rating{background:url(http://ffpstatic.com/images/star-rating2.png) center left repeat-x;}
+.starsmediumorange .tip{display:none;}
+.rating_message{color:red;}
+
+
+
+
+.stars1{width:10%;z-index:10;}
+.stars2{width:20%;z-index:9;}
+.stars3{width:30%;z-index:8;}
+.stars4{width:40%;z-index:7;}
+.stars5{width:50%;z-index:6;}
+
+.stars6{width:60%;z-index:5;}
+.stars7{width:70%;z-index:4;}
+.stars8{width:80%;z-index:3;}
+.stars9{width:90%;z-index:2;}
+.stars10{width:100%;z-index:1;}
+
+
+.rate{width:150px;float:left;}
+.rate p{font-size:12px;color:#03579E;padding:0;}
+.heading{color:#03579E;font-size:20px;font-weight:bold;text-align:center;}
+.heading2{font-size:18px;color:#03579E;font-weight:700;text-align:center;}
+.heading3{font-size:16px;font-weight:700;color:#03579E;clear:both;}
+.heading4{font-size:16px;font-weight:700;color:#03579E;}
+.heading5{font-size:17px;color:#333;padding:0 0 15px;}
+.heading6{font-weight:700;color:#03579E;padding:3px 0;text-align:left;}
+
+.heading7{font-size:19px;color:#03579E;font-weight:700;text-align:center;}
+.heading8{font-size:13px;font-weight:700;color:#03579E;clear:both;}
+.heading9{font-size:21px;font-weight:700;color:#03579E;}
+.heading10{font-size:27px;color:#333;padding:0 0 15px;}
+

@@ -1,0 +1,269 @@
+==========================================================
+
+user_admin_contrller
+
+==========================================================
+
+11:09 AM 10/04/2014
+
+   public function deleteContact($contact_id) {
+        // echo $contact_id;
+        $this->load->model('user_admin_model');
+        $this->user_admin_model->deleteContact($contact_id);
+        redirect("user_admin/viewContact");
+    }
+
+    public function searchContact() {
+        $search_text = $this->input->post('search_text', true);
+        $user_id = $this->session->userdata('user_id');
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->searchContactInfo($search_text, $user_id);
+        $data['maincontent'] = $this->load->view('view_user_admin/view_contact', $data, true);
+        $this->load->view('home', $data);
+    }
+
+    //===================== viewContact_me ========================;
+
+    public function person_Contact_me() {
+        $data = array();
+        $data['maincontent'] = $this->load->view('admin/Contact_me', $data, true);
+        $this->load->view('home', $data);
+    }
+
+    public function person_contact_me_save() {
+        $data = array();
+        $data['contact_me_id'] = $this->session->userdata('contact_me_id');
+        $data['contact_me_name'] = $this->input->post('contact_me_name', true);
+        $data['contact_me_address'] = $this->input->post('contact_me_address', true);
+        $data['contact_me_profession'] = $this->input->post('contact_me_profession', true);
+        $data['contact_me_chairman'] = $this->input->post('contact_me_chairman', true);
+        $data['others'] = $this->input->post('others', true);
+
+        $this->load->model('user_admin_model');
+        $this->user_admin_model->person_Contact_Info($data);
+        $sesData['message'] = "Save Contact Data Successfully!";
+        $this->session->set_userdata($sesData);
+        redirect("user_admin/viewContactForm");
+    }
+
+    public function viewContact_me() {
+        $data = array();
+        $user_id = $this->session->userdata('contact_me_id');
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->selectContactByUserId($user_id);
+        $this->load->library('pagination');
+
+        $config['base_url'] = base_url() . 'user_admin/viewContact_me/';
+        $data['result'] = $this->user_admin_model->selectContactByUserId($user_id);
+        $config['total_rows'] = count($data['result']);
+        $config['per_page'] = '15';
+        $config['full_tag_open'] = '<p>';
+        $config['full_tag_close'] = '</p>';
+
+        $this->pagination->initialize($config);
+        $data['result'] = $this->user_admin_model->selectContact_meForPagination($user_id, $config['per_page'], $this->uri->segment(3));
+        $data['maincontent'] = $this->load->view('admin/view_person_contact', $data, true);
+        $this->load->view('home', $data);
+    }
+
+    public function person_searchContact() {
+        $search_text = $this->input->post('search_text', true);
+        $user_id = $this->session->userdata('contact_me_id');
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->search_person_Contact($search_text, $user_id);
+        $data['maincontent'] = $this->load->view('admin/view_person_contact', $data, true);
+        $this->load->view('home', $data);
+    }
+
+
+
+
+11:09 AM 10/04/2014
+
+
+    public function viewContact() {
+        $data = array();
+        $user_id = $this->session->userdata('user_id');
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->selectContactByUserId($user_id);
+        //$this->load->library('pagination');
+        //$config['base_url'] = base_url() . 'user_admin_controller/viewContact/';
+        //$data['result'] = $this->user_admin_model->selectContactByUserId($user_id);
+        //$config['total_rows'] = count($data['result']);
+        //$config['per_page'] = '3';
+        //$config['full_tag_open'] = '<p>';
+        //$config['full_tag_close'] = '</p>';
+        //$this->pagination->initialize($config);
+        //$data['result'] = $this->user_admin_model->selectContactForPagination($user_id, $config['per_page'], $this->uri->segment(3));
+        $data['maincontent'] = $this->load->view('view_user_admin/view_contact', $data, true);
+        $this->load->view('home', $data);
+    }
+
+    public function contactDetail($contact_id) {
+        //echo $contact_id;
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->selectContactByContactId($contact_id);
+        $data['maincontent'] = $this->load->view('view_user_admin/contact_detail', $data, true);
+        $this->load->view('home', $data);
+    }
+
+    public function editContact($contact_id) {
+        $this->load->model('user_admin_model');
+        $data['result'] = $this->user_admin_model->selectContactByContactId($contact_id);
+        $data['maincontent'] = $this->load->view('view_user_admin/edit_contact_form', $data, true);
+        $this->load->view('home', $data);
+    }
+
+
+11:10 AM 10/04/2014
+
+	public function searchallpoemss()
+       {
+           if($this->session->userdata('logged_in'))
+        {
+           
+        $session_data = $this->session->userdata('logged_in');
+        $data['user_id'] = $session_data['user_id']; 
+        }
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'user_admin_controller/searchallpoems/';
+        $config['total_rows'] = $this->db->count_all('tbl_poems');
+        $config['per_page'] = '5';
+        $config['full_tag_open'] = '<p>';
+        $config['full_tag_close'] = '</p>';
+
+        $this->pagination->initialize($config);
+	
+        //load the model and get results
+        $this->load->model('user_admin_model');
+        $data['rows'] = $this->user_admin_model->selectpoemAll($config['per_page'],$this->uri->segment(3));
+
+        // load the HTML Table Class
+      //  $this->load->library('table');
+       // $this->table->set_heading('ID', 'Title', 'Author', 'Description');
+
+        $data['maincontent']=$this->load->view('view_user_admin/viewpoem_aboutp',$data,true);
+        $this->load->view('home',$data);        
+ 
+    }
+
+    public function saveContact() {
+        $data = array();
+        $data['user_id'] = $this->session->userdata('user_id');
+        $data['name'] = $this->input->post('name', true);
+        $data['email_address'] = $this->input->post('email_address', true);
+        $data['mobile_no'] = $this->input->post('mobile_no', true);
+        $data['blood_group'] = $this->input->post('blood_group', true);
+        $data['facebook_id'] = $this->input->post('facebook_id', true);
+        $data['address'] = $this->input->post('address', true);
+
+        $this->load->model('user_admin_model');
+        $this->user_admin_model->saveContactInfo($data);
+        $sesData['message'] = "Save Contact Data Successfully!";
+        $this->session->set_userdata($sesData);
+
+        redirect("user_admin/viewContactForm");
+    }
+
+================================================
+
+user_admin_model
+
+================================================
+11:16 AM 10/04/2014
+
+
+
+    public function selectContactForPagination($user_id, $num, $offset) {
+        $this->db->select('*');
+        $this->db->from('tbl_contact');
+        $this->db->where('user_id', $user_id);
+        $query_result = $this->db->get('', $num, $offset);
+        $result = $query_result->result();
+        return $result;
+    }
+
+    public function selectpoemForPagination($user_id, $num, $offset) {
+        $this->db->select('*');
+        $this->db->from('tbl_poems');
+        $this->db->where('user_id', $user_id);
+        $query_result = $this->db->get('', $num, $offset);
+        $result = $query_result->result();
+        return $result;
+    }
+
+    /* Contact_me================ */
+
+    public function selectContact_meForPagination($user_id, $num, $offset) {
+        $this->db->select('*');
+        $this->db->from('contact_me');
+        $this->db->where('user_id', $user_id);
+        $query_result = $this->db->get('', $num, $offset);
+        $result = $query_result->result();
+        return $result;
+    }
+
+    public function person_Contact_Info($data) {
+        $this->db->insert('contact_me', $data);
+    }
+
+    public function search_person_Contact($search_text, $user_id) {
+        /* $this->db->select('*');
+          $this->db->from('tbl_contact');
+          $this->db->where('name',$search_text);
+          $this->db->or_where('email_address',$search_text);
+          $this->db->or_where('mobile_no',$search_text);
+          $this->db->or_where('blood_group',$search_text);
+          $this->db->where('user_id',$user_id);
+          $sql="SELECT *  FROM contact_me WHERE name='$search_text' OR email_address='$search_text' OR mobile_no='$search_text' OR blood_group='$search_text' AND user_id='$user_id'";
+         */
+        $query_result = $this->db->query($sql);
+        $result = $query_result->result();
+        return $result;
+    }
+
+    public function deleteContact($contact_id) {
+        $this->db->where('contact_id', $contact_id);
+        $this->db->delete('tbl_contact');
+    }
+
+
+
+    public function selectContactByContactId($contact_id) {
+
+        $this->db->select('*');
+        $this->db->from('tbl_contact');
+        $this->db->where('contact_id', $contact_id);
+        $query_result = $this->db->get();
+        $result = $query_result->row();
+        return $result;
+    }
+
+    public function searchContactInfo($search_text, $user_id) {
+        /* $this->db->select('*');
+          $this->db->from('tbl_contact');
+          $this->db->where('name',$search_text);
+          $this->db->or_where('email_address',$search_text);
+          $this->db->or_where('mobile_no',$search_text);
+          $this->db->or_where('blood_group',$search_text);
+          $this->db->where('user_id',$user_id); */
+        $sql = "SELECT *  FROM tbl_contact WHERE name='$search_text' OR email_address='$search_text' OR mobile_no='$search_text' OR blood_group='$search_text' AND user_id='$user_id'";
+        $query_result = $this->db->query($sql);
+        $result = $query_result->result();
+        return $result;
+    }
+
+
+    public function selectContactByUserId($user_id) {
+        $this->db->select('*');
+        $this->db->from('tbl_contact');
+        $this->db->where('user_id', $user_id);
+        $query_result = $this->db->get();
+        $result = $query_result->result();
+        return $result;
+    }
+
+
+    public function saveContactInfo($data) {
+        $this->db->insert('tbl_contact', $data);
+    }
